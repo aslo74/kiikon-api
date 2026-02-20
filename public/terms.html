@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiikon — Conditions d'utilisation / Terms of Use</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+        :root {
+            --bg: #0a0a0f;
+            --surface: #13131a;
+            --border: #1e1e2a;
+            --text: #e0e0e8;
+            --text-muted: #8888a0;
+            --accent: #c8a832;
+            --accent-dim: #c8a83220;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .lang-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p { margin-bottom: 1rem; }
+
+        .highlight {
+            background: var(--accent-dim);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight strong { color: var(--accent); }
+
+        .warning {
+            background: #2a1a1a;
+            border-left: 3px solid #e84040;
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .warning strong { color: #e84040; }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        [lang="en"] { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Kiikon</div>
+        <h1 lang="fr">Conditions générales d'utilisation</h1>
+        <h1 lang="en">Terms of Use</h1>
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('fr')">🇫🇷 Français</button>
+            <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- ==================== FRANÇAIS ==================== -->
+        <div lang="fr">
+            <p class="date">Dernière mise à jour : 20 février 2026</p>
+
+            <div class="warning">
+                <strong>⚠️ AVERTISSEMENT IMPORTANT</strong><br>
+                Kiikon est une application de <strong>divertissement uniquement</strong>. Elle ne constitue pas un outil scientifique de détection de mensonges. Les résultats sont générés à des fins ludiques et ne doivent en aucun cas être utilisés pour porter un jugement sur la sincérité d'une personne, dans un cadre professionnel, juridique, médical ou personnel.
+            </div>
+
+            <h2>1. Objet</h2>
+            <p>Les présentes conditions générales d'utilisation (« CGU ») régissent l'utilisation de l'application mobile Kiikon (l'« Application »), éditée par CUB-ITH, micro-entreprise de droit français.</p>
+            <p>En utilisant l'Application, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.</p>
+
+            <h2>2. Description du service</h2>
+            <p>Kiikon est une application de divertissement qui propose une expérience ludique d'analyse d'expressions faciales. L'Application utilise la caméra de votre appareil pour détecter des expressions faciales et génère un résultat fictif d'analyse comportementale.</p>
+            <p>L'Application propose deux modes :</p>
+            <ul>
+                <li><strong>Mode gratuit :</strong> analyse basique avec publicités (Google AdMob)</li>
+                <li><strong>Mode premium :</strong> analyse détaillée via intelligence artificielle, accessible par crédits achetés dans l'application</li>
+            </ul>
+
+            <h2>3. Disclaimer — Absence de valeur scientifique</h2>
+            <div class="highlight">
+                <strong>🎭 Les résultats fournis par Kiikon sont purement fictifs et ludiques.</strong> L'Application ne prétend pas détecter les mensonges de manière fiable. Aucune technologie actuelle ne permet de détecter les mensonges de manière certaine par la seule analyse des expressions faciales. Les résultats ne doivent jamais être utilisés pour accuser, juger ou prendre des décisions concernant une personne.
+            </div>
+
+            <h2>4. Accès à la caméra</h2>
+            <p>L'Application requiert l'accès à la caméra frontale de votre appareil pour fonctionner. Cet accès est utilisé <strong>exclusivement</strong> pour l'analyse des expressions faciales en temps réel. Aucune photo ni vidéo n'est capturée, enregistrée ou stockée. Vous pouvez révoquer cette autorisation à tout moment dans les paramètres de votre appareil.</p>
+
+            <h2>5. Achats intégrés</h2>
+            <p>L'Application propose des achats intégrés (in-app purchases) permettant d'acquérir des crédits pour accéder au mode premium :</p>
+            <ul>
+                <li>Les achats sont gérés par Google Play Store ou Apple App Store</li>
+                <li>Les crédits achetés sont non remboursables, sauf disposition légale contraire</li>
+                <li>Les crédits n'ont pas de date d'expiration</li>
+                <li>Les prix affichés incluent les taxes applicables</li>
+            </ul>
+            <p>Pour toute demande de remboursement, veuillez contacter directement Google Play ou l'App Store conformément à leurs politiques respectives.</p>
+
+            <h2>6. Publicité</h2>
+            <p>Le mode gratuit de l'Application affiche des publicités fournies par Google AdMob. Ces publicités sont soumises aux <a href="https://policies.google.com/technologies/ads" target="_blank">règles publicitaires de Google</a>.</p>
+
+            <h2>7. Propriété intellectuelle</h2>
+            <p>L'ensemble des éléments de l'Application (design, code, textes, images, sons, marque Kiikon) sont la propriété exclusive de CUB-ITH et sont protégés par le droit de la propriété intellectuelle. Toute reproduction, modification ou exploitation non autorisée est interdite.</p>
+
+            <h2>8. Responsabilité</h2>
+            <ul>
+                <li>CUB-ITH ne saurait être tenu responsable de toute utilisation des résultats de l'Application en dehors de son cadre de divertissement</li>
+                <li>CUB-ITH ne garantit pas la disponibilité ininterrompue de l'Application ni l'absence d'erreurs</li>
+                <li>L'utilisation de l'Application se fait sous votre entière responsabilité</li>
+                <li>CUB-ITH décline toute responsabilité en cas de dommages directs ou indirects liés à l'utilisation de l'Application</li>
+            </ul>
+
+            <h2>9. Consentement des tiers</h2>
+            <p>Si vous utilisez l'Application pour analyser les expressions faciales d'une autre personne, vous devez <strong>obligatoirement obtenir son consentement préalable</strong>. Vous êtes seul responsable du respect de cette obligation. CUB-ITH décline toute responsabilité en cas d'utilisation sans consentement.</p>
+
+            <h2>10. Âge minimum</h2>
+            <p>L'Application est destinée aux personnes de 13 ans et plus. En utilisant l'Application, vous confirmez avoir au moins 13 ans ou disposer de l'autorisation d'un parent ou tuteur légal.</p>
+
+            <h2>11. Confidentialité</h2>
+            <p>L'utilisation de l'Application est soumise à notre <a href="./privacy">Politique de confidentialité</a> qui fait partie intégrante des présentes CGU.</p>
+
+            <h2>12. Modification des CGU</h2>
+            <p>CUB-ITH se réserve le droit de modifier les présentes CGU à tout moment. Les modifications entrent en vigueur dès leur publication. L'utilisation continue de l'Application après modification vaut acceptation des nouvelles CGU.</p>
+
+            <h2>13. Droit applicable</h2>
+            <p>Les présentes CGU sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de la juridiction du siège social de CUB-ITH.</p>
+
+            <h2>14. Contact</h2>
+            <p>Pour toute question relative aux présentes CGU :</p>
+            <p><strong>CUB-ITH</strong><br>
+            Email : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+        </div>
+
+        <!-- ==================== ENGLISH ==================== -->
+        <div lang="en">
+            <p class="date">Last updated: February 20, 2026</p>
+
+            <div class="warning">
+                <strong>⚠️ IMPORTANT DISCLAIMER</strong><br>
+                Kiikon is an <strong>entertainment-only</strong> application. It is not a scientific lie detection tool. Results are generated for fun and should never be used to judge a person's sincerity in any professional, legal, medical, or personal context.
+            </div>
+
+            <h2>1. Purpose</h2>
+            <p>These Terms of Use ("Terms") govern the use of the Kiikon mobile application (the "App"), published by CUB-ITH, a French micro-enterprise.</p>
+            <p>By using the App, you unconditionally accept these Terms. If you do not accept these Terms, please do not use the App.</p>
+
+            <h2>2. Service description</h2>
+            <p>Kiikon is an entertainment application that offers a fun facial expression analysis experience. The App uses your device's camera to detect facial expressions and generates a fictional behavioral analysis result.</p>
+            <p>The App offers two modes:</p>
+            <ul>
+                <li><strong>Free mode:</strong> basic analysis with advertisements (Google AdMob)</li>
+                <li><strong>Premium mode:</strong> detailed AI-powered analysis, accessible through credits purchased in the app</li>
+            </ul>
+
+            <h2>3. Disclaimer — No scientific value</h2>
+            <div class="highlight">
+                <strong>🎭 Results provided by Kiikon are purely fictional and for entertainment.</strong> The App does not claim to reliably detect lies. No current technology can detect lies with certainty through facial expression analysis alone. Results should never be used to accuse, judge, or make decisions about a person.
+            </div>
+
+            <h2>4. Camera access</h2>
+            <p>The App requires access to your device's front camera to function. This access is used <strong>exclusively</strong> for real-time facial expression analysis. No photos or videos are captured, recorded, or stored. You can revoke this permission at any time in your device settings.</p>
+
+            <h2>5. In-App Purchases</h2>
+            <p>The App offers in-app purchases to acquire credits for premium mode access:</p>
+            <ul>
+                <li>Purchases are managed by Google Play Store or Apple App Store</li>
+                <li>Purchased credits are non-refundable, except as required by law</li>
+                <li>Credits do not expire</li>
+                <li>Displayed prices include applicable taxes</li>
+            </ul>
+            <p>For refund requests, please contact Google Play or the App Store directly in accordance with their respective policies.</p>
+
+            <h2>6. Advertising</h2>
+            <p>The App's free mode displays advertisements provided by Google AdMob. These advertisements are subject to <a href="https://policies.google.com/technologies/ads" target="_blank">Google's advertising policies</a>.</p>
+
+            <h2>7. Intellectual property</h2>
+            <p>All elements of the App (design, code, text, images, sounds, Kiikon brand) are the exclusive property of CUB-ITH and are protected by intellectual property law. Any unauthorized reproduction, modification, or exploitation is prohibited.</p>
+
+            <h2>8. Liability</h2>
+            <ul>
+                <li>CUB-ITH shall not be held liable for any use of the App's results outside its entertainment purpose</li>
+                <li>CUB-ITH does not guarantee uninterrupted availability of the App or the absence of errors</li>
+                <li>Use of the App is at your sole risk</li>
+                <li>CUB-ITH disclaims all liability for direct or indirect damages related to the use of the App</li>
+            </ul>
+
+            <h2>9. Third-party consent</h2>
+            <p>If you use the App to analyze another person's facial expressions, you <strong>must obtain their prior consent</strong>. You are solely responsible for complying with this obligation. CUB-ITH disclaims all liability in case of use without consent.</p>
+
+            <h2>10. Minimum age</h2>
+            <p>The App is intended for persons aged 13 and over. By using the App, you confirm that you are at least 13 years old or have the authorization of a parent or legal guardian.</p>
+
+            <h2>11. Privacy</h2>
+            <p>Use of the App is subject to our <a href="./privacy">Privacy Policy</a>, which forms an integral part of these Terms.</p>
+
+            <h2>12. Modifications</h2>
+            <p>CUB-ITH reserves the right to modify these Terms at any time. Changes take effect upon publication. Continued use of the App after modifications constitutes acceptance of the new Terms.</p>
+
+            <h2>13. Governing law</h2>
+            <p>These Terms are governed by French law. Any dispute shall be submitted to the competent courts of the jurisdiction of CUB-ITH's registered office.</p>
+
+            <h2>14. Contact</h2>
+            <p>For any questions regarding these Terms:</p>
+            <p><strong>CUB-ITH</strong><br>
+            Email: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 CUB-ITH — Kiikon
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('[lang="fr"], [lang="en"]').forEach(el => {
+                el.style.display = el.getAttribute('lang') === lang ? '' : 'none';
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(lang === 'fr' ? 'Français' : 'English'));
+            });
+            document.documentElement.lang = lang;
+        }
+
+        const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+        setLang(userLang);
+    </script>
+</body>
+</html>
