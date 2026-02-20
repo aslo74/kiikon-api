@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiikon — Politique de confidentialité / Privacy Policy</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+        :root {
+            --bg: #0a0a0f;
+            --surface: #13131a;
+            --border: #1e1e2a;
+            --text: #e0e0e8;
+            --text-muted: #8888a0;
+            --accent: #c8a832;
+            --accent-dim: #c8a83220;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .header h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .lang-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        p { margin-bottom: 1rem; }
+
+        .highlight {
+            background: var(--accent-dim);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight strong { color: var(--accent); }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1rem;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        ul li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        [lang="en"] { display: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Kiikon</div>
+        <h1 id="page-title-fr" lang="fr">Politique de confidentialité</h1>
+        <h1 id="page-title-en" lang="en">Privacy Policy</h1>
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('fr')">🇫🇷 Français</button>
+            <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- ==================== FRANÇAIS ==================== -->
+        <div lang="fr">
+            <p class="date">Dernière mise à jour : 20 février 2026</p>
+
+            <div class="highlight">
+                <strong>🎭 Kiikon est une application de divertissement.</strong> Les résultats d'analyse ne constituent en aucun cas un diagnostic scientifique fiable de détection de mensonges. Cette application ne doit pas être utilisée pour prendre des décisions réelles concernant la véracité des propos d'une personne.
+            </div>
+
+            <h2>1. Éditeur</h2>
+            <p>Kiikon est éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français.</p>
+            <p>Contact : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+
+            <h2>2. Données collectées</h2>
+
+            <p><strong>Données d'analyse faciale (caméra)</strong></p>
+            <p>Kiikon utilise la caméra frontale de votre appareil pour analyser les expressions faciales en temps réel via la technologie MediaPipe (52 blendshapes). Ces données sont :</p>
+            <ul>
+                <li>Traitées <strong>localement sur votre appareil</strong> en mode gratuit</li>
+                <li>Envoyées de manière chiffrée à notre serveur pour l'analyse premium, puis <strong>immédiatement supprimées</strong> après traitement</li>
+                <li><strong>Jamais stockées</strong>, jamais enregistrées, jamais partagées avec des tiers</li>
+            </ul>
+
+            <p><strong>Aucune vidéo ni photo n'est enregistrée.</strong> Seules les données numériques abstraites des expressions faciales (blendshapes) sont traitées.</p>
+
+            <p><strong>Données d'utilisation</strong></p>
+            <ul>
+                <li>Préférences de langue (détection automatique)</li>
+                <li>Achats in-app (gérés par Google Play / Apple — nous n'avons pas accès à vos données de paiement)</li>
+                <li>Solde de crédits (stocké localement sur votre appareil)</li>
+            </ul>
+
+            <p><strong>Publicité (AdMob)</strong></p>
+            <p>Kiikon utilise Google AdMob pour afficher des publicités en mode gratuit. AdMob peut collecter certaines données conformément à la <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a>. Vous pouvez gérer vos préférences publicitaires dans les paramètres de votre appareil.</p>
+
+            <h2>3. Finalité du traitement</h2>
+            <p>Les données faciales sont utilisées <strong>exclusivement</strong> pour générer un résultat d'analyse de divertissement au sein de l'application. Aucune autre utilisation n'est faite.</p>
+
+            <h2>4. Base légale (RGPD)</h2>
+            <p>Le traitement des données est fondé sur votre <strong>consentement</strong> (Article 6(1)(a) du RGPD), accordé lors de l'acceptation des conditions d'utilisation et de l'autorisation d'accès à la caméra.</p>
+
+            <h2>5. Durée de conservation</h2>
+            <ul>
+                <li>Données faciales : <strong>aucune conservation</strong> — supprimées immédiatement après analyse</li>
+                <li>Préférences et crédits : stockés localement sur votre appareil jusqu'à la désinstallation</li>
+            </ul>
+
+            <h2>6. Transfert de données</h2>
+            <p>En mode premium, les données d'analyse (blendshapes numériques uniquement) sont transmises de manière chiffrée (HTTPS) à nos serveurs hébergés par Vercel (infrastructure mondiale). Aucune donnée personnelle identifiable n'est transmise.</p>
+
+            <h2>7. Vos droits</h2>
+            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+            <ul>
+                <li>Droit d'accès, de rectification et de suppression de vos données</li>
+                <li>Droit de retirer votre consentement à tout moment</li>
+                <li>Droit à la portabilité de vos données</li>
+                <li>Droit d'introduire une réclamation auprès de la CNIL</li>
+            </ul>
+            <p>Étant donné qu'aucune donnée personnelle n'est stockée, l'exercice de ces droits s'applique principalement au retrait du consentement (désinstallation de l'app ou révocation de l'accès caméra).</p>
+            <p>Contact : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+
+            <h2>8. Sécurité</h2>
+            <p>Nous mettons en œuvre des mesures techniques appropriées pour protéger vos données : chiffrement HTTPS des communications, absence de stockage de données sensibles, et traitement éphémère des données d'analyse.</p>
+
+            <h2>9. Mineurs</h2>
+            <p>Kiikon n'est pas destinée aux enfants de moins de 13 ans. Si vous êtes parent et pensez que votre enfant nous a fourni des données, contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+
+            <h2>10. Modifications</h2>
+            <p>Nous pouvons mettre à jour cette politique. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à consulter cette page régulièrement.</p>
+        </div>
+
+        <!-- ==================== ENGLISH ==================== -->
+        <div lang="en">
+            <p class="date">Last updated: February 20, 2026</p>
+
+            <div class="highlight">
+                <strong>🎭 Kiikon is an entertainment application.</strong> Analysis results do not constitute a reliable scientific lie detection diagnosis. This application should not be used to make real decisions about the truthfulness of a person's statements.
+            </div>
+
+            <h2>1. Publisher</h2>
+            <p>Kiikon is published by <strong>CUB-ITH</strong>, a French micro-enterprise.</p>
+            <p>Contact: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+
+            <h2>2. Data collected</h2>
+
+            <p><strong>Facial analysis data (camera)</strong></p>
+            <p>Kiikon uses your device's front camera to analyze facial expressions in real time using MediaPipe technology (52 blendshapes). This data is:</p>
+            <ul>
+                <li>Processed <strong>locally on your device</strong> in free mode</li>
+                <li>Sent encrypted to our server for premium analysis, then <strong>immediately deleted</strong> after processing</li>
+                <li><strong>Never stored</strong>, never recorded, never shared with third parties</li>
+            </ul>
+
+            <p><strong>No video or photo is recorded.</strong> Only abstract numerical facial expression data (blendshapes) is processed.</p>
+
+            <p><strong>Usage data</strong></p>
+            <ul>
+                <li>Language preferences (automatic detection)</li>
+                <li>In-app purchases (managed by Google Play / Apple — we do not have access to your payment data)</li>
+                <li>Credit balance (stored locally on your device)</li>
+            </ul>
+
+            <p><strong>Advertising (AdMob)</strong></p>
+            <p>Kiikon uses Google AdMob to display ads in free mode. AdMob may collect certain data in accordance with <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>. You can manage your advertising preferences in your device settings.</p>
+
+            <h2>3. Purpose of processing</h2>
+            <p>Facial data is used <strong>exclusively</strong> to generate an entertainment analysis result within the application. No other use is made.</p>
+
+            <h2>4. Legal basis (GDPR)</h2>
+            <p>Data processing is based on your <strong>consent</strong> (Article 6(1)(a) of the GDPR), given when accepting the terms of use and granting camera access permission.</p>
+
+            <h2>5. Data retention</h2>
+            <ul>
+                <li>Facial data: <strong>no retention</strong> — immediately deleted after analysis</li>
+                <li>Preferences and credits: stored locally on your device until uninstallation</li>
+            </ul>
+
+            <h2>6. Data transfer</h2>
+            <p>In premium mode, analysis data (numerical blendshapes only) is transmitted encrypted (HTTPS) to our servers hosted by Vercel (global infrastructure). No personally identifiable data is transmitted.</p>
+
+            <h2>7. Your rights</h2>
+            <p>Under the GDPR, you have the following rights:</p>
+            <ul>
+                <li>Right of access, rectification and deletion of your data</li>
+                <li>Right to withdraw your consent at any time</li>
+                <li>Right to data portability</li>
+                <li>Right to lodge a complaint with the relevant data protection authority</li>
+            </ul>
+            <p>Since no personal data is stored, exercising these rights primarily applies to withdrawing consent (uninstalling the app or revoking camera access).</p>
+            <p>Contact: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+
+            <h2>8. Security</h2>
+            <p>We implement appropriate technical measures to protect your data: HTTPS encryption of communications, no storage of sensitive data, and ephemeral processing of analysis data.</p>
+
+            <h2>9. Children</h2>
+            <p>Kiikon is not intended for children under 13 years of age. If you are a parent and believe your child has provided us with data, please contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+
+            <h2>10. Changes</h2>
+            <p>We may update this policy. The last update date is shown at the top of this page. We encourage you to review this page regularly.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 CUB-ITH — Kiikon
+    </div>
+
+    <script>
+        function setLang(lang) {
+            document.querySelectorAll('[lang="fr"], [lang="en"]').forEach(el => {
+                el.style.display = el.getAttribute('lang') === lang ? '' : 'none';
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(lang === 'fr' ? 'Français' : 'English'));
+            });
+            document.documentElement.lang = lang;
+        }
+
+        // Auto-detect language
+        const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+        setLang(userLang);
+    </script>
+</body>
+</html>
