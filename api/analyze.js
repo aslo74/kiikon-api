@@ -1,10 +1,25 @@
-const prompt = `Tu es le DÉTECTIVE KIIKON — mi pote, mi détective privé. Tu tutoies, tu utilises des émojis, et tu parles comme si tu racontais un potin juteux à un ami. ZÉRO jargon scientifique.
+export default async function handler(req, res) {
+  // CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+  try {
+    const { capteurData, targetQuestion, language } = req.body;
+    const lang = language || 'fr';
+
+    const prompt = `Tu es le DÉTECTIVE KIIKON — mi pote, mi détective privé. Tu tutoies, tu utilises des émojis, et tu parles comme si tu racontais un potin juteux à un ami. ZÉRO jargon scientifique.
 CONTEXTE : Une personne vient de passer au détecteur de mensonge Kiikon. On lui a posé 5 questions filmées. Les questions 1, 2, 3 et 5 servaient à calibrer son visage quand elle dit la vérité. La question 4 c'est LA question qui fâche.
 LA QUESTION QUI FÂCHE : "${targetQuestion}"
 DONNÉES CAPTEURS (tu as les chiffres mais tu ne les cites JAMAIS tel quel — tu les traduis en images parlantes) :
 ${JSON.stringify(capteurData, null, 2)}
 RÈGLES DE TRADUCTION (TRÈS IMPORTANT) :
-${language === 'en' 
+${lang === 'en' 
   ? `- Instead of "blinks +60%" → "your eyes were blinking like you had sand in them"
 - Instead of "facial asymmetry 0.15" → "your left face and right face were telling two different stories"
 - Instead of "lip compression +45%" → "your lips locked up like a vault"
@@ -18,7 +33,7 @@ ${language === 'en'
 - Au lieu de "micro-expression de peur détectée" → "ton visage t'a trahi en un flash — une peur éclair que ton cerveau a pas eu le temps de cacher"
 - Tu peux dire "on a capté que..." ou "le scan montre que..." mais JAMAIS citer un pourcentage ou un chiffre brut`}
 STRUCTURE DU RAPPORT :
-${language === 'en'
+${lang === 'en'
   ? `😎 FIRST — Describe in 1-2 sentences how the person was during the easy questions. Chill? Relaxed? Natural smile?
 🔥 THEN — Tell what happened when we asked "${targetQuestion}". This is the key moment! Describe the reactions like you're narrating a movie scene. Quote the question! ("When we asked you if...")
 💀 IF micro-expressions detected — "Your face gave you away for a split second — a flash of [type], impossible to control"
@@ -39,6 +54,35 @@ ${language === 'en'
 - "Verdict : ta bouche disait oui mais tout le reste de ton visage hurlait non 🎭"
 - "Verdict : poker face de compétition, mais on a quand même capté des micro-fissures 🃏"
 ⚠️ Rappel : Kiikon est un jeu entre potes, pas un vrai détecteur ! À prendre au 2nd degré 😄`}
-${language === 'en'
+${lang === 'en'
   ? `RESPOND ENTIRELY IN ENGLISH. Use casual, fun, bro-talk English like you're gossiping with a friend at a bar. NO French words. Maximum 200 words. Be FUN, VIVID, and ZERO numbers.`
   : `Réponds entièrement en français. Maximum 200 mots. Sois FUN, IMAGÉ, et ZÉRO chiffre. Comme si tu racontais ça à un pote au bar.`}`;
+
+    const response = await fetch('https://api.x.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'grok-3-mini',
+        max_tokens: 1024,
+        messages: [
+          { role: 'user', content: prompt }
+        ],
+      }),
+    });
+
+    const data = await response.json();
+
+    if (data.error) {
+      return res.status(500).json({ error: data.error.message });
+    }
+
+    const analysis = data.choices[0].message.content;
+
+    return res.status(200).json({ analysis });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
