@@ -28,6 +28,7 @@ BASES SCIENTIFIQUES (à utiliser naturellement, sans citer les études) :
 - Cluster convergent : quand 3+ indicateurs pointent dans la même direction = signal fort
 - Channel discrepancy : quand le visage dit une chose et la voix dit autre chose = conflit émotionnel interne
 - Pitch vocal (F0) : la fréquence fondamentale de la voix monte sous stress/excitation (~+2 à +20 Hz). C'est le biomarqueur vocal le plus fiable. "pitchMean" = fréquence moyenne en Hz, "pitchVariability" = écart-type. Compare TOUJOURS la TARGET vs les BASELINE. Le visage capture la VALENCE (positif/négatif), la voix capture l'AROUSAL (calme/excité) — quand les deux divergent, c'est un conflit émotionnel interne
+- Pose de la tête : "headStability" mesure les mouvements de tête. ~0 = figée (freeze response = charge cognitive intense). >1 = agitée (nervosité). "headMovementPattern" : "frozen" = tête immobile (signal fort), "restless" = agitée, "nodding" = hochements oui, "shaking" = mouvements non. "headYawRange"/"headPitchRange" = amplitude en degrés. Une tête qui se fige sur la TARGET mais bouge naturellement sur les BASELINE = charge cognitive. Des micro-hochements involontaires (nodding/shaking) pendant une réponse = réaction inconsciente
 LA QUESTION SENSIBLE : "${targetQuestion}"
 DONNÉES CAPTEURS (tu as les chiffres mais tu ne les cites JAMAIS tel quel — tu les traduis en images parlantes) :
 ${JSON.stringify(capteurData, null, 2)}
@@ -38,6 +39,7 @@ COMMENT LIRE LES DONNÉES :
 - Si "smileOnsetSpeed" = "fast" sur la TARGET mais "gradual" sur les BASELINE → le sourire a changé de nature
 - Si "asymmetryDetails.smile" est élevé sur TARGET → le sourire est devenu asymétrique = émotion filtrée
 - Si "pitchMean" monte sur TARGET vs BASELINE → stress/excitation vocale. Si "pitchVariability" grimpe → la voix devient instable (hésitation, émotion). Si le pitch monte mais le visage reste neutre = channel discrepancy classique (la voix trahit ce que le visage cache). Si pitchSampleCount est faible ou 0 → la personne a peu/pas parlé sur cette question (ce qui est aussi un signal intéressant)
+- Si "headMovementPattern" = "frozen" sur TARGET mais "normal" sur BASELINE → la tête s'est figée = freeze response classique sous charge cognitive. Si "headStability" chute vers 0 sur TARGET → la personne a gelé sur place. Si "headMovementPattern" = "shaking" pendant une affirmation ou "nodding" pendant une négation → le corps contredit les mots (emblematic slip). Si "headYawRange" ou "headPitchRange" explose vs BASELINE → agitation/nervosité
 RÈGLES DE TRADUCTION (TRÈS IMPORTANT) :
 ${lang === 'en' 
   ? `- Instead of "blinks +60%" → "your blink rate dropped during the question then exploded right after — classic cognitive overload pattern"
@@ -52,6 +54,9 @@ ${lang === 'en'
 - Instead of "asymmetryDetails.smile: 0.15" → "the left side of your smile and the right side weren't matching — a telltale sign of a filtered emotion"
 - Instead of "pitchMean: 168 vs 142" → "your voice pitched up on that question — your vocal cords tightened under the pressure, classic stress response even when the face stays composed"
 - Instead of "pitchVariability: 28 vs 12" → "your voice got shaky and inconsistent — while your face played it cool, your vocal cords were all over the place"
+- Instead of "headMovementPattern: frozen" → "your head completely froze up — you stopped moving entirely, like your brain hit pause on your body while it was busy processing"
+- Instead of "headStability: 0.1" → "you went statue mode — zero head movement, classic freeze response when the brain is in overdrive"
+- Instead of "headMovementPattern: shaking" → "your head was doing these little side-to-side movements — like your body was saying 'no' even if your mouth wasn't"
 - You can say "the scan picked up...", "behaviorally speaking...", "your profile shows..." but NEVER quote a percentage or raw number`
   : `- Au lieu de "clignements +60%" → "ton taux de clignement a chuté pendant la question puis a explosé juste après — schéma classique de surcharge cognitive"
 - Au lieu de "asymétrie faciale 0.15" → "ton visage gauche et ton visage droit racontaient pas la même histoire — signe d'émotion filtrée"
@@ -65,6 +70,9 @@ ${lang === 'en'
 - Au lieu de "asymmetryDetails.smile: 0.15" → "le côté gauche de ton sourire et le côté droit matchaient plus — signe révélateur d'émotion filtrée"
 - Au lieu de "pitchMean: 168 vs 142" → "ta voix est montée dans les aigus sur cette question — tes cordes vocales se sont tendues sous la pression, réponse de stress classique même quand le visage reste zen"
 - Au lieu de "pitchVariability: 28 vs 12" → "ta voix est devenue tremblante et instable — pendant que ton visage jouait la carte du calme, tes cordes vocales partaient dans tous les sens"
+- Au lieu de "headMovementPattern: frozen" → "ta tête s'est complètement figée — plus aucun mouvement, comme si ton cerveau avait appuyé sur pause pendant qu'il traitait l'info"
+- Au lieu de "headStability: 0.1" → "mode statue activé — zéro mouvement de tête, réponse de freeze classique quand le cerveau tourne en surrégime"
+- Au lieu de "headMovementPattern: shaking" → "ta tête faisait ces petits mouvements gauche-droite — comme si ton corps disait 'non' même si ta bouche disait rien"
 - Tu peux dire "le scan a capté...", "comportementalement...", "ton profil montre..." mais JAMAIS citer un pourcentage ou un chiffre brut`}
 STRUCTURE DU RAPPORT :
 ${lang === 'en'
@@ -74,6 +82,7 @@ ${lang === 'en'
   • Stress signals: Did stressComposite jump? Lip press, brow tension, jaw clench — what fired up? Did comfortDelta plunge negative?
   • Cognitive load: Response time change, blink pattern shift — did it go into suppression_then_burst?
   • Face/voice sync: Did the pitch go up while the face stayed neutral? That's a channel discrepancy — the voice betrayed what the face was hiding. Or did pitch stay flat confirming genuine calm?
+  • Body freeze: Did the head freeze up (headMovementPattern: frozen)? That's the brain pulling all resources to process — the body goes on standby. Or did it get restless? Micro-nods or head shakes during answers can reveal unconscious reactions
 💀 IF micro-expressions detected — "Your face leaked a micro-reaction — a flash of [emotion] that lasted less than half a second. That's your brain's raw, unfiltered response before your conscious mind could step in"
 ⚡ THE AFTERMATH — Did the person return to baseline after (question 5)? Compare stressComposite and comfortDelta of question 5 vs questions 1-3. If still elevated: "And even after the question, your stress markers stayed elevated... your brain was still processing 🤔"
 🎤 VERDICT — ONE killer sentence, memorable, perfect for Instagram/TikTok screenshot. This is a BEHAVIORAL verdict, not an accusation. Examples:
@@ -89,6 +98,7 @@ ${lang === 'en'
   • Signaux de stress : Le stressComposite a bondi ? Lip press, tension sourcils, mâchoire serrée — qu'est-ce qui s'est activé ? Le comfortDelta a plongé en négatif ?
   • Charge cognitive : Changement de temps de réponse, pattern de clignement — est-ce passé en suppression_then_burst ?
   • Sync visage/voix : Est-ce que le pitch vocal est monté alors que le visage restait neutre ? C'est une channel discrepancy — la voix a trahi ce que le visage cachait. Ou bien le pitch est resté stable confirmant un calme genuien ?
+  • Freeze corporel : Est-ce que la tête s'est figée (headMovementPattern: frozen) ? C'est le cerveau qui mobilise toutes ses ressources pour traiter l'info — le corps se met en veille. Ou au contraire, agitation ? Des micro-hochements oui/non pendant les réponses peuvent révéler des réactions inconscientes
 💀 SI micro-expressions détectées — "Ton visage a laissé fuiter une micro-réaction — un flash de [émotion] qui a duré moins d'une demi-seconde. C'est la réponse brute de ton cerveau, avant que le filtre conscient puisse intervenir"
 ⚡ L'APRÈS — Est-ce que la personne est revenue à sa baseline après (question 5) ? Compare stressComposite et comfortDelta de la question 5 vs questions 1-3. Si encore élevé : "Et même après la question, tes marqueurs de stress sont restés élevés... ton cerveau était encore en train de traiter 🤔"
 🎤 VERDICT — UNE phrase assassine, mémorable, parfaite pour un screenshot Instagram/TikTok. C'est un verdict COMPORTEMENTAL, pas une accusation. Exemples :
