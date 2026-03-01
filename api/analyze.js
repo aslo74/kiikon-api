@@ -27,6 +27,7 @@ BASES SCIENTIFIQUES (à utiliser naturellement, sans citer les études) :
 - Confort/Inconfort ("comfortDelta") : positif = à l'aise, négatif = inconfort. Lip press + lip roll + mâchoire serrée font baisser ce score
 - Cluster convergent : quand 3+ indicateurs pointent dans la même direction = signal fort
 - Channel discrepancy : quand le visage dit une chose et la voix dit autre chose = conflit émotionnel interne
+- Pitch vocal (F0) : la fréquence fondamentale de la voix monte sous stress/excitation (~+2 à +20 Hz). C'est le biomarqueur vocal le plus fiable. "pitchMean" = fréquence moyenne en Hz, "pitchVariability" = écart-type. Compare TOUJOURS la TARGET vs les BASELINE. Le visage capture la VALENCE (positif/négatif), la voix capture l'AROUSAL (calme/excité) — quand les deux divergent, c'est un conflit émotionnel interne
 LA QUESTION SENSIBLE : "${targetQuestion}"
 DONNÉES CAPTEURS (tu as les chiffres mais tu ne les cites JAMAIS tel quel — tu les traduis en images parlantes) :
 ${JSON.stringify(capteurData, null, 2)}
@@ -36,6 +37,7 @@ COMMENT LIRE LES DONNÉES :
 - Les deltas les plus intéressants : duchenneScore qui chute, asymmetryScore qui grimpe, blinkPattern qui passe en "suppression_then_burst", stressComposite qui bondit, comfortDelta qui plonge en négatif
 - Si "smileOnsetSpeed" = "fast" sur la TARGET mais "gradual" sur les BASELINE → le sourire a changé de nature
 - Si "asymmetryDetails.smile" est élevé sur TARGET → le sourire est devenu asymétrique = émotion filtrée
+- Si "pitchMean" monte sur TARGET vs BASELINE → stress/excitation vocale. Si "pitchVariability" grimpe → la voix devient instable (hésitation, émotion). Si le pitch monte mais le visage reste neutre = channel discrepancy classique (la voix trahit ce que le visage cache). Si pitchSampleCount est faible ou 0 → la personne a peu/pas parlé sur cette question (ce qui est aussi un signal intéressant)
 RÈGLES DE TRADUCTION (TRÈS IMPORTANT) :
 ${lang === 'en' 
   ? `- Instead of "blinks +60%" → "your blink rate dropped during the question then exploded right after — classic cognitive overload pattern"
@@ -48,6 +50,8 @@ ${lang === 'en'
 - Instead of "blinkPattern: suppression_then_burst" → "your blinks went quiet during the question then fired off in a burst right after — your brain was so busy processing it forgot to blink"
 - Instead of "comfortDelta: -0.42" → "your comfort zone completely collapsed on that question — lip lock, jaw tension, the works"
 - Instead of "asymmetryDetails.smile: 0.15" → "the left side of your smile and the right side weren't matching — a telltale sign of a filtered emotion"
+- Instead of "pitchMean: 168 vs 142" → "your voice pitched up on that question — your vocal cords tightened under the pressure, classic stress response even when the face stays composed"
+- Instead of "pitchVariability: 28 vs 12" → "your voice got shaky and inconsistent — while your face played it cool, your vocal cords were all over the place"
 - You can say "the scan picked up...", "behaviorally speaking...", "your profile shows..." but NEVER quote a percentage or raw number`
   : `- Au lieu de "clignements +60%" → "ton taux de clignement a chuté pendant la question puis a explosé juste après — schéma classique de surcharge cognitive"
 - Au lieu de "asymétrie faciale 0.15" → "ton visage gauche et ton visage droit racontaient pas la même histoire — signe d'émotion filtrée"
@@ -59,6 +63,8 @@ ${lang === 'en'
 - Au lieu de "blinkPattern: suppression_then_burst" → "tes clignements se sont mis en pause pendant la question puis sont repartis en rafale juste après — ton cerveau était tellement occupé à processer qu'il a oublié de cligner"
 - Au lieu de "comfortDelta: -0.42" → "ta zone de confort s'est complètement effondrée sur cette question — lip lock, mâchoire tendue, tout le package"
 - Au lieu de "asymmetryDetails.smile: 0.15" → "le côté gauche de ton sourire et le côté droit matchaient plus — signe révélateur d'émotion filtrée"
+- Au lieu de "pitchMean: 168 vs 142" → "ta voix est montée dans les aigus sur cette question — tes cordes vocales se sont tendues sous la pression, réponse de stress classique même quand le visage reste zen"
+- Au lieu de "pitchVariability: 28 vs 12" → "ta voix est devenue tremblante et instable — pendant que ton visage jouait la carte du calme, tes cordes vocales partaient dans tous les sens"
 - Tu peux dire "le scan a capté...", "comportementalement...", "ton profil montre..." mais JAMAIS citer un pourcentage ou un chiffre brut`}
 STRUCTURE DU RAPPORT :
 ${lang === 'en'
@@ -67,7 +73,7 @@ ${lang === 'en'
   • Authenticity: Did the Duchenne score drop? Did the smile onset speed change from gradual to fast? Did asymmetry spike on the smile zone?
   • Stress signals: Did stressComposite jump? Lip press, brow tension, jaw clench — what fired up? Did comfortDelta plunge negative?
   • Cognitive load: Response time change, blink pattern shift — did it go into suppression_then_burst?
-  • Face/voice sync: Were the face and voice aligned or telling different stories?
+  • Face/voice sync: Did the pitch go up while the face stayed neutral? That's a channel discrepancy — the voice betrayed what the face was hiding. Or did pitch stay flat confirming genuine calm?
 💀 IF micro-expressions detected — "Your face leaked a micro-reaction — a flash of [emotion] that lasted less than half a second. That's your brain's raw, unfiltered response before your conscious mind could step in"
 ⚡ THE AFTERMATH — Did the person return to baseline after (question 5)? Compare stressComposite and comfortDelta of question 5 vs questions 1-3. If still elevated: "And even after the question, your stress markers stayed elevated... your brain was still processing 🤔"
 🎤 VERDICT — ONE killer sentence, memorable, perfect for Instagram/TikTok screenshot. This is a BEHAVIORAL verdict, not an accusation. Examples:
@@ -82,7 +88,7 @@ ${lang === 'en'
   • Authenticité : Le score Duchenne a chuté ? Le sourire est passé de graduel à instantané (smileOnsetSpeed) ? L'asymétrie a grimpé sur la zone sourire ?
   • Signaux de stress : Le stressComposite a bondi ? Lip press, tension sourcils, mâchoire serrée — qu'est-ce qui s'est activé ? Le comfortDelta a plongé en négatif ?
   • Charge cognitive : Changement de temps de réponse, pattern de clignement — est-ce passé en suppression_then_burst ?
-  • Sync visage/voix : Le visage et la voix racontaient la même chose ou deux histoires différentes ?
+  • Sync visage/voix : Est-ce que le pitch vocal est monté alors que le visage restait neutre ? C'est une channel discrepancy — la voix a trahi ce que le visage cachait. Ou bien le pitch est resté stable confirmant un calme genuien ?
 💀 SI micro-expressions détectées — "Ton visage a laissé fuiter une micro-réaction — un flash de [émotion] qui a duré moins d'une demi-seconde. C'est la réponse brute de ton cerveau, avant que le filtre conscient puisse intervenir"
 ⚡ L'APRÈS — Est-ce que la personne est revenue à sa baseline après (question 5) ? Compare stressComposite et comfortDelta de la question 5 vs questions 1-3. Si encore élevé : "Et même après la question, tes marqueurs de stress sont restés élevés... ton cerveau était encore en train de traiter 🤔"
 🎤 VERDICT — UNE phrase assassine, mémorable, parfaite pour un screenshot Instagram/TikTok. C'est un verdict COMPORTEMENTAL, pas une accusation. Exemples :
