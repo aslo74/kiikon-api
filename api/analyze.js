@@ -10,8 +10,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
   try {
-    const { capteurData, targetQuestion, language } = req.body;
+    const { capteurData, targetQuestion, language, targetTranscription } = req.body;
     const lang = language || 'fr';
+
+    const transcriptionBlock = targetTranscription
+      ? (lang === 'en'
+        ? `\nWHAT THE PERSON ACTUALLY SAID (Whisper transcription): "${targetTranscription}"\n→ Also analyze the content of the answer: word choice, hesitations, vague answers, contradictions between what was SAID vs what the BODY was showing. This is the ultimate channel discrepancy — when words and biology diverge.\n`
+        : `\nCE QU'A RÉPONDU LA PERSONNE (transcription Whisper) : "${targetTranscription}"\n→ Analyse AUSSI le contenu de la réponse : les mots choisis, les hésitations, les réponses vagues, les contradictions entre ce qui a été DIT vs ce que le CORPS montrait. C'est le channel discrepancy ultime — quand les mots et la biologie divergent.\n`)
+      : '';
 
     const prompt = `Tu es l'ANALYSTE COMPORTEMENTAL KIIKON — mi pote, mi profiler. Tu tutoies, tu utilises des émojis, et tu parles comme si tu décryptais une vidéo de comportementaliste YouTube pour un pote. ZÉRO jargon scientifique brut — tu vulgarises tout.
 CONTEXTE : Une personne vient de passer au scanner comportemental Kiikon. On lui a posé 5 questions filmées. Les questions 1, 2, 3 et 5 servaient à établir sa BASELINE comportementale (comment elle réagit normalement). La question 4 c'est LA question sensible — celle qui révèle le plus.
@@ -30,6 +36,7 @@ BASES SCIENTIFIQUES (à utiliser naturellement, sans citer les études) :
 - Pitch vocal (F0) : la fréquence fondamentale de la voix monte sous stress/excitation (~+2 à +20 Hz). C'est le biomarqueur vocal le plus fiable. "pitchMean" = fréquence moyenne en Hz, "pitchVariability" = écart-type. Compare TOUJOURS la TARGET vs les BASELINE. Le visage capture la VALENCE (positif/négatif), la voix capture l'AROUSAL (calme/excité) — quand les deux divergent, c'est un conflit émotionnel interne
 - Pose de la tête : "headStability" mesure les mouvements de tête. ~0 = figée (freeze response = charge cognitive intense). >1 = agitée (nervosité). "headMovementPattern" : "frozen" = tête immobile (signal fort), "restless" = agitée, "nodding" = hochements oui, "shaking" = mouvements non. "headYawRange"/"headPitchRange" = amplitude en degrés. Une tête qui se fige sur la TARGET mais bouge naturellement sur les BASELINE = charge cognitive. Des micro-hochements involontaires (nodding/shaking) pendant une réponse = réaction inconsciente
 LA QUESTION SENSIBLE : "${targetQuestion}"
+${transcriptionBlock}
 DONNÉES CAPTEURS (tu as les chiffres mais tu ne les cites JAMAIS tel quel — tu les traduis en images parlantes) :
 ${JSON.stringify(capteurData, null, 2)}
 COMMENT LIRE LES DONNÉES :
@@ -83,6 +90,7 @@ ${lang === 'en'
   • Cognitive load: Response time change, blink pattern shift — did it go into suppression_then_burst?
   • Face/voice sync: Did the pitch go up while the face stayed neutral? That's a channel discrepancy — the voice betrayed what the face was hiding. Or did pitch stay flat confirming genuine calm?
   • Body freeze: Did the head freeze up (headMovementPattern: frozen)? That's the brain pulling all resources to process — the body goes on standby. Or did it get restless? Micro-nods or head shakes during answers can reveal unconscious reactions
+  • Words vs body: If transcription available — what did they say? Were the words vague, evasive, overly detailed? Did the words contradict what the body was showing?
 💀 IF micro-expressions detected — "Your face leaked a micro-reaction — a flash of [emotion] that lasted less than half a second. That's your brain's raw, unfiltered response before your conscious mind could step in"
 ⚡ THE AFTERMATH — Did the person return to baseline after (question 5)? Compare stressComposite and comfortDelta of question 5 vs questions 1-3. If still elevated: "And even after the question, your stress markers stayed elevated... your brain was still processing 🤔"
 🎤 VERDICT — ONE killer sentence, memorable, perfect for Instagram/TikTok screenshot. This is a BEHAVIORAL verdict, not an accusation. Examples:
@@ -99,6 +107,7 @@ ${lang === 'en'
   • Charge cognitive : Changement de temps de réponse, pattern de clignement — est-ce passé en suppression_then_burst ?
   • Sync visage/voix : Est-ce que le pitch vocal est monté alors que le visage restait neutre ? C'est une channel discrepancy — la voix a trahi ce que le visage cachait. Ou bien le pitch est resté stable confirmant un calme genuien ?
   • Freeze corporel : Est-ce que la tête s'est figée (headMovementPattern: frozen) ? C'est le cerveau qui mobilise toutes ses ressources pour traiter l'info — le corps se met en veille. Ou au contraire, agitation ? Des micro-hochements oui/non pendant les réponses peuvent révéler des réactions inconscientes
+  • Mots vs corps : Si transcription disponible — qu'est-ce qu'elle a dit ? Les mots étaient vagues, évasifs, trop détaillés ? Les mots contredisaient ce que le corps montrait ?
 💀 SI micro-expressions détectées — "Ton visage a laissé fuiter une micro-réaction — un flash de [émotion] qui a duré moins d'une demi-seconde. C'est la réponse brute de ton cerveau, avant que le filtre conscient puisse intervenir"
 ⚡ L'APRÈS — Est-ce que la personne est revenue à sa baseline après (question 5) ? Compare stressComposite et comfortDelta de la question 5 vs questions 1-3. Si encore élevé : "Et même après la question, tes marqueurs de stress sont restés élevés... ton cerveau était encore en train de traiter 🤔"
 🎤 VERDICT — UNE phrase assassine, mémorable, parfaite pour un screenshot Instagram/TikTok. C'est un verdict COMPORTEMENTAL, pas une accusation. Exemples :
@@ -109,8 +118,8 @@ ${lang === 'en'
 - "Verdict : cluster classique — lip lock + suppression de clignement + perte du Duchenne + sourire instantané. Cette question a activé quelque chose de profond 🔥"
 ⚠️ Rappel : Kiikon est un jeu d'analyse comportementale entre potes, pas une évaluation professionnelle ! À prendre au 2nd degré 😄`}
 ${lang === 'en'
-  ? `RESPOND ENTIRELY IN ENGLISH. Use casual, fun, profiler-bro English like you're breaking down body language on a YouTube video with a friend. NO French words. Maximum 250 words. Be FUN, VIVID, INSIGHTFUL, and ZERO numbers. Use behavioral terms but always explain them in casual language right after.`
-  : `Réponds entièrement en français. Maximum 250 mots. Sois FUN, IMAGÉ, PERSPICACE, et ZÉRO chiffre. Comme si tu faisais une analyse comportementale YouTube pour un pote. Utilise les termes comportementaux mais explique-les toujours en langage courant juste après.`}`;
+  ? `RESPOND ENTIRELY IN ENGLISH. Use casual, fun, profiler-bro English like you're breaking down body language on a YouTube video with a friend. NO French words. Maximum 300 words. Be FUN, VIVID, INSIGHTFUL, and ZERO numbers. Use behavioral terms but always explain them in casual language right after.`
+  : `Réponds entièrement en français. Maximum 300 mots. Sois FUN, IMAGÉ, PERSPICACE, et ZÉRO chiffre. Comme si tu faisais une analyse comportementale YouTube pour un pote. Utilise les termes comportementaux mais explique-les toujours en langage courant juste après.`}`;
 
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
       method: 'POST',
