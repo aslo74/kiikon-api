@@ -11,6 +11,15 @@ export default async function handler(req, res) {
   }
   try {
     const { capteurData, targetQuestion, language, targetTranscription } = req.body;
+
+    // Validation des champs obligatoires — évite un appel Grok inutile
+    if (!capteurData || !targetQuestion) {
+      return res.status(400).json({ error: 'Missing required fields: capteurData and targetQuestion' });
+    }
+    if (!Array.isArray(capteurData) || capteurData.length === 0) {
+      return res.status(400).json({ error: 'capteurData must be a non-empty array' });
+    }
+
     const lang = language || 'fr';
 
     const transcriptionBlock = targetTranscription
