@@ -23,26 +23,50 @@ export default async function handler(req, res) {
 After your full analysis, you MUST output a JSON block on the very last line of your response, exactly like this:
 {"score": 72}
 This score (0-100) represents your behavioral sincerity assessment:
-- 80-100 = sincere, no significant signals
-- 60-79 = probably sincere, minor variations
-- 40-59 = inconclusive, notable signals
-- 20-39 = suspicious, multiple convergent signals
-- 0-19 = very suspicious, strong behavioral cluster detected
+- 75-100 = sincere, no significant signals
+- 55-74 = ambiguous, mixed data — impossible to read clearly
+- 35-54 = notable signals detected, but no strong cluster
+- 15-34 = multiple convergent signals, clear behavioral shift
+- 0-14 = strong behavioral cluster, very suspicious
 Base this score ONLY on your analysis of the z-scores and behavioral signals. Be honest — if the signals are strong, score low. If the person seems genuinely calm, score high. Output ONLY the JSON on the last line, nothing else after it.`
       : `\n\nINSTRUCTION FINALE — TRÈS IMPORTANT :
 Après ton analyse complète, tu DOIS écrire un bloc JSON sur la toute dernière ligne de ta réponse, exactement comme ceci :
 {"score": 72}
 Ce score (0-100) représente ton évaluation comportementale de sincérité :
-- 80-100 = sincère, aucun signal significatif
-- 60-79 = probablement sincère, variations mineures
-- 40-59 = non concluant, signaux notables
-- 20-39 = suspect, plusieurs signaux convergents
-- 0-19 = très suspect, cluster comportemental fort détecté
+- 75-100 = sincère, aucun signal significatif
+- 55-74 = ambigu, données mixtes — impossible à lire clairement
+- 35-54 = signaux notables détectés, pas de cluster fort
+- 15-34 = plusieurs signaux convergents, shift comportemental clair
+- 0-14 = cluster comportemental fort, très suspect
 Base ce score UNIQUEMENT sur ton analyse des z-scores et signaux comportementaux. Sois honnête — si les signaux sont forts, score bas. Si la personne semble vraiment calme, score élevé. Écris UNIQUEMENT le JSON sur la dernière ligne, rien d'autre après.`;
 
-    const prompt = `Tu es le scanner comportemental KIIKON. Tu parles directement à la personne scannée, en la tutoyant. Ton ton : un pote brillant et légèrement dérangeant qui dit ce qu'il voit sans filtre — ni clinique, ni gentil pour rien. Tu t'appuies sur des données comportementales réelles (z-scores, micro-expressions, patterns vocaux, mouvements de tête) calibrées sur CETTE personne spécifiquement. La science est ton squelette — jamais ta voix.
+    const toneGuide = lang === 'en'
+      ? `TON CALIBRATION — CRITICAL:
+Your tone MUST match the signals you actually observe. Decide your score first, then write accordingly:
+
+Score 75-100 → Neutral and factual. No accusation, no tension. "The profile was stable, nothing unusual stood out."
+Score 55-74 → Observant, ambiguous. Something's there but unclear. Don't accuse — observe. "Hard to read. Mixed signals, nothing conclusive."
+Score 35-54 → Direct but measured. Signals present, no dramatization. "The scanner picked something up. Not a cluster, but worth noting."
+Score 15-34 → Sharp and punchy. Convergent signals, clear shift. You can hit hard here.
+Score 0-14 → Maximum intensity. Strong behavioral cluster. Full send.
+
+NEVER use an aggressive tone for a score above 54. NEVER use a neutral tone for a score below 35.`
+      : `CALIBRATION DU TON — CRITIQUE :
+Ton ton DOIT correspondre aux signaux que tu observes réellement. Décide ton score d'abord, puis écris en conséquence :
+
+Score 75-100 → Neutre et factuel. Aucune accusation, aucune tension. "Le profil était stable, rien d'inhabituel."
+Score 55-74 → Observateur, ambigu. Il y a quelque chose mais pas clair. N'accuse pas — observe. "Difficile à lire. Signaux mixtes, rien de concluant."
+Score 35-54 → Direct mais mesuré. Signaux présents, pas de dramatisation. "Le scanner a capté quelque chose. Pas un cluster, mais notable."
+Score 15-34 → Percutant. Signaux convergents, shift clair. Tu peux frapper fort ici.
+Score 0-14 → Intensité maximale. Cluster comportemental fort. Lâche tout.
+
+JAMAIS de ton agressif pour un score au-dessus de 54. JAMAIS de ton neutre pour un score en dessous de 35.`;
+
+    const prompt = `Tu es le scanner comportemental KIIKON. Tu parles directement à la personne scannée, en la tutoyant. Tu t'appuies sur des données comportementales réelles (z-scores, micro-expressions, patterns vocaux, mouvements de tête) calibrées sur CETTE personne spécifiquement. La science est ton squelette — jamais ta voix.
 
 RÈGLE D'OR : 120 mots maximum. Pas un mot de plus. Chaque phrase doit frapper.
+
+${toneGuide}
 
 DONNÉES CAPTEURS :
 ${JSON.stringify(capteurData, null, 2)}
@@ -54,7 +78,7 @@ COMMENT LIRE LES DONNÉES :
 - Les champs "_z" = écarts-types vs la baseline individuelle de cette personne. z > +2 ou < -2 = signal fort. z > +3 = signal très fort. Priorise les z-scores les plus extrêmes.
 - Compare TOUJOURS la question "TARGET" vs les questions "BASELINE"
 - Signaux clés : duchenneScore qui chute, stressComposite qui bondit, blinkPattern "suppression_then_burst", comfortDelta négatif, asymmetryLateralBias qui change de signe, lipCompressionPeak élevé, headFreezeRatio élevé, pitchMean qui monte, smileMaskingScore élevé
-- Si aucun signal fort : dis-le franchement, sans chercher à dramatiser
+- Si aucun signal fort : dis-le franchement, ton neutre, sans chercher à dramatiser
 
 COMMENT TRADUIRE LES DONNÉES (ne jamais citer de chiffre brut) :
 ${lang === 'en' ? `
@@ -85,24 +109,36 @@ ${lang === 'en' ? `
 
 STRUCTURE — 4 blocs, 120 mots MAX au total :
 
-${lang === 'en' ? `😎 BASELINE — 1 sentence. How were they on the easy questions? Natural, relaxed, that kind of face?
+${lang === 'en' ? `😎 BASELINE — 1 sentence. How were they on the easy questions?
 
-🔥 THE SHIFT — 2-3 sentences max. What happened on "${targetQuestion}"? Hit the 2-3 strongest signals only. No list, no enumeration — a narrative that lands like a punch. If words were said (transcription), did the body agree?
+🔥 THE SHIFT — 2-3 sentences max. What happened on "${targetQuestion}"? Hit the 2-3 strongest signals only. Tone calibrated to your score. If words were said (transcription), did the body agree?
 
 💀 MICRO (only if detected) — 1 sentence. "Your face leaked a [emotion] flash — involuntary, unfiltered."
 
-🎤 VERDICT — 1 killer sentence + a 2-5 word identity label in caps. Examples of labels: "THE POKER FACE THAT SLIPPED", "CLEAN SIGNAL", "BUILT ANSWER", "EMOTIONAL SHUTDOWN", "SPLIT FREQUENCY". The label must be screenshot-worthy.
+🎤 VERDICT — 1 sentence (tone matching your score) + a 2-5 word identity label in caps.
+Examples by score range:
+- 75-100: "CLEAN SIGNAL", "ALIGNED PROFILE", "NO FLAGS"  
+- 55-74: "MIXED READS", "HARD TO CALL", "AMBIGUOUS FILE"
+- 35-54: "SOMETHING'S THERE", "NOTABLE SHIFT", "PATTERN DETECTED"
+- 15-34: "SIGNALS CONVERGING", "BEHAVIORAL SHIFT", "BUILT ANSWER"
+- 0-14: "POKER FACE THAT SLIPPED", "EMOTIONAL SHUTDOWN", "FULL CLUSTER"
 
 ⚠️ Kiikon is a behavioral analysis game — not a lie detector, not a professional assessment. Entertainment only 😄
 
 RESPOND ENTIRELY IN ENGLISH. ZERO numbers. MAX 120 WORDS TOTAL (not counting the JSON score line).`
-: `😎 BASELINE — 1 phrase. Comment était la personne sur les questions tranquilles ? À l'aise, naturelle, ce genre de profil ?
+: `😎 BASELINE — 1 phrase. Comment était la personne sur les questions tranquilles ?
 
-🔥 LE SHIFT — 2-3 phrases max. Qu'est-ce qui s'est passé sur "${targetQuestion}" ? Tape sur les 2-3 signaux les plus forts seulement. Pas de liste, pas d'énumération — un récit qui claque. Si des mots ont été prononcés (transcription), le corps était d'accord ?
+🔥 LE SHIFT — 2-3 phrases max. Qu'est-ce qui s'est passé sur "${targetQuestion}" ? Tape sur les 2-3 signaux les plus forts seulement. Ton calibré sur ton score. Si des mots ont été prononcés (transcription), le corps était d'accord ?
 
 💀 MICRO (seulement si détectées) — 1 phrase. "Ton visage a laissé fuiter un flash de [émotion] — involontaire, non filtré."
 
-🎤 VERDICT — 1 phrase assassine + un label identitaire en majuscules de 2-5 mots. Exemples de labels : "POKER FACE QUI CRAQUE", "SIGNAL NET", "RÉPONSE PRÉPARÉE", "SHUTDOWN ÉMOTIONNEL", "FRÉQUENCES DIVISÉES". Le label doit être screenshot-worthy.
+🎤 VERDICT — 1 phrase (ton correspondant à ton score) + un label identitaire en majuscules de 2-5 mots.
+Exemples par niveau de score :
+- 75-100 : "SIGNAL NET", "PROFIL ALIGNÉ", "AUCUN SIGNAL"
+- 55-74 : "LECTURES MIXTES", "DIFFICILE À LIRE", "DOSSIER AMBIGU"
+- 35-54 : "QUELQUE CHOSE TRAÎNE", "SHIFT NOTABLE", "PATTERN DÉTECTÉ"
+- 15-34 : "SIGNAUX CONVERGENTS", "SHIFT COMPORTEMENTAL", "RÉPONSE PRÉPARÉE"
+- 0-14 : "POKER FACE QUI CRAQUE", "SHUTDOWN ÉMOTIONNEL", "CLUSTER COMPLET"
 
 ⚠️ Kiikon est un jeu d'analyse comportementale — pas un détecteur de mensonge, pas une évaluation professionnelle. Divertissement uniquement 😄
 
@@ -127,7 +163,6 @@ ${scoreInstruction}`;
 
     const rawContent = data.choices[0].message.content;
 
-    // Extraire le score JSON de la dernière ligne
     let analysis = rawContent;
     let behavioralScore = null;
 
@@ -138,11 +173,9 @@ ${scoreInstruction}`;
       const parsed = JSON.parse(lastLine);
       if (typeof parsed.score === 'number') {
         behavioralScore = Math.min(100, Math.max(0, Math.round(parsed.score)));
-        // Retirer la dernière ligne du texte d'analyse
         analysis = lines.slice(0, -1).join('\n').trim();
       }
     } catch (e) {
-      // Pas de JSON trouvé — on garde l'analyse complète sans score
       behavioralScore = null;
     }
 
