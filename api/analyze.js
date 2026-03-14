@@ -178,6 +178,7 @@ ${scoreInstruction}`;
     } catch (e) {
       behavioralScore = null;
     }
+    console.log('KIIKON_SCORE:', behavioralScore, '| RAW_LAST_LINE:', lastLine);
 
     return res.status(200).json({ analysis, behavioralScore });
 
