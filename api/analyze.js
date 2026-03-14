@@ -161,6 +161,10 @@ COMMENT LIRE LES DONNÉES :
 - Compare TOUJOURS la question "TARGET" vs les questions "BASELINE"
 - Signaux clés : duchenneScore qui chute, stressComposite qui bondit, blinkPattern "suppression_then_burst", comfortDelta négatif, asymmetryLateralBias qui change de signe, lipCompressionPeak élevé, headFreezeRatio élevé, pitchMean qui monte, smileMaskingScore élevé
 - Si aucun signal fort : dis-le franchement, ton neutre, sans chercher à dramatiser
+- Pour la question de CLÔTURE (la dernière BASELINE après la TARGET) : compare-la DEUX FOIS :
+  1) vs TARGET : si Q5 reste proche de TARGET (variation <25%) → l'activation persiste = stress résiduel confirmé
+  2) vs baselines avant (Q1-Q3) : si Q5 reste élevée vs comportement normal = stress résiduel confirmé
+  Les deux conditions ensemble = signal fort. Une seule condition = signal modéré. Aucune = pas de stress résiduel.
 
 COMMENT TRADUIRE LES DONNÉES (ne jamais citer de chiffre brut) :
 ${lang === 'en' ? `
