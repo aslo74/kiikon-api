@@ -62,11 +62,93 @@ Score 0-14 → Intensité maximale. Cluster comportemental fort. Lâche tout.
 
 JAMAIS de ton agressif pour un score au-dessus de 54. JAMAIS de ton neutre pour un score en dessous de 35.`;
 
+    const scienceRef = lang === 'en'
+      ? `SCIENTIFIC REFERENCE THRESHOLDS (use to calibrate your interpretation of z-scores):
+
+BLINKS (Leal & Vrij, 2008 — 81.3% accuracy):
+- Normal rest rate: 15–20 blinks/min
+- Key signal: suppression_then_burst pattern (brain suppresses during cognitive load, releases burst after)
+- Threshold: >30% drop during response + >50% burst after = strong signal
+- Direction: bidirectional — the TEMPORAL PATTERN matters, not absolute rate
+
+DUCHENNE SMILE (Ekman/FACS):
+- Authentic: AU6 (cheek) + AU12 (lip corner) simultaneous, onset 0.5–0.75s (gradual)
+- Simulated: AU12 only, onset faster than 200ms, duration <0.5s or >5s
+- duchenneScore >0.6 = authentic, <0.3 = social/filtered
+
+FACIAL ASYMMETRY (Ekman, 1981):
+- Deliberate expressions are significantly more asymmetric than spontaneous ones
+- asymmetryLateralBias: positive = left-dominant (spontaneous), negative = right-dominant (deliberate/built)
+- A positive→negative shift on TARGET vs BASELINE = shift from natural to constructed
+
+VOCAL PITCH (Villar et al., 2013 ; DePaulo et al., 2003):
+- Baseline: ~120Hz male, ~205Hz female
+- Deception signal: +5–7% above individual baseline (sympathetic nervous system activation)
+- Above +10% = strong signal
+- Direction: increase only (unidirectional)
+
+RESPONSE LATENCY (Walczyk et al., 2003 ; Suchotzki et al., 2017):
+- Normal: ~400ms for simple yes/no
+- Deception adds: +166–250ms on average
+- Very short latency on complex question = pre-loaded answer (prepared deception)
+- Direction: both (too long = cognitive load ; too short = prepared)
+
+HEAD MOVEMENT (Sporer & Schwandt, 2007 ; Van der Zee et al., 2019):
+- Deceptive behavior = LESS movement, not more (control effect)
+- headFreezeRatio >60% of response time = freeze/cognitive load signal
+- headAversionCount: repeated turns away = avoidance reflex
+
+COMPOSITE ACCURACY CEILING (Hartwig & Bond, 2014 — 144 samples):
+- Behavioral cues alone: max ~70% classification accuracy (R = 0.52)
+- This means strong z-scores are probabilistic indicators, NOT proof
+- 3+ convergent signals (cluster) = significantly stronger signal than any single indicator`
+      : `SEUILS SCIENTIFIQUES DE RÉFÉRENCE (utilise-les pour calibrer ton interprétation des z-scores) :
+
+CLIGNEMENTS (Leal & Vrij, 2008 — précision 81,3%) :
+- Taux normal au repos : 15–20 clignements/min
+- Signal clé : pattern suppression_then_burst (cerveau supprime pendant charge cognitive, rafale après)
+- Seuil : chute >30% pendant la réponse + rafale >50% après = signal fort
+- Direction : bidirectionnelle — c'est le PATTERN TEMPOREL qui compte, pas le taux absolu
+
+SOURIRE DE DUCHENNE (Ekman/FACS) :
+- Authentique : AU6 (joue) + AU12 (coin lèvre) simultanés, onset 0,5–0,75s (progressif)
+- Simulé : AU12 seul, onset <200ms, durée <0,5s ou >5s
+- duchenneScore >0,6 = authentique, <0,3 = social/filtré
+
+ASYMÉTRIE FACIALE (Ekman, 1981) :
+- Les expressions délibérées sont significativement plus asymétriques que les spontanées
+- asymmetryLateralBias : positif = dominance gauche (spontané), négatif = dominance droite (construit)
+- Shift positif→négatif sur TARGET vs BASELINE = passage d'expressions naturelles à construites
+
+PITCH VOCAL (Villar et al., 2013 ; DePaulo et al., 2003) :
+- Baseline : ~120Hz homme, ~205Hz femme
+- Signal déception : +5–7% au-dessus du baseline individuel (activation système nerveux sympathique)
+- Au-dessus de +10% = signal fort
+- Direction : augmentation uniquement (unidirectionnelle)
+
+LATENCE DE RÉPONSE (Walczyk et al., 2003 ; Suchotzki et al., 2017) :
+- Normal : ~400ms pour oui/non simple
+- Déception ajoute : +166–250ms en moyenne
+- Latence très courte sur question complexe = réponse préparée (déception planifiée)
+- Direction : bidirectionnelle (trop long = charge cognitive ; trop court = préparé)
+
+MOUVEMENTS DE TÊTE (Sporer & Schwandt, 2007 ; Van der Zee et al., 2019) :
+- Le comportement trompeur = MOINS de mouvement, pas plus (effet de contrôle)
+- headFreezeRatio >60% du temps de réponse = signal freeze/charge cognitive
+- headAversionCount : détournements répétés = réflexe d'évitement
+
+PLAFOND DE PRÉCISION COMPOSITE (Hartwig & Bond, 2014 — 144 échantillons) :
+- Indices comportementaux seuls : max ~70% de précision (R = 0,52)
+- Des z-scores forts sont des indicateurs PROBABILISTES, pas des preuves
+- 3+ signaux convergents (cluster) = signal significativement plus fort qu'un indicateur isolé`;
+
     const prompt = `Tu es le scanner comportemental KIIKON. Tu parles directement à la personne scannée, en la tutoyant. Tu t'appuies sur des données comportementales réelles (z-scores, micro-expressions, patterns vocaux, mouvements de tête) calibrées sur CETTE personne spécifiquement. La science est ton squelette — jamais ta voix.
 
 RÈGLE D'OR : 120 mots maximum. Pas un mot de plus. Chaque phrase doit frapper.
 
 ${toneGuide}
+
+${scienceRef}
 
 DONNÉES CAPTEURS :
 ${JSON.stringify(capteurData, null, 2)}
