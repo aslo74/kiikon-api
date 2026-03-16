@@ -193,7 +193,7 @@ ${lang === 'en' ? `
 - latence très courte → "t'as répondu avant d'avoir le temps de réfléchir — cette réponse était déjà prête"
 - JAMAIS citer un chiffre brut ou un pourcentage`}
 
-STRUCTURE — 4 blocs, 120 mots MAX au total :
+STRUCTURE — 4 blocs + score, 120 mots MAX au total :
 
 ${lang === 'en' ? `😎 BASELINE — 1 sentence. How were they on the easy questions?
 
@@ -209,9 +209,11 @@ Examples by score range:
 - 15-34: "SIGNALS CONVERGING", "BEHAVIORAL SHIFT", "BUILT ANSWER"
 - 0-14: "POKER FACE THAT SLIPPED", "EMOTIONAL SHUTDOWN", "FULL CLUSTER"
 
+📊 SINCERITY SCORE : [your score]/100
+
 ⚠️ Kiikon is a behavioral analysis game — not a lie detector, not a professional assessment. Entertainment only 😄
 
-RESPOND ENTIRELY IN ENGLISH. ZERO numbers. MAX 120 WORDS TOTAL (not counting the JSON score line).`
+RESPOND ENTIRELY IN ENGLISH. ZERO numbers in the analysis (except the score line). MAX 120 WORDS TOTAL (not counting the score line and the JSON line).`
 : `😎 BASELINE — 1 phrase. Comment était la personne sur les questions tranquilles ?
 
 🔥 LE SHIFT — 2-3 phrases max. Qu'est-ce qui s'est passé sur "${targetQuestion}" ? Tape sur les 2-3 signaux les plus forts seulement. Ton calibré sur ton score. Si des mots ont été prononcés (transcription), le corps était d'accord ?
@@ -226,9 +228,11 @@ Exemples par niveau de score :
 - 15-34 : "SIGNAUX CONVERGENTS", "SHIFT COMPORTEMENTAL", "RÉPONSE PRÉPARÉE"
 - 0-14 : "POKER FACE QUI CRAQUE", "SHUTDOWN ÉMOTIONNEL", "CLUSTER COMPLET"
 
+📊 SCORE DE SINCÉRITÉ : [ton score]/100
+
 ⚠️ Kiikon est un jeu d'analyse comportementale — pas un détecteur de mensonge, pas une évaluation professionnelle. Divertissement uniquement 😄
 
-RÉPONDS ENTIÈREMENT EN FRANÇAIS. ZÉRO chiffre. MAX 120 MOTS AU TOTAL (sans compter la ligne JSON score).`}
+RÉPONDS ENTIÈREMENT EN FRANÇAIS. ZÉRO chiffre dans l'analyse (sauf la ligne score). MAX 120 MOTS AU TOTAL (sans compter la ligne score et le JSON).`}
 ${scoreInstruction}`;
 
     const response = await fetch('https://api.x.ai/v1/chat/completions', {
