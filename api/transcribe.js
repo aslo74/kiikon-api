@@ -27,8 +27,8 @@ export default async function handler(req, res) {
 
     // Native FormData + fetch (Node 18+, disponible sur Vercel)
     const formData = new FormData();
-    const blob = new Blob([audioBuffer], { type: audioFile.mimetype || 'audio/m4a' });
-    formData.append('file', blob, 'audio.m4a');
+    const blob = new Blob([audioBuffer], { type: audioFile.mimetype || 'audio/wav' });
+    formData.append('file', blob, 'audio.wav');
     formData.append('model', 'whisper-1');
     formData.append('language', language);
     formData.append('response_format', 'text');
