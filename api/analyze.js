@@ -297,7 +297,7 @@ ${scoreInstruction}`;
         'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'grok-3-mini',
+        model: 'grok-3',
         max_tokens: 1500,
         temperature: 1.2,
         messages: [{ role: 'user', content: prompt }],
