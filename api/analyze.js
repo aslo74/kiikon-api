@@ -256,36 +256,36 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 ${lang === 'en' 
 ? `WRITING YOUR ANALYSIS:
 - 180 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
-- FREE STRUCTURE — no fixed blocks. Write as a behavioral analyst who has just reviewed the full sensor report. Be original every time. Use your own words, your own rhythm, your own structure. Never repeat the same formulas.
-- Start with the behavioral baseline: how was this person on neutral questions?
-- Then analyze what happened on "${targetQuestion}" — prioritize the signals by tier. Name the convergences. If the question is emotionally charged, apply the Othello Error explicitly.
-- If micro-expressions or notable micro-signals were detected, integrate them.
-- Close with a behavioral synthesis — what does the full profile suggest, probabilistically?
+- FREE STRUCTURE — no fixed blocks. Be original every time, never repeat the same formulas.
+- Start with the baseline: how this person behaved on neutral questions.
+- Then analyze what happened on the sensitive question. Highlight ONLY the sensors that really moved vs baseline — ignore weak signals. If the question is emotionally charged, apply the Othello Error.
+- If you have the transcription: comment on it directly. Give your personal take on what was said. Be direct, sharp. This is your read on the person — not a neutral description.
+- Close with what the overall profile suggests.
 - DO NOT repeat the emoji, verdict or score in the text — they are already displayed at the top.
 - Then the JSON on the very last line.
 
 MANDATORY STYLE:
-- Write like a YouTube behavioralist explaining to friends at a party. No unnecessary jargon.
-- Simplify technical terms: "lip compression" → "pressed lips", "suppression_then_burst" → "blinks that freeze then burst", "elevated z-score" → "well above their normal".
-- Aerate the text: one idea per paragraph, line breaks between each block. No wall of text.
-- Keep the scientific rigor but make it accessible. The reader should understand and smile.
+- Zero technical jargon in the analysis. If someone two drinks in at a party wouldn't understand it, rewrite it.
+- Examples: "pressed lips" not "lip compression", "voice cracked" not "elevated RMS variability", "eyes shifted" not "facial asymmetry".
+- One idea per paragraph. Line breaks between blocks. No wall of text.
+- The verdict must make people react at a party — punchy, unexpected, funny or sharp. Not an HR report title.
 
 RESPOND ENTIRELY IN ENGLISH.`
 : `COMMENT ÉCRIRE TON ANALYSE :
 - 180 mots maximum pour le texte d'analyse (sans compter l'emoji, le verdict, la ligne score et le JSON).
-- STRUCTURE LIBRE — pas de blocs fixes. Écris comme un analyste comportemental qui vient d'examiner le rapport capteurs complet. Sois original à chaque fois. Utilise tes propres mots, ton propre rythme, ta propre structure. Ne répète jamais les mêmes formules.
-- Commence par la baseline comportementale : comment était cette personne sur les questions neutres ?
-- Ensuite analyse ce qui s'est passé sur "${targetQuestion}" — priorise les signaux par tier. Nomme les convergences. Si la question est émotionnellement chargée, applique l'Erreur d'Othello explicitement.
-- Si des micro-expressions ou des micro-signaux notables ont été détectés, intègre-les.
-- Conclus par une synthèse comportementale — que suggère le profil complet, de manière probabiliste ?
+- STRUCTURE LIBRE — pas de blocs fixes. Sois original à chaque fois, jamais les mêmes formules.
+- Commence par la baseline : comment cette personne se comportait sur les questions neutres.
+- Ensuite analyse ce qui s'est passé sur la question sensible. Mets en avant UNIQUEMENT les capteurs qui ont vraiment décroché par rapport à la baseline — ignore les signaux faibles. Si la question est émotionnellement chargée, applique l'Erreur d'Othello.
+- Si tu as la transcription de la réponse : commente-la directement. Donne ton avis personnel sur ce qui a été dit. Sois direct, incisif. C'est ton regard sur la personne — pas une description neutre.
+- Conclus par ce que le profil suggère globalement.
 - NE RÉPÈTE PAS l'emoji, le verdict ou le score dans le texte — ils sont déjà affichés en haut.
 - Puis le JSON sur la toute dernière ligne.
 
 STYLE OBLIGATOIRE :
-- Écris comme un comportementaliste YouTube qui explique à des potes en soirée. Pas de jargon inutile.
-- Vulgarise les termes techniques : "compression labiale" → "lèvres serrées", "suppression_then_burst" → "clignements qui se bloquent puis explosent", "z-score élevé" → "bien au-dessus de sa normale".
-- Aère le texte : une idée par paragraphe, sauts de ligne entre chaque bloc. Pas de pavé.
-- Garde la rigueur scientifique mais rends-la accessible. Le lecteur doit comprendre et sourire.
+- Zéro jargon technique dans l'analyse. Si c'est pas compréhensible par quelqu'un qui a bu deux verres en soirée, reformule.
+- Exemples de traduction : "lèvres serrées" pas "compression labiale", "la voix a craqué" pas "variabilité RMS élevée", "les yeux ont bougé bizarrement" pas "asymétrie faciale".
+- Une idée par paragraphe. Sauts de ligne entre chaque bloc. Pas de pavé.
+- Le verdict doit faire réagir en soirée — percutant, inattendu, drôle ou tranchant. Pas un titre de rapport RH.
 
 RÉPONDS ENTIÈREMENT EN FRANÇAIS.`}
 ${scoreInstruction}`;
