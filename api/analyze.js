@@ -26,12 +26,12 @@ export default async function handler(req, res) {
 
     const scoreInstruction = lang === 'en'
       ? `\n\nFINAL INSTRUCTION — MANDATORY:
-After your analysis, output on three consecutive lines:
+START your response with these three lines (before any analysis text):
 Line 1: One single emoji that you choose freely to represent your reading of this person (be creative, be precise)
 Line 2: A short verdict in CAPS — 2 to 5 words maximum, punchy, original, that you invent freely based on the data
 Line 3: SINCERITY SCORE : [score]/100
 
-Then on the very last line of your response, output only this JSON:
+Then write your analysis. Then on the very last line, output only this JSON:
 {"score": 72}
 
 Score scale (0–100) — behavioral sincerity assessment:
@@ -44,12 +44,12 @@ Score scale (0–100) — behavioral sincerity assessment:
 Be honest. Strong signals = low score. Calm profile = high score.
 Output ONLY the JSON on the very last line, nothing after it.`
       : `\n\nINSTRUCTION FINALE — OBLIGATOIRE :
-Après ton analyse, écris sur trois lignes consécutives :
+COMMENCE ta réponse par ces trois lignes (avant tout texte d'analyse) :
 Ligne 1 : Un seul emoji que tu choisis librement pour représenter ta lecture de cette personne (sois créatif, sois précis)
 Ligne 2 : Un verdict court en MAJUSCULES — 2 à 5 mots maximum, percutant, original, que tu inventes librement d'après les données
 Ligne 3 : SCORE DE SINCÉRITÉ : [ton score]/100
 
-Puis sur la toute dernière ligne de ta réponse, écris uniquement ce JSON :
+Puis écris ton analyse. Puis sur la toute dernière ligne, uniquement ce JSON :
 {"score": 72}
 
 Échelle de score (0–100) — évaluation comportementale de sincérité :
@@ -255,7 +255,7 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 
 ${lang === 'en' 
 ? `WRITING YOUR ANALYSIS:
-- 240 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
+- 180 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
 - FREE STRUCTURE — no fixed blocks. Write as a behavioral analyst who has just reviewed the full sensor report. Be original every time. Use your own words, your own rhythm, your own structure. Never repeat the same formulas.
 - Start with the behavioral baseline: how was this person on neutral questions?
 - Then analyze what happened on "${targetQuestion}" — prioritize the signals by tier. Name the convergences. If the question is emotionally charged, apply the Othello Error explicitly.
@@ -266,7 +266,7 @@ ${lang === 'en'
 
 RESPOND ENTIRELY IN ENGLISH.`
 : `COMMENT ÉCRIRE TON ANALYSE :
-- 240 mots maximum pour le texte d'analyse (sans compter l'emoji, le verdict, la ligne score et le JSON).
+- 180 mots maximum pour le texte d'analyse (sans compter l'emoji, le verdict, la ligne score et le JSON).
 - STRUCTURE LIBRE — pas de blocs fixes. Écris comme un analyste comportemental qui vient d'examiner le rapport capteurs complet. Sois original à chaque fois. Utilise tes propres mots, ton propre rythme, ta propre structure. Ne répète jamais les mêmes formules.
 - Commence par la baseline comportementale : comment était cette personne sur les questions neutres ?
 - Ensuite analyse ce qui s'est passé sur "${targetQuestion}" — priorise les signaux par tier. Nomme les convergences. Si la question est émotionnellement chargée, applique l'Erreur d'Othello explicitement.
