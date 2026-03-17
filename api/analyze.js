@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { capteurData, targetQuestion, language, targetTranscription } = req.body;
+    const { capteurData, semanticSummary, targetQuestion, language, targetTranscription } = req.body;
     if (!capteurData || !targetQuestion) return res.status(400).json({ error: 'Missing required fields' });
     if (!Array.isArray(capteurData) || capteurData.length === 0) return res.status(400).json({ error: 'capteurData must be a non-empty array' });
 
@@ -31,8 +31,9 @@ Line 1: One single emoji that you choose freely to represent your reading of thi
 Line 2: A short verdict in CAPS — 2 to 5 words maximum, punchy, original, that you invent freely based on the data
 Line 3: SINCERITY SCORE : [score]/100
 
-Then write your analysis. Then on the very last line, output only this JSON:
-{"score": 72}
+Then write your analysis. Then on the very last line, output only this JSON — replace the number with YOUR actual score calculated from the data (between 0 and 100):
+{"score": 55}
+WARNING: 55 is just an example. You must use YOUR own score, not 55.
 
 Score scale (0–100) — behavioral sincerity assessment:
 - 75-100 = coherent profile, no significant signal
@@ -49,8 +50,9 @@ Ligne 1 : Un seul emoji que tu choisis librement pour représenter ta lecture de
 Ligne 2 : Un verdict court en MAJUSCULES — 2 à 5 mots maximum, percutant, original, que tu inventes librement d'après les données
 Ligne 3 : SCORE DE SINCÉRITÉ : [ton score]/100
 
-Puis écris ton analyse. Puis sur la toute dernière ligne, uniquement ce JSON :
-{"score": 72}
+Puis écris ton analyse. Puis sur la toute dernière ligne, uniquement ce JSON — remplace le nombre par TON score réel calculé d'après les données (entre 0 et 100) :
+{"score": 55}
+ATTENTION : 55 est un exemple. Tu dois mettre TON propre score, pas 55.
 
 Échelle de score (0–100) — évaluation comportementale de sincérité :
 - 75-100 = profil cohérent, aucun signal significatif
@@ -230,28 +232,28 @@ ${toneGuide}
 
 ${scientificFramework}
 
-${lang === 'en' ? 'SENSOR DATA:' : 'DONNÉES CAPTEURS :'}
-${JSON.stringify(capteurData, null, 2)}
+${lang === 'en' ? 'BEHAVIORAL DATA (pre-processed from sensors):' : 'DONNÉES COMPORTEMENTALES (pré-analysées depuis les capteurs) :'}
+${semanticSummary || JSON.stringify(capteurData, null, 2)}
 
 ${lang === 'en' ? `THE SENSITIVE QUESTION: "${targetQuestion}"` : `LA QUESTION SENSIBLE : "${targetQuestion}"`}
 ${transcriptionBlock}
 
 ${lang === 'en' ? `HOW TO READ THE DATA:
-- "_z" fields = standard deviations vs this person's individual baseline. z > +2 or < -2 = strong signal. z > +3 = very strong.
-- Always compare TARGET vs BASELINE questions.
-- Key signals to prioritize: stressComposite convergence, suppression_then_burst blink pattern, pitchMean elevation, duchenneScore drop, lipCompressionPeak, smileMaskingScore, comfortDelta crash, asymmetryLateralBias sign change.
-- For the CLOSING question (last BASELINE after TARGET): compare it TWICE — vs TARGET (residual stress?) and vs earlier baselines (return to normal?).
+- Data arrives pre-analyzed in behavioral language — baseline, signals on the sensitive question, convergence, residual stress.
+- ⚠️ signals are strong (z>2.5), 〰️ are moderate (z>1.5), ✅ are within normal range.
+- Sensor tier is indicated — prioritize tier 1 and tier 2 signals.
 - If no strong signal: say so clearly. Neutral tone. Do not dramatize.
-- NEVER cite a raw number or percentage in your analysis text.
-- NEVER claim certainty beyond what the data supports.` 
+- NEVER cite a raw number in your analysis — data is already translated.
+- NEVER claim certainty beyond what the data supports.
+- SENSORS HAVE THE FINAL SAY. If signals are weak or absent, the analysis must reflect that — regardless of what the verbal response seems to suggest. The transcription is a complement, not a conclusion.` 
 : `COMMENT LIRE LES DONNÉES :
-- Les champs "_z" = écarts-types vs la baseline individuelle de cette personne. z > +2 ou < -2 = signal fort. z > +3 = très fort.
-- Compare TOUJOURS la question TARGET vs les questions BASELINE.
-- Signaux prioritaires : convergence du stressComposite, pattern suppression_then_burst, élévation du pitchMean, chute du duchenneScore, lipCompressionPeak, smileMaskingScore, chute du comfortDelta, changement de signe de l'asymmetryLateralBias.
-- Pour la question de CLÔTURE (dernière BASELINE après la TARGET) : compare-la DEUX FOIS — vs TARGET (stress résiduel ?) et vs baselines précédentes (retour au normal ?).
+- Les données t'arrivent déjà pré-analysées en langage comportemental — baseline, signaux sur la question sensible, convergence, stress résiduel.
+- Les signaux ⚠️ sont forts (z>2.5), les 〰️ sont modérés (z>1.5), les ✅ sont dans les normes.
+- Le tier des capteurs est indiqué — priorise les signaux tier 1 et tier 2.
 - Si aucun signal fort : dis-le clairement. Ton neutre. Ne dramatise pas.
-- JAMAIS citer un chiffre brut ou un pourcentage dans ton texte d'analyse.
-- JAMAIS prétendre à une certitude au-delà de ce que les données permettent.`}
+- JAMAIS citer un chiffre brut dans ton texte d'analyse — les données sont déjà traduites.
+- JAMAIS prétendre à une certitude au-delà de ce que les données permettent.
+- LES CAPTEURS ONT TOUJOURS LE DERNIER MOT. Si les signaux sont faibles ou absents, l'analyse doit le refléter — peu importe ce que la réponse verbale semble suggérer. La transcription est un complément, pas une conclusion.`}
 
 ${lang === 'en' 
 ? `WRITING YOUR ANALYSIS:
@@ -297,7 +299,7 @@ ${scoreInstruction}`;
         'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'grok-3',
+        model: 'grok-3-mini',
         max_tokens: 1500,
         temperature: 1.2,
         messages: [{ role: 'user', content: prompt }],
