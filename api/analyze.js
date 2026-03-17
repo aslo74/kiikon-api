@@ -261,8 +261,14 @@ ${lang === 'en'
 - Then analyze what happened on "${targetQuestion}" — prioritize the signals by tier. Name the convergences. If the question is emotionally charged, apply the Othello Error explicitly.
 - If micro-expressions or notable micro-signals were detected, integrate them.
 - Close with a behavioral synthesis — what does the full profile suggest, probabilistically?
-- Then on three consecutive lines: your emoji, your verdict in CAPS, the score line.
+- DO NOT repeat the emoji, verdict or score in the text — they are already displayed at the top.
 - Then the JSON on the very last line.
+
+MANDATORY STYLE:
+- Write like a YouTube behavioralist explaining to friends at a party. No unnecessary jargon.
+- Simplify technical terms: "lip compression" → "pressed lips", "suppression_then_burst" → "blinks that freeze then burst", "elevated z-score" → "well above their normal".
+- Aerate the text: one idea per paragraph, line breaks between each block. No wall of text.
+- Keep the scientific rigor but make it accessible. The reader should understand and smile.
 
 RESPOND ENTIRELY IN ENGLISH.`
 : `COMMENT ÉCRIRE TON ANALYSE :
@@ -272,8 +278,14 @@ RESPOND ENTIRELY IN ENGLISH.`
 - Ensuite analyse ce qui s'est passé sur "${targetQuestion}" — priorise les signaux par tier. Nomme les convergences. Si la question est émotionnellement chargée, applique l'Erreur d'Othello explicitement.
 - Si des micro-expressions ou des micro-signaux notables ont été détectés, intègre-les.
 - Conclus par une synthèse comportementale — que suggère le profil complet, de manière probabiliste ?
-- Puis sur trois lignes consécutives : ton emoji, ton verdict en MAJUSCULES, la ligne score.
+- NE RÉPÈTE PAS l'emoji, le verdict ou le score dans le texte — ils sont déjà affichés en haut.
 - Puis le JSON sur la toute dernière ligne.
+
+STYLE OBLIGATOIRE :
+- Écris comme un comportementaliste YouTube qui explique à des potes en soirée. Pas de jargon inutile.
+- Vulgarise les termes techniques : "compression labiale" → "lèvres serrées", "suppression_then_burst" → "clignements qui se bloquent puis explosent", "z-score élevé" → "bien au-dessus de sa normale".
+- Aère le texte : une idée par paragraphe, sauts de ligne entre chaque bloc. Pas de pavé.
+- Garde la rigueur scientifique mais rends-la accessible. Le lecteur doit comprendre et sourire.
 
 RÉPONDS ENTIÈREMENT EN FRANÇAIS.`}
 ${scoreInstruction}`;
