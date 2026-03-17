@@ -245,7 +245,9 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 - If no strong signal: say so clearly. Neutral tone. Do not dramatize.
 - NEVER cite a raw number in your analysis — data is already translated.
 - NEVER claim certainty beyond what the data supports.
-- SENSORS HAVE THE FINAL SAY. If signals are weak or absent, the analysis must reflect that — regardless of what the verbal response seems to suggest. The transcription is a complement, not a conclusion.` 
+- SENSORS HAVE THE FINAL SAY. If signals are weak or absent, the analysis must reflect that — regardless of what the verbal response seems to suggest. The transcription is a complement, not a conclusion.
+- ABSOLUTE SCORE RULE: If the semantic summary indicates "No strong convergence — profile within normal range" OR overall stress decreased on the target → score MUST be between 75 and 95. The calmer and more stable the profile, the higher the score. Perfectly stable profile = 90-95. A few micro-signals without convergence = 75-85. Regardless of verbal response. Calm profile = high score, no exception.
+- BLINK RULE: If blink rate target = 0.0/min, this sensor is faulty — IGNORE it completely, do not interpret it.` 
 : `COMMENT LIRE LES DONNÉES :
 - Les données t'arrivent déjà pré-analysées en langage comportemental — baseline, signaux sur la question sensible, convergence, stress résiduel.
 - Les signaux ⚠️ sont forts (z>2.5), les 〰️ sont modérés (z>1.5), les ✅ sont dans les normes.
@@ -253,7 +255,9 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 - Si aucun signal fort : dis-le clairement. Ton neutre. Ne dramatise pas.
 - JAMAIS citer un chiffre brut dans ton texte d'analyse — les données sont déjà traduites.
 - JAMAIS prétendre à une certitude au-delà de ce que les données permettent.
-- LES CAPTEURS ONT TOUJOURS LE DERNIER MOT. Si les signaux sont faibles ou absents, l'analyse doit le refléter — peu importe ce que la réponse verbale semble suggérer. La transcription est un complément, pas une conclusion.`}
+- LES CAPTEURS ONT TOUJOURS LE DERNIER MOT. Si les signaux sont faibles ou absents, l'analyse doit le refléter — peu importe ce que la réponse verbale semble suggérer. La transcription est un complément, pas une conclusion.
+- RÈGLE DE SCORE ABSOLUE : Si le résumé sémantique indique "Pas de convergence forte — profil dans les normes" OU que le stress global a baissé sur la target → le score DOIT être entre 75 et 95. Plus le profil est calme et stable, plus le score est élevé. Un profil parfaitement stable = 90-95. Quelques micro-signaux sans convergence = 75-85. Peu importe la réponse verbale. Un profil calme = score élevé, sans exception.
+- RÈGLE CLIGNEMENTS : Si blinkRate cible = 0.0/min, ce capteur est défaillant — IGNORE-LE complètement, ne l'interprète pas.`}
 
 ${lang === 'en' 
 ? `WRITING YOUR ANALYSIS:
