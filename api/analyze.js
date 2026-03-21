@@ -121,7 +121,7 @@ TIER 3 — Supporting signals only:
 
 TIER 4 — Very weak, use with extreme caution:
 • headAversionCount: d=0.03 — associated with EMBARRASSMENT more than deception. Do NOT over-interpret.
-• pauseCount: r=0.04 (Sporer & Schwandt, 2006). Trivial effect.
+• pauseCount & pausePattern: r=0.04 for raw count (Sporer & Schwandt, 2006). However, DISTRIBUTION matters: pausePattern "early" = decision/construction pauses (hesitation before fabricating); "late" = cognitive exhaustion (control breaks down); "suppressed" = zero pauses on a response >5s = over-rehearsed, suspicious; "distributed" = normal. Use pattern, not count alone.
 • microExpressions: Only 2% occurrence rate; training-based detection labeled "pseudo-science" (Vrij et al., 2019). Mention only if truly extreme.
 
 THE OTHELLO ERROR — MANDATORY CONSIDERATION:
@@ -201,7 +201,7 @@ TIER 3 — Signaux d'appoint uniquement :
 
 TIER 4 — Très faibles, utilise avec extrême prudence :
 • headAversionCount : d=0,03 — associé à la GÊNE plus qu'à la tromperie. N'interprète pas excessivement.
-• pauseCount : r=0,04 (Sporer & Schwandt, 2006). Effet trivial.
+• pauseCount & pausePattern : r=0,04 pour le simple comptage (Sporer & Schwandt, 2006). Mais la DISTRIBUTION compte : pausePattern "early" = pauses de décision/construction (hésitation avant de fabriquer) ; "late" = épuisement cognitif (le contrôle lâche) ; "suppressed" = zéro pause sur une réponse >5s = récit sur-répété, suspect ; "distributed" = normal. Utilise le pattern, pas juste le comptage.
 • microExpressions : Taux d'occurrence de seulement 2% ; détection qualifiée de "pseudo-science" (Vrij et al., 2019). Mentionne uniquement si vraiment extrême.
 
 L'ERREUR D'OTHELLO — CONSIDÉRATION OBLIGATOIRE :
