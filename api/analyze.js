@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  // Vérification token secret app → Vercel
   const appSecret = req.headers['x-kiikon-secret'];
   if (!appSecret || appSecret !== process.env.KIIKON_APP_SECRET) {
     return res.status(401).json({ error: 'Unauthorized' });
@@ -111,6 +110,7 @@ TIER 2 — Moderately reliable:
 • lipCompressionPeak: "Convincing diagnostic facial cue" (DePaulo et al., 2003). Hard to voluntarily suppress.
 • pitchVariability: Low variability = fear-type response; high variability = excitement. Use to distinguish emotional type.
 • comfortDelta: Crash on TARGET = discomfort. Non-specific but useful for context.
+• facialRigidity: Average variance of all 52 facial blendshapes. LOW value on TARGET vs BASELINE = face more frozen than usual = active control effort (Burgoon, 2018). A z-score below −1.5 is significant. KEY DISTINCTION: frozen face + calm voice = deliberate dissociation between channels (suppression active). Frozen face + elevated stress = general arousal.
 
 TIER 3 — Supporting signals only:
 • headFreezeRatio: Rigidity effect documented (Burgoon, 2018) but head alone d=−0.02 (Sporer & Schwandt, 2007).
@@ -140,6 +140,17 @@ The ONLY signals that more specifically point toward cognitive load (deception) 
 - suppression_then_burst blink pattern (cognitive suppression mechanism)
 - responseLatency elevation on SIMPLE direct-answer questions
 - Cluster convergence across 3+ channels simultaneously
+
+THREE ADDITIONAL BEHAVIORAL RULES — APPLY SYSTEMATICALLY:
+
+RULE 1 — ACTIVE SUPPRESSION (dissociation between channels):
+If headFreezeRatio is high AND facialRigidity z-score is strongly negative (face frozen) BUT vocal signals (pitchMean, rmsEnergy) remain calm → this dissociation between a frozen face and a calm voice is a specific indicator of deliberate control effort. A person in genuine emotional calm shows natural micro-movements. A person actively suppressing shows channel dissociation. Mention this pattern explicitly when detected.
+
+RULE 2 — NON-DISCRIMINANT GLOBAL AROUSAL:
+If ALL signals rise on TARGET — pitch, stress, blink, asymmetry, comfort — including signals that also rose on BASELINE questions, this is situational anxiety, NOT targeted deception. A signal that rises everywhere discriminates nothing. In this case: explicitly state that the profile reflects general emotional reactivity, not a specific response to the sensitive question. Do NOT signal this as suspicious.
+
+RULE 3 — SLOW RECOVERY (residual stress):
+The closing baseline question after TARGET is critical. If stress indicators remain elevated after the sensitive question, this is residual emotional load — the person has not returned to their natural state. A genuinely calm person recovers quickly. A person who just managed a difficult response recovers slowly. Always comment on the closing baseline vs the earlier baselines.
 
 CONVERGENCE RULE — THE MOST IMPORTANT PRINCIPLE:
 A single signal on a single channel = insufficient for any conclusion.
@@ -179,6 +190,7 @@ TIER 2 — Modérément fiables :
 • lipCompressionPeak : "Indice facial diagnostique convaincant" (DePaulo et al., 2003). Difficile à supprimer volontairement.
 • pitchVariability : Faible variabilité = réponse de type peur ; haute variabilité = excitation. Utilise pour distinguer le type émotionnel.
 • comfortDelta : Chute sur TARGET = inconfort. Non spécifique mais utile pour le contexte.
+• facialRigidity : Variance moyenne des 52 blendshapes faciaux. Une valeur BASSE sur TARGET vs BASELINE = visage plus figé qu'à l'habitude = effort de contrôle actif (Burgoon, 2018). Un z-score en dessous de −1,5 est significatif. DISTINCTION CLÉ : visage figé + voix calme = dissociation délibérée entre canaux (suppression active). Visage figé + stress élevé = arousal général.
 
 TIER 3 — Signaux d'appoint uniquement :
 • headFreezeRatio : Effet de rigidité documenté (Burgoon, 2018) mais tête seule d=−0,02 (Sporer & Schwandt, 2007).
@@ -208,6 +220,17 @@ Les SEULS signaux qui pointent plus spécifiquement vers la charge cognitive (tr
 - Pattern suppression_then_burst des clignements (mécanisme de suppression cognitive)
 - Élévation de responseLatency sur les questions à réponse directe SIMPLE
 - Convergence de cluster sur 3+ canaux simultanément
+
+TROIS RÈGLES COMPORTEMENTALES SUPPLÉMENTAIRES — À APPLIQUER SYSTÉMATIQUEMENT :
+
+RÈGLE 1 — SUPPRESSION ACTIVE (dissociation entre canaux) :
+Si headFreezeRatio est élevé ET le z-score de facialRigidity est fortement négatif (visage figé) MAIS les signaux vocaux (pitchMean, rmsEnergy) restent calmes → cette dissociation entre un visage figé et une voix calme est un indicateur spécifique d'effort de contrôle délibéré. Une personne genuinement calme montre des micro-mouvements naturels. Une personne qui supprime activement montre une dissociation entre canaux. Mentionner ce pattern explicitement quand il est détecté.
+
+RÈGLE 2 — AROUSAL GLOBAL NON DISCRIMINANT :
+Si TOUS les signaux montent sur la TARGET — pitch, stress, clignements, asymétrie, confort — y compris des signaux qui montaient déjà sur les questions BASELINE, c'est de l'anxiété situationnelle, PAS de la tromperie ciblée. Un signal qui monte partout ne discrimine rien. Dans ce cas : indiquer explicitement que le profil reflète une réactivité émotionnelle générale, pas une réponse spécifique à la question sensible. NE PAS signaler comme suspect.
+
+RÈGLE 3 — RÉCUPÉRATION LENTE (stress résiduel) :
+La question baseline de clôture après la TARGET est critique. Si les indicateurs de stress restent élevés après la question sensible, c'est une charge émotionnelle résiduelle — la personne n'est pas revenue à son état naturel. Une personne genuinement calme récupère vite. Une personne qui vient de gérer une réponse difficile récupère lentement. Toujours commenter la baseline de clôture vs les baselines précédentes.
 
 RÈGLE DE CONVERGENCE — LE PRINCIPE LE PLUS IMPORTANT :
 Un signal isolé sur un seul canal = insuffisant pour toute conclusion.
@@ -247,7 +270,7 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 - NEVER claim certainty beyond what the data supports.
 - SENSORS HAVE THE FINAL SAY. If signals are weak or absent, the analysis must reflect that — regardless of what the verbal response seems to suggest. The transcription is a complement, not a conclusion.
 - ABSOLUTE SCORE RULE: If the semantic summary indicates "No strong convergence — profile within normal range" OR overall stress decreased on the target → score MUST be between 75 and 95. The calmer and more stable the profile, the higher the score. Perfectly stable profile = 90-95. A few micro-signals without convergence = 75-85. Regardless of verbal response. Calm profile = high score, no exception.
-- BLINK RULE: If blink rate target = 0.0/min, this sensor is faulty — IGNORE it completely, do not interpret it.` 
+- BLINK RULE: If blink rate target = 0.0/min, this sensor is faulty — IGNORE it completely, do not interpret it.`
 : `COMMENT LIRE LES DONNÉES :
 - Les données t'arrivent déjà pré-analysées en langage comportemental — baseline, signaux sur la question sensible, convergence, stress résiduel.
 - Les signaux ⚠️ sont forts (z>2.5), les 〰️ sont modérés (z>1.5), les ✅ sont dans les normes.
@@ -259,7 +282,7 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 - RÈGLE DE SCORE ABSOLUE : Si le résumé sémantique indique "Pas de convergence forte — profil dans les normes" OU que le stress global a baissé sur la target → le score DOIT être entre 75 et 95. Plus le profil est calme et stable, plus le score est élevé. Un profil parfaitement stable = 90-95. Quelques micro-signaux sans convergence = 75-85. Peu importe la réponse verbale. Un profil calme = score élevé, sans exception.
 - RÈGLE CLIGNEMENTS : Si blinkRate cible = 0.0/min, ce capteur est défaillant — IGNORE-LE complètement, ne l'interprète pas.`}
 
-${lang === 'en' 
+${lang === 'en'
 ? `WRITING YOUR ANALYSIS:
 - 180 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
 - FREE STRUCTURE — no fixed blocks. Be original every time, never repeat the same formulas.
