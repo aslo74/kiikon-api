@@ -159,69 +159,82 @@
 
         <!-- ==================== FRANÇAIS ==================== -->
         <div lang="fr">
-            <p class="date">Dernière mise à jour : 20 février 2026</p>
+            <p class="date">Dernière mise à jour : 25 mars 2026</p>
 
             <div class="highlight">
                 <strong>🎭 Kiikon est une application de divertissement.</strong> Les résultats d'analyse ne constituent en aucun cas un diagnostic scientifique fiable de détection de mensonges. Cette application ne doit pas être utilisée pour prendre des décisions réelles concernant la véracité des propos d'une personne.
             </div>
 
             <h2>1. Éditeur</h2>
-            <p>Kiikon est éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français.</p>
+            <p>Kiikon est éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français (SIREN : 992 934 448).</p>
             <p>Contact : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
-            <h2>2. Données collectées</h2>
+            <h2>2. Données collectées et traitées</h2>
 
             <p><strong>Données d'analyse faciale (caméra)</strong></p>
-            <p>Kiikon utilise la caméra frontale de votre appareil pour analyser les expressions faciales en temps réel via la technologie MediaPipe (52 blendshapes). Ces données sont :</p>
+            <p>Kiikon utilise la caméra frontale de votre appareil pour analyser les expressions faciales en temps réel via la technologie MediaPipe (52 coefficients d'expression, dits « blendshapes »). Ces coefficients représentent des valeurs numériques abstraites d'expressions faciales (ex. : degré d'ouverture de la bouche, tension des sourcils) et ne permettent pas d'identifier une personne. Ces données sont :</p>
             <ul>
-                <li>Traitées <strong>localement sur votre appareil</strong> en mode gratuit</li>
-                <li>Envoyées de manière chiffrée à notre serveur pour l'analyse premium, puis <strong>immédiatement supprimées</strong> après traitement</li>
-                <li><strong>Jamais stockées</strong>, jamais enregistrées, jamais partagées avec des tiers</li>
+                <li>Traitées localement sur votre appareil</li>
+                <li>Transmises de manière chiffrée (HTTPS) à <strong>xAI Corp. (Grok)</strong> pour l'analyse comportementale, puis automatiquement supprimées par xAI sous 30 jours</li>
+                <li><strong>Jamais stockées</strong> par CUB-ITH, jamais enregistrées, jamais utilisées pour entraîner des modèles d'intelligence artificielle</li>
             </ul>
+            <p><strong>Aucune vidéo ni photo n'est enregistrée.</strong> Seuls les coefficients numériques sont traités.</p>
 
-            <p><strong>Aucune vidéo ni photo n'est enregistrée.</strong> Seules les données numériques abstraites des expressions faciales (blendshapes) sont traitées.</p>
+            <p><strong>Données audio / transcription</strong></p>
+            <p>Lors des questions vocales, votre voix est enregistrée temporairement sur votre appareil, transcrite en texte via <strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong>, puis immédiatement supprimée. Seule la transcription textuelle est transmise à xAI pour l'analyse. OpenAI supprime automatiquement les données API sous 30 jours et ne les utilise pas pour l'entraînement de ses modèles.</p>
 
             <p><strong>Données d'utilisation</strong></p>
             <ul>
-                <li>Préférences de langue (détection automatique)</li>
-                <li>Achats in-app (gérés par Google Play / Apple — nous n'avons pas accès à vos données de paiement)</li>
+                <li>Préférences de langue (stockées localement)</li>
                 <li>Solde de crédits (stocké localement sur votre appareil)</li>
+                <li>Achats in-app (gérés par Google Play / Apple App Store — CUB-ITH n'a pas accès à vos données de paiement)</li>
             </ul>
 
             <p><strong>Publicité (AdMob)</strong></p>
-            <p>Kiikon utilise Google AdMob pour afficher des publicités en mode gratuit. AdMob peut collecter certaines données conformément à la <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a>. Vous pouvez gérer vos préférences publicitaires dans les paramètres de votre appareil.</p>
+            <p>En mode gratuit, Kiikon utilise <strong>Google LLC (AdMob)</strong> pour afficher des publicités. AdMob peut collecter : adresse IP, identifiants publicitaires, données d'interaction, diagnostics. Ces collectes sont soumises à votre consentement préalable (voir section 4). Vous pouvez gérer vos préférences publicitaires dans les paramètres de votre appareil. Pour plus d'informations : <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a>.</p>
 
-            <h2>3. Finalité du traitement</h2>
-            <p>Les données faciales sont utilisées <strong>exclusivement</strong> pour générer un résultat d'analyse de divertissement au sein de l'application. Aucune autre utilisation n'est faite.</p>
+            <h2>3. Sous-traitants et transferts internationaux</h2>
+            <p>Le traitement des données implique les sous-traitants suivants, tous basés aux États-Unis :</p>
+            <ul>
+                <li><strong>xAI Corp. / X.AI LLC</strong> (San Francisco, CA) — analyse comportementale Grok. Transfert encadré par des Clauses Contractuelles Types (SCCs) conformes au RGPD. xAI ne forme pas ses modèles avec les données API. <a href="https://x.ai/legal/privacy-policy" target="_blank">Politique de confidentialité xAI</a>.</li>
+                <li><strong>OpenAI Ireland Ltd / OpenAI LLC</strong> — transcription audio Whisper. Entité européenne contractante pour les clients EEA. Transfert encadré par SCCs. OpenAI ne forme pas ses modèles avec les données API. <a href="https://openai.com/policies/privacy-policy/" target="_blank">Politique de confidentialité OpenAI</a>.</li>
+                <li><strong>Vercel Inc.</strong> (San Francisco, CA) — hébergement de l'API. Certifié EU-US Data Privacy Framework (DPF). <a href="https://vercel.com/legal/privacy-policy" target="_blank">Politique de confidentialité Vercel</a>.</li>
+                <li><strong>Google LLC (AdMob)</strong> — régie publicitaire. Certifié EU-US Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank">Politique de confidentialité Google</a>.</li>
+            </ul>
+            <p>Aucune donnée permettant d'identifier personnellement un utilisateur n'est transmise à ces sous-traitants. Les données API ne sont jamais utilisées pour entraîner les modèles d'intelligence artificielle de ces prestataires.</p>
 
             <h2>4. Base légale (RGPD)</h2>
-            <p>Le traitement des données est fondé sur votre <strong>consentement</strong> (Article 6(1)(a) du RGPD), accordé lors de l'acceptation des conditions d'utilisation et de l'autorisation d'accès à la caméra.</p>
+            <p>Le traitement des données est fondé sur votre <strong>consentement explicite</strong> (Article 6(1)(a) du RGPD), accordé lors de la première utilisation de l'application via un écran de consentement dédié. Vous pouvez retirer ce consentement à tout moment en désinstallant l'application ou en révoquant l'accès à la caméra et au microphone dans les paramètres de votre appareil.</p>
+            <p>Pour la publicité AdMob en EEE/UK/Suisse, un consentement séparé conforme au TCF v2 vous est demandé lors du premier lancement.</p>
 
-            <h2>5. Durée de conservation</h2>
+            <h2>5. Décisions automatisées</h2>
+            <p>Kiikon utilise un traitement automatisé des données faciales et vocales pour générer un résultat d'analyse comportementale. Conformément à l'Article 13(2)(f) du RGPD, nous vous informons que ce traitement automatisé est réalisé à des fins de <strong>divertissement uniquement</strong> et ne produit pas d'effets juridiques ni de décisions significatives vous concernant. Les résultats n'ont aucune valeur scientifique ou diagnostique. Conformément à l'Article 50 du règlement européen sur l'IA (AI Act), nous vous informons que l'application utilise un système d'analyse d'expressions faciales basé sur l'intelligence artificielle.</p>
+
+            <h2>6. Durée de conservation</h2>
             <ul>
-                <li>Données faciales : <strong>aucune conservation</strong> — supprimées immédiatement après analyse</li>
+                <li>Données faciales (blendshapes) : <strong>aucune conservation par CUB-ITH</strong> — traitement éphémère, suppression immédiate après analyse</li>
+                <li>Transcription audio : <strong>aucune conservation par CUB-ITH</strong> — supprimée immédiatement après envoi à xAI</li>
+                <li>Logs techniques xAI et OpenAI : suppression automatique sous <strong>30 jours</strong> par ces prestataires</li>
                 <li>Préférences et crédits : stockés localement sur votre appareil jusqu'à la désinstallation</li>
             </ul>
-
-            <h2>6. Transfert de données</h2>
-            <p>En mode premium, les données d'analyse (blendshapes numériques uniquement) sont transmises de manière chiffrée (HTTPS) à nos serveurs hébergés par Vercel (infrastructure mondiale). Aucune donnée personnelle identifiable n'est transmise.</p>
 
             <h2>7. Vos droits</h2>
             <p>Conformément au RGPD, vous disposez des droits suivants :</p>
             <ul>
                 <li>Droit d'accès, de rectification et de suppression de vos données</li>
                 <li>Droit de retirer votre consentement à tout moment</li>
+                <li>Droit à la limitation du traitement</li>
                 <li>Droit à la portabilité de vos données</li>
-                <li>Droit d'introduire une réclamation auprès de la CNIL</li>
+                <li>Droit d'opposition au traitement automatisé</li>
+                <li>Droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a>)</li>
             </ul>
-            <p>Étant donné qu'aucune donnée personnelle n'est stockée, l'exercice de ces droits s'applique principalement au retrait du consentement (désinstallation de l'app ou révocation de l'accès caméra).</p>
-            <p>Contact : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+            <p>Étant donné qu'aucune donnée personnelle identifiable n'est stockée par CUB-ITH, l'exercice de ces droits s'applique principalement au retrait du consentement (désinstallation de l'app ou révocation des accès caméra/microphone). Pour toute demande : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
             <h2>8. Sécurité</h2>
-            <p>Nous mettons en œuvre des mesures techniques appropriées pour protéger vos données : chiffrement HTTPS des communications, absence de stockage de données sensibles, et traitement éphémère des données d'analyse.</p>
+            <p>CUB-ITH met en œuvre des mesures techniques appropriées : chiffrement HTTPS de toutes les communications, absence de stockage de données personnelles, traitement éphémère, et recours à des sous-traitants certifiés (ISO 27001 pour OpenAI, SOC 2 pour Vercel).</p>
 
             <h2>9. Mineurs</h2>
-            <p>Kiikon n'est pas destinée aux enfants de moins de 13 ans. Si vous êtes parent et pensez que votre enfant nous a fourni des données, contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+            <p>Kiikon n'est pas destinée aux enfants de moins de 13 ans. Si vous êtes parent et pensez que votre enfant a utilisé l'application, contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
 
             <h2>10. Modifications</h2>
             <p>Nous pouvons mettre à jour cette politique. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à consulter cette page régulièrement.</p>
@@ -229,69 +242,82 @@
 
         <!-- ==================== ENGLISH ==================== -->
         <div lang="en">
-            <p class="date">Last updated: February 20, 2026</p>
+            <p class="date">Last updated: March 25, 2026</p>
 
             <div class="highlight">
                 <strong>🎭 Kiikon is an entertainment application.</strong> Analysis results do not constitute a reliable scientific lie detection diagnosis. This application should not be used to make real decisions about the truthfulness of a person's statements.
             </div>
 
             <h2>1. Publisher</h2>
-            <p>Kiikon is published by <strong>CUB-ITH</strong>, a French micro-enterprise.</p>
+            <p>Kiikon is published by <strong>CUB-ITH</strong>, a French micro-enterprise (SIREN: 992 934 448).</p>
             <p>Contact: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
-            <h2>2. Data collected</h2>
+            <h2>2. Data collected and processed</h2>
 
             <p><strong>Facial analysis data (camera)</strong></p>
-            <p>Kiikon uses your device's front camera to analyze facial expressions in real time using MediaPipe technology (52 blendshapes). This data is:</p>
+            <p>Kiikon uses your device's front camera to analyze facial expressions in real time using MediaPipe technology (52 expression coefficients, known as "blendshapes"). These coefficients represent abstract numerical values of facial expressions (e.g., degree of mouth opening, eyebrow tension) and cannot be used to identify a person. This data is:</p>
             <ul>
-                <li>Processed <strong>locally on your device</strong> in free mode</li>
-                <li>Sent encrypted to our server for premium analysis, then <strong>immediately deleted</strong> after processing</li>
-                <li><strong>Never stored</strong>, never recorded, never shared with third parties</li>
+                <li>Processed locally on your device</li>
+                <li>Transmitted encrypted (HTTPS) to <strong>xAI Corp. (Grok)</strong> for behavioral analysis, then automatically deleted by xAI within 30 days</li>
+                <li><strong>Never stored</strong> by CUB-ITH, never recorded, never used to train artificial intelligence models</li>
             </ul>
+            <p><strong>No video or photo is recorded.</strong> Only numerical coefficients are processed.</p>
 
-            <p><strong>No video or photo is recorded.</strong> Only abstract numerical facial expression data (blendshapes) is processed.</p>
+            <p><strong>Audio data / transcription</strong></p>
+            <p>During voice questions, your voice is temporarily recorded on your device, transcribed into text via <strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong>, then immediately deleted. Only the text transcription is transmitted to xAI for analysis. OpenAI automatically deletes API data within 30 days and does not use it to train its models.</p>
 
             <p><strong>Usage data</strong></p>
             <ul>
-                <li>Language preferences (automatic detection)</li>
-                <li>In-app purchases (managed by Google Play / Apple — we do not have access to your payment data)</li>
+                <li>Language preferences (stored locally)</li>
                 <li>Credit balance (stored locally on your device)</li>
+                <li>In-app purchases (managed by Google Play / Apple App Store — CUB-ITH does not have access to your payment data)</li>
             </ul>
 
             <p><strong>Advertising (AdMob)</strong></p>
-            <p>Kiikon uses Google AdMob to display ads in free mode. AdMob may collect certain data in accordance with <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>. You can manage your advertising preferences in your device settings.</p>
+            <p>In free mode, Kiikon uses <strong>Google LLC (AdMob)</strong> to display advertisements. AdMob may collect: IP address, advertising identifiers, interaction data, diagnostics. These collections are subject to your prior consent (see section 4). You can manage your advertising preferences in your device settings. For more information: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
 
-            <h2>3. Purpose of processing</h2>
-            <p>Facial data is used <strong>exclusively</strong> to generate an entertainment analysis result within the application. No other use is made.</p>
+            <h2>3. Sub-processors and international transfers</h2>
+            <p>Data processing involves the following sub-processors, all based in the United States:</p>
+            <ul>
+                <li><strong>xAI Corp. / X.AI LLC</strong> (San Francisco, CA) — Grok behavioral analysis. Transfer governed by Standard Contractual Clauses (SCCs) compliant with GDPR. xAI does not train its models on API data. <a href="https://x.ai/legal/privacy-policy" target="_blank">xAI Privacy Policy</a>.</li>
+                <li><strong>OpenAI Ireland Ltd / OpenAI LLC</strong> — Whisper audio transcription. European contracting entity for EEA customers. Transfer governed by SCCs. OpenAI does not train its models on API data. <a href="https://openai.com/policies/privacy-policy/" target="_blank">OpenAI Privacy Policy</a>.</li>
+                <li><strong>Vercel Inc.</strong> (San Francisco, CA) — API hosting. Certified under EU-US Data Privacy Framework (DPF). <a href="https://vercel.com/legal/privacy-policy" target="_blank">Vercel Privacy Policy</a>.</li>
+                <li><strong>Google LLC (AdMob)</strong> — advertising network. Certified under EU-US Data Privacy Framework. <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</li>
+            </ul>
+            <p>No personally identifiable data is transmitted to these sub-processors. API data is never used to train the artificial intelligence models of these providers.</p>
 
             <h2>4. Legal basis (GDPR)</h2>
-            <p>Data processing is based on your <strong>consent</strong> (Article 6(1)(a) of the GDPR), given when accepting the terms of use and granting camera access permission.</p>
+            <p>Data processing is based on your <strong>explicit consent</strong> (Article 6(1)(a) of the GDPR), given during first use of the application via a dedicated consent screen. You may withdraw this consent at any time by uninstalling the application or revoking camera and microphone access in your device settings.</p>
+            <p>For AdMob advertising in EEA/UK/Switzerland, a separate TCF v2 compliant consent is requested at first launch.</p>
 
-            <h2>5. Data retention</h2>
+            <h2>5. Automated decisions</h2>
+            <p>Kiikon uses automated processing of facial and voice data to generate a behavioral analysis result. In accordance with Article 13(2)(f) of the GDPR, we inform you that this automated processing is carried out for <strong>entertainment purposes only</strong> and does not produce legal effects or significant decisions about you. Results have no scientific or diagnostic value. In accordance with Article 50 of the EU AI Act, we inform you that the application uses a facial expression analysis system based on artificial intelligence.</p>
+
+            <h2>6. Data retention</h2>
             <ul>
-                <li>Facial data: <strong>no retention</strong> — immediately deleted after analysis</li>
+                <li>Facial data (blendshapes): <strong>no retention by CUB-ITH</strong> — ephemeral processing, immediately deleted after analysis</li>
+                <li>Audio transcription: <strong>no retention by CUB-ITH</strong> — deleted immediately after transmission to xAI</li>
+                <li>xAI and OpenAI technical logs: automatic deletion within <strong>30 days</strong> by these providers</li>
                 <li>Preferences and credits: stored locally on your device until uninstallation</li>
             </ul>
-
-            <h2>6. Data transfer</h2>
-            <p>In premium mode, analysis data (numerical blendshapes only) is transmitted encrypted (HTTPS) to our servers hosted by Vercel (global infrastructure). No personally identifiable data is transmitted.</p>
 
             <h2>7. Your rights</h2>
             <p>Under the GDPR, you have the following rights:</p>
             <ul>
                 <li>Right of access, rectification and deletion of your data</li>
                 <li>Right to withdraw your consent at any time</li>
+                <li>Right to restriction of processing</li>
                 <li>Right to data portability</li>
-                <li>Right to lodge a complaint with the relevant data protection authority</li>
+                <li>Right to object to automated processing</li>
+                <li>Right to lodge a complaint with the relevant data protection authority (for EU users: <strong>CNIL</strong> at <a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a>)</li>
             </ul>
-            <p>Since no personal data is stored, exercising these rights primarily applies to withdrawing consent (uninstalling the app or revoking camera access).</p>
-            <p>Contact: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+            <p>Since no personally identifiable data is stored by CUB-ITH, exercising these rights primarily applies to withdrawing consent (uninstalling the app or revoking camera/microphone access). For any request: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
             <h2>8. Security</h2>
-            <p>We implement appropriate technical measures to protect your data: HTTPS encryption of communications, no storage of sensitive data, and ephemeral processing of analysis data.</p>
+            <p>CUB-ITH implements appropriate technical measures: HTTPS encryption of all communications, no storage of personal data, ephemeral processing, and use of certified sub-processors (ISO 27001 for OpenAI, SOC 2 for Vercel).</p>
 
             <h2>9. Children</h2>
-            <p>Kiikon is not intended for children under 13 years of age. If you are a parent and believe your child has provided us with data, please contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+            <p>Kiikon is not intended for children under 13 years of age. If you are a parent and believe your child has used the application, please contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
 
             <h2>10. Changes</h2>
             <p>We may update this policy. The last update date is shown at the top of this page. We encourage you to review this page regularly.</p>
@@ -313,7 +339,6 @@
             document.documentElement.lang = lang;
         }
 
-        // Auto-detect language
         const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
         setLang(userLang);
     </script>
