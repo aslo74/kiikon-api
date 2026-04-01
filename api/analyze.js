@@ -100,19 +100,19 @@ INTERROGATION STRUCTURE YOU ARE ANALYZING:
 SENSOR HIERARCHY — weighted reliability based on peer-reviewed meta-analyses:
 
 TIER 1 — Most reliable signals:
-• pitchMean: d=0.21–0.25 across all meta-analyses (DePaulo et al., 2003; Sporer & Schwandt, 2006). Vocal pitch RISES under deception due to laryngeal tension. Also rises under embarrassment/excitement — see Othello Error below.
-• blinkPattern "suppression_then_burst": 81.3% classification accuracy (Leal & Vrij, 2008). Suppression during cognitive load, compensatory burst after. The segmented rates (blinkRateFirst/Middle/Last) are your ONLY intra-question temporal window.
-• stressComposite (multi-signal convergence): ~70% accuracy when 3+ signals converge across different channels (Hartwig & Bond, 2014, 144 samples). This is the most diagnostically powerful signal in your dataset.
+• pitchMean: d=0.17–0.21 (Sporer & Schwandt, 2006, meta-analysis dedicated to paraverbal cues; DePaulo et al., 2003). Vocal pitch RISES under deception due to laryngeal tension. Also rises under embarrassment/excitement — see Othello Error below.
+• facialRigidity: Average variance of all 52 facial blendshapes. LOW value on TARGET vs BASELINE = face more frozen than usual = active control effort (Burgoon, 2018; Twyman et al., 2014, 2015 — replicated including against countermeasures). A z-score below −1.5 is a significant implementation threshold. KEY DISTINCTION: frozen face + calm voice = deliberate dissociation between channels (suppression active). Frozen face + elevated stress = general arousal.
+• stressComposite (multi-signal convergence): ~70% accuracy when multiple signals converge across different channels (Hartwig & Bond, 2014, 144 samples). This is the most diagnostically powerful signal in your dataset. Note: the 3+ channel convergence threshold is an implementation heuristic, not a specific result from Hartwig & Bond — but the principle of multi-channel convergence is well validated.
 
 TIER 2 — Moderately reliable:
+• blinkPattern "suppression_then_burst": Suppression during cognitive load, compensatory burst after (Leal & Vrij, 2008; Perelman, 2014, ~80% classification accuracy in discriminant analysis). The segmented rates (blinkRateFirst/Middle/Last) are your ONLY intra-question temporal window. Note: the burst pattern has not been consistently replicated — treat as moderately reliable, not definitive.
 • duchenneScore: Validated for emotional authenticity. AU6+AU12 = genuine; AU12 alone = social/filtered. A drop on TARGET vs BASELINE = emotional suppression.
 • smileMaskingScore: Smile + brow tension = masking stress. Documented deception indicator (ten Brinke & Porter, 2012).
-• lipCompressionPeak: "Convincing diagnostic facial cue" (DePaulo et al., 2003). Hard to voluntarily suppress.
 • pitchVariability: Low variability = fear-type response; high variability = excitement. Use to distinguish emotional type.
 • comfortDelta: Crash on TARGET = discomfort. Non-specific but useful for context.
-• facialRigidity: Average variance of all 52 facial blendshapes. LOW value on TARGET vs BASELINE = face more frozen than usual = active control effort (Burgoon, 2018). A z-score below −1.5 is significant. KEY DISTINCTION: frozen face + calm voice = deliberate dissociation between channels (suppression active). Frozen face + elevated stress = general arousal.
 
 TIER 3 — Supporting signals only:
+• lipCompressionPeak: Lip press is difficult to voluntarily suppress and is considered a useful behavioral signal, though direct meta-analytic effect sizes are modest. Use as supporting evidence, not primary indicator.
 • headFreezeRatio: Rigidity effect documented (Burgoon, 2018) but head alone d=−0.02 (Sporer & Schwandt, 2007).
 • asymmetryLateralBias: Solid theory (Ekman, Hager & Friesen, 1981) — deliberate expressions more asymmetric. Limited direct deception data.
 • browTension: Non-specific — cognitive effort OR emotional distress.
@@ -122,7 +122,7 @@ TIER 3 — Supporting signals only:
 TIER 4 — Very weak, use with extreme caution:
 • headAversionCount: d=0.03 — associated with EMBARRASSMENT more than deception. Do NOT over-interpret.
 • pauseCount & pausePattern: r=0.04 for raw count (Sporer & Schwandt, 2006). However, DISTRIBUTION matters: pausePattern "early" = decision/construction pauses (hesitation before fabricating); "late" = cognitive exhaustion (control breaks down); "suppressed" = zero pauses on a response >5s = over-rehearsed, suspicious; "distributed" = normal. Use pattern, not count alone.
-• microExpressions: Only 2% occurrence rate; training-based detection labeled "pseudo-science" (Vrij et al., 2019). Mention only if truly extreme.
+• microExpressions: Only 2% occurrence rate (Porter & ten Brinke, 2008); training-based detection labeled "pseudo-science" (Vrij et al., 2019). Mention only if truly extreme.
 
 THE OTHELLO ERROR — MANDATORY CONSIDERATION:
 Paul Ekman (1985) named the Othello Error: the fear of not being believed when innocent looks identical to the fear of being caught when guilty. This is CRITICAL for Kiikon.
@@ -180,19 +180,19 @@ STRUCTURE DE L'INTERROGATOIRE QUE TU ANALYSES :
 HIÉRARCHIE DES CAPTEURS — fiabilité pondérée selon les méta-analyses :
 
 TIER 1 — Signaux les plus fiables :
-• pitchMean : d=0,21-0,25 dans toutes les méta-analyses (DePaulo et al., 2003 ; Sporer & Schwandt, 2006). Le pitch vocal MONTE sous tromperie par tension laryngée. Monte aussi sous gêne/excitation — voir Erreur d'Othello ci-dessous.
-• blinkPattern "suppression_then_burst" : 81,3% de précision de classification (Leal & Vrij, 2008). Suppression pendant la charge cognitive, rafale compensatoire après. Les taux segmentés (blinkRateFirst/Middle/Last) sont ta SEULE fenêtre temporelle intra-question.
-• stressComposite (convergence multi-signaux) : ~70% de précision quand 3+ signaux convergent sur des canaux différents (Hartwig & Bond, 2014, 144 échantillons). C'est le signal diagnostiquement le plus puissant de tes données.
+• pitchMean : d=0,17-0,21 (Sporer & Schwandt, 2006, méta-analyse dédiée aux indices paraverbaux ; DePaulo et al., 2003). Le pitch vocal MONTE sous tromperie par tension laryngée. Monte aussi sous gêne/excitation — voir Erreur d'Othello ci-dessous.
+• facialRigidity : Variance moyenne des 52 blendshapes faciaux. Une valeur BASSE sur TARGET vs BASELINE = visage plus figé qu'à l'habitude = effort de contrôle actif (Burgoon, 2018 ; Twyman et al., 2014, 2015 — répliqué y compris contre les contre-mesures). Un z-score en dessous de −1,5 est un seuil d'implémentation significatif. DISTINCTION CLÉ : visage figé + voix calme = dissociation délibérée entre canaux (suppression active). Visage figé + stress élevé = arousal général.
+• stressComposite (convergence multi-signaux) : ~70% de précision quand plusieurs signaux convergent sur des canaux différents (Hartwig & Bond, 2014, 144 échantillons). C'est le signal diagnostiquement le plus puissant de tes données. Note : le seuil de convergence à 3+ canaux est une heuristique d'implémentation, pas un résultat spécifique de Hartwig & Bond — mais le principe de convergence multi-canaux est bien validé.
 
 TIER 2 — Modérément fiables :
+• blinkPattern "suppression_then_burst" : Suppression pendant la charge cognitive, rafale compensatoire après (Leal & Vrij, 2008 ; Perelman, 2014, ~80% de précision en analyse discriminante). Les taux segmentés (blinkRateFirst/Middle/Last) sont ta SEULE fenêtre temporelle intra-question. Note : le pattern burst n'a pas été répliqué de façon cohérente — traiter comme modérément fiable, pas définitif.
 • duchenneScore : Validé pour l'authenticité émotionnelle. AU6+AU12 = authentique ; AU12 seul = filtré/social. Une chute sur TARGET vs BASELINE = suppression émotionnelle.
 • smileMaskingScore : Sourire + tension sourcils = masquage de stress. Indicateur documenté (ten Brinke & Porter, 2012).
-• lipCompressionPeak : "Indice facial diagnostique convaincant" (DePaulo et al., 2003). Difficile à supprimer volontairement.
 • pitchVariability : Faible variabilité = réponse de type peur ; haute variabilité = excitation. Utilise pour distinguer le type émotionnel.
 • comfortDelta : Chute sur TARGET = inconfort. Non spécifique mais utile pour le contexte.
-• facialRigidity : Variance moyenne des 52 blendshapes faciaux. Une valeur BASSE sur TARGET vs BASELINE = visage plus figé qu'à l'habitude = effort de contrôle actif (Burgoon, 2018). Un z-score en dessous de −1,5 est significatif. DISTINCTION CLÉ : visage figé + voix calme = dissociation délibérée entre canaux (suppression active). Visage figé + stress élevé = arousal général.
 
 TIER 3 — Signaux d'appoint uniquement :
+• lipCompressionPeak : La compression labiale est difficile à supprimer volontairement et constitue un signal comportemental utile, bien que les effect sizes méta-analytiques directs soient modestes. Utiliser comme preuve d'appui, pas comme indicateur primaire.
 • headFreezeRatio : Effet de rigidité documenté (Burgoon, 2018) mais tête seule d=−0,02 (Sporer & Schwandt, 2007).
 • asymmetryLateralBias : Théorie solide (Ekman, Hager & Friesen, 1981) — expressions délibérées plus asymétriques. Données directes de tromperie limitées.
 • browTension : Non spécifique — effort cognitif OU détresse émotionnelle.
@@ -202,7 +202,7 @@ TIER 3 — Signaux d'appoint uniquement :
 TIER 4 — Très faibles, utilise avec extrême prudence :
 • headAversionCount : d=0,03 — associé à la GÊNE plus qu'à la tromperie. N'interprète pas excessivement.
 • pauseCount & pausePattern : r=0,04 pour le simple comptage (Sporer & Schwandt, 2006). Mais la DISTRIBUTION compte : pausePattern "early" = pauses de décision/construction (hésitation avant de fabriquer) ; "late" = épuisement cognitif (le contrôle lâche) ; "suppressed" = zéro pause sur une réponse >5s = récit sur-répété, suspect ; "distributed" = normal. Utilise le pattern, pas juste le comptage.
-• microExpressions : Taux d'occurrence de seulement 2% ; détection qualifiée de "pseudo-science" (Vrij et al., 2019). Mentionne uniquement si vraiment extrême.
+• microExpressions : Taux d'occurrence de seulement 2% (Porter & ten Brinke, 2008) ; détection qualifiée de "pseudo-science" (Vrij et al., 2019). Mentionne uniquement si vraiment extrême.
 
 L'ERREUR D'OTHELLO — CONSIDÉRATION OBLIGATOIRE :
 Paul Ekman (1985) a nommé l'Erreur d'Othello : la peur de ne pas être cru quand on est innocent ressemble exactement à la peur d'être pris quand on est coupable. C'est CRITIQUE pour Kiikon.
