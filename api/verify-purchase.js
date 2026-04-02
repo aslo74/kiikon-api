@@ -71,8 +71,15 @@ async function verifyIos(productId, receiptData) {
     return { isValid: false, error: 'receiptData missing' };
   }
 
+  // Normaliser base64url → base64 standard (Apple exige base64 avec + et /)
+  const normalizedReceipt = receiptData
+    .replace(/-/g, '+')
+    .replace(/_/g, '/')
+    .replace(/\s/g, '');
+  console.log('[iOS] Receipt normalized length:', normalizedReceipt.length);
+
   const payload = JSON.stringify({
-    'receipt-data': receiptData,
+    'receipt-data': normalizedReceipt,
     'password': secret,
     'exclude-old-transactions': true,
   });
