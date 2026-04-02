@@ -41,19 +41,18 @@ async function verifyAndroid(productId, purchaseToken) {
     console.log('[Android] purchaseState:', data.purchaseState, '| acknowledgementState:', data.acknowledgementState);
     // purchaseState: 0 = Acheté ✅, 1 = Annulé, 2 = En attente
     const isValid = data.purchaseState === 0;
-    // Acknowledger le consumable si pas encore fait (acknowledgementState: 0 = non acknowled)
-    if (isValid && data.acknowledgementState === 0) {
+    // Consommer le consumable côté serveur — libère le produit pour rachat immédiat
+    if (isValid) {
       try {
-        await publisher.purchases.products.acknowledge({
+        await publisher.purchases.products.consume({
           packageName: ANDROID_PACKAGE,
           productId,
           token: purchaseToken,
-          requestBody: {},
         });
-        console.log('[Android] Purchase acknowledged ✅');
-      } catch (ackErr) {
-        console.error('[Android] Acknowledge error:', ackErr.message);
-        // Non bloquant — on livre quand même
+        console.log('[Android] Purchase consumed ✅ — produit libéré pour rachat');
+      } catch (consumeErr) {
+        // Si déjà consommé, Google retourne une erreur — non bloquant
+        console.log('[Android] Consume info:', consumeErr.message);
       }
     }
     return { isValid, purchaseState: data.purchaseState };
@@ -70,9 +69,7 @@ async function verifyIos(productId, receiptData) {
     'password': secret,
     'exclude-old-transactions': true,
   });
-  // 1. Essayer production
   let result = await callApple(APPLE_PROD_URL, payload);
-  // 2. Status 21007 = receipt sandbox → retry sandbox
   if (result && result.status === 21007) {
     console.log('[iOS] Sandbox receipt detected, retrying sandbox...');
     result = await callApple(APPLE_SAND_URL, payload);
@@ -80,7 +77,6 @@ async function verifyIos(productId, receiptData) {
   if (!result || result.status !== 0) {
     return { isValid: false, appleStatus: result?.status };
   }
-  // Vérifier que le productId est dans le receipt
   const allTxn = [
     ...(result.receipt?.in_app || []),
     ...(result.latest_receipt_info || []),
