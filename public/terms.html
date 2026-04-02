@@ -3,160 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiikon — Conditions d'utilisation / Terms of Use</title>
+    <title>Bluffr AI — Conditions d'utilisation / Terms of Use</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
-
         :root {
-            --bg: #0a0a0f;
-            --surface: #13131a;
-            --border: #1e1e2a;
-            --text: #e0e0e8;
-            --text-muted: #8888a0;
-            --accent: #c8a832;
-            --accent-dim: #c8a83220;
+            --bg: #0a0a0f; --surface: #13131a; --border: #1e1e2a;
+            --text: #e0e0e8; --text-muted: #8888a0;
+            --accent: #c8a832; --accent-dim: #c8a83220;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        .header {
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .header h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .lang-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.2rem;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--accent-dim);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .content {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 4rem;
-        }
-
-        .date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: 1rem;
-            color: var(--accent);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin: 2.5rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .header { text-align: center; padding: 3rem 1.5rem 2rem; border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; }
+        .header h1 { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; font-weight: 500; color: var(--text-muted); margin-top: 0.5rem; }
+        .lang-toggle { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; }
+        .lang-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 0.4rem 1.2rem; border-radius: 20px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: all 0.2s; }
+        .lang-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+        .content { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+        .date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+        h2 { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
         p { margin-bottom: 1rem; }
-
-        .highlight {
-            background: var(--accent-dim);
-            border-left: 3px solid var(--accent);
-            padding: 1rem 1.2rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-        }
-
+        .highlight { background: var(--accent-dim); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
         .highlight strong { color: var(--accent); }
-
-        .warning {
-            background: #2a1a1a;
-            border-left: 3px solid #e84040;
-            padding: 1rem 1.2rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-        }
-
+        .warning { background: #2a1a1a; border-left: 3px solid #e84040; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
         .warning strong { color: #e84040; }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 1rem;
-        }
-
-        ul li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        ul li::before {
-            content: '›';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
+        ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
+        ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+        ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
+        .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
         [lang="en"] { display: none; }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">Kiikon</div>
+        <div class="logo">Bluffr AI</div>
         <h1 lang="fr">Conditions générales d'utilisation</h1>
         <h1 lang="en">Terms of Use</h1>
         <div class="lang-toggle">
@@ -169,19 +51,19 @@
 
         <!-- ==================== FRANÇAIS ==================== -->
         <div lang="fr">
-            <p class="date">Dernière mise à jour : 25 mars 2026</p>
+            <p class="date">Dernière mise à jour : 2 avril 2026</p>
 
             <div class="warning">
                 <strong>⚠️ AVERTISSEMENT IMPORTANT</strong><br>
-                Kiikon est une application de <strong>divertissement uniquement</strong>. Elle ne constitue pas un outil scientifique de détection de mensonges. Les résultats sont générés à des fins ludiques et ne doivent en aucun cas être utilisés pour porter un jugement sur la sincérité d'une personne, dans un cadre professionnel, juridique, médical ou personnel.
+                Bluffr AI est une application de <strong>divertissement uniquement</strong>. Elle ne constitue pas un outil scientifique de détection de mensonges. Les résultats sont générés à des fins ludiques et ne doivent en aucun cas être utilisés pour porter un jugement sur la sincérité d'une personne, dans un cadre professionnel, juridique, médical ou personnel.
             </div>
 
             <h2>1. Objet</h2>
-            <p>Les présentes conditions générales d'utilisation (« CGU ») régissent l'utilisation de l'application mobile Kiikon (l'« Application »), éditée par CUB-ITH, micro-entreprise de droit français (SIREN : 992 934 448).</p>
+            <p>Les présentes conditions générales d'utilisation (« CGU ») régissent l'utilisation de l'application mobile Bluffr AI (l'« Application »), éditée par CUB-ITH, micro-entreprise de droit français (SIREN : 992 934 448).</p>
             <p>En utilisant l'Application, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.</p>
 
             <h2>2. Description du service</h2>
-            <p>Kiikon est une application de divertissement qui propose une expérience ludique d'analyse d'expressions faciales et comportementales. L'Application utilise la caméra de votre appareil pour détecter des expressions faciales, votre microphone pour transcrire vos réponses vocales, et génère un résultat fictif d'analyse comportementale via des modèles d'intelligence artificielle tiers.</p>
+            <p>Bluffr AI est une application de divertissement qui propose une expérience ludique d'analyse d'expressions faciales et comportementales. L'Application utilise la caméra de votre appareil pour détecter des expressions faciales, votre microphone pour transcrire vos réponses vocales, et génère un résultat fictif d'analyse comportementale via des modèles d'intelligence artificielle tiers.</p>
             <p>L'Application propose deux modes :</p>
             <ul>
                 <li><strong>Mode gratuit :</strong> analyse avec publicités (Google AdMob)</li>
@@ -197,7 +79,7 @@
             <p>Ces services reçoivent des données limitées (coefficients d'expression numériques et transcriptions textuelles) exclusivement pour la génération du résultat. Ces données ne sont pas utilisées pour entraîner leurs modèles d'IA. En utilisant l'Application, vous consentez explicitement à cet envoi de données, après information via l'écran de consentement dédié au premier lancement.</p>
 
             <div class="highlight">
-                <strong>🎭 Les résultats fournis par Kiikon sont purement fictifs et ludiques.</strong> L'Application ne prétend pas détecter les mensonges de manière fiable. Aucune technologie actuelle ne permet de détecter les mensonges de manière certaine par la seule analyse des expressions faciales. Les résultats ne doivent jamais être utilisés pour accuser, juger ou prendre des décisions concernant une personne.
+                <strong>🎭 Les résultats fournis par Bluffr AI sont purement fictifs et ludiques.</strong> L'Application ne prétend pas détecter les mensonges de manière fiable. Aucune technologie actuelle ne permet de détecter les mensonges de manière certaine par la seule analyse des expressions faciales. Les résultats ne doivent jamais être utilisés pour accuser, juger ou prendre des décisions concernant une personne.
             </div>
 
             <h2>4. Accès à la caméra et au microphone</h2>
@@ -217,7 +99,7 @@
             <p>Le mode gratuit de l'Application affiche des publicités fournies par Google AdMob, sous réserve de votre consentement préalable. Ces publicités sont soumises aux <a href="https://policies.google.com/technologies/ads" target="_blank">règles publicitaires de Google</a>.</p>
 
             <h2>7. Propriété intellectuelle</h2>
-            <p>L'ensemble des éléments de l'Application (design, code, textes, images, sons, marque Kiikon) sont la propriété exclusive de CUB-ITH et sont protégés par le droit de la propriété intellectuelle. Toute reproduction, modification ou exploitation non autorisée est interdite.</p>
+            <p>L'ensemble des éléments de l'Application (design, code, textes, images, sons, marque Bluffr AI) sont la propriété exclusive de CUB-ITH et sont protégés par le droit de la propriété intellectuelle. Toute reproduction, modification ou exploitation non autorisée est interdite.</p>
 
             <h2>8. Responsabilité</h2>
             <ul>
@@ -235,7 +117,7 @@
             <p>Si vous utilisez l'Application pour analyser les expressions faciales d'une autre personne, vous devez <strong>obligatoirement obtenir son consentement préalable et éclairé</strong>. Vous êtes seul responsable du respect de cette obligation. CUB-ITH décline toute responsabilité en cas d'utilisation sans consentement.</p>
 
             <h2>11. Âge minimum</h2>
-            <p>L'Application est destinée aux personnes de 13 ans et plus. En utilisant l'Application, vous confirmez avoir au moins 13 ans ou disposer de l'autorisation d'un parent ou tuteur légal.</p>
+            <p>L'Application est destinée aux personnes de 12 ans et plus. En utilisant l'Application, vous confirmez avoir au moins 12 ans ou disposer de l'autorisation d'un parent ou tuteur légal.</p>
 
             <h2>12. Confidentialité</h2>
             <p>L'utilisation de l'Application est soumise à notre <a href="./privacy">Politique de confidentialité</a> qui fait partie intégrante des présentes CGU.</p>
@@ -254,19 +136,19 @@
 
         <!-- ==================== ENGLISH ==================== -->
         <div lang="en">
-            <p class="date">Last updated: March 25, 2026</p>
+            <p class="date">Last updated: April 2, 2026</p>
 
             <div class="warning">
                 <strong>⚠️ IMPORTANT DISCLAIMER</strong><br>
-                Kiikon is an <strong>entertainment-only</strong> application. It is not a scientific lie detection tool. Results are generated for fun and should never be used to judge a person's sincerity in any professional, legal, medical, or personal context.
+                Bluffr AI is an <strong>entertainment-only</strong> application. It is not a scientific lie detection tool. Results are generated for fun and should never be used to judge a person's sincerity in any professional, legal, medical, or personal context.
             </div>
 
             <h2>1. Purpose</h2>
-            <p>These Terms of Use ("Terms") govern the use of the Kiikon mobile application (the "App"), published by CUB-ITH, a French micro-enterprise (SIREN: 992 934 448).</p>
+            <p>These Terms of Use ("Terms") govern the use of the Bluffr AI mobile application (the "App"), published by CUB-ITH, a French micro-enterprise (SIREN: 992 934 448).</p>
             <p>By using the App, you unconditionally accept these Terms. If you do not accept these Terms, please do not use the App.</p>
 
             <h2>2. Service description</h2>
-            <p>Kiikon is an entertainment application that offers a fun facial and behavioral expression analysis experience. The App uses your device's camera to detect facial expressions, your microphone to transcribe voice responses, and generates a fictional behavioral analysis result via third-party artificial intelligence models.</p>
+            <p>Bluffr AI is an entertainment application that offers a fun facial and behavioral expression analysis experience. The App uses your device's camera to detect facial expressions, your microphone to transcribe voice responses, and generates a fictional behavioral analysis result via third-party artificial intelligence models.</p>
             <p>The App offers two modes:</p>
             <ul>
                 <li><strong>Free mode:</strong> analysis with advertisements (Google AdMob)</li>
@@ -282,7 +164,7 @@
             <p>These services receive limited data (numerical expression coefficients and text transcriptions) exclusively for result generation. This data is not used to train their AI models. By using the App, you explicitly consent to this data transmission, after being informed via the dedicated consent screen at first launch.</p>
 
             <div class="highlight">
-                <strong>🎭 Results provided by Kiikon are purely fictional and for entertainment.</strong> The App does not claim to reliably detect lies. No current technology can detect lies with certainty through facial expression analysis alone. Results should never be used to accuse, judge, or make decisions about a person.
+                <strong>🎭 Results provided by Bluffr AI are purely fictional and for entertainment.</strong> The App does not claim to reliably detect lies. No current technology can detect lies with certainty through facial expression analysis alone. Results should never be used to accuse, judge, or make decisions about a person.
             </div>
 
             <h2>4. Camera and microphone access</h2>
@@ -302,7 +184,7 @@
             <p>The App's free mode displays advertisements provided by Google AdMob, subject to your prior consent. These advertisements are subject to <a href="https://policies.google.com/technologies/ads" target="_blank">Google's advertising policies</a>.</p>
 
             <h2>7. Intellectual property</h2>
-            <p>All elements of the App (design, code, text, images, sounds, Kiikon brand) are the exclusive property of CUB-ITH and are protected by intellectual property law. Any unauthorized reproduction, modification, or exploitation is prohibited.</p>
+            <p>All elements of the App (design, code, text, images, sounds, Bluffr AI brand) are the exclusive property of CUB-ITH and are protected by intellectual property law. Any unauthorized reproduction, modification, or exploitation is prohibited.</p>
 
             <h2>8. Liability</h2>
             <ul>
@@ -320,7 +202,7 @@
             <p>If you use the App to analyze another person's facial expressions, you <strong>must obtain their prior informed consent</strong>. You are solely responsible for complying with this obligation. CUB-ITH disclaims all liability in case of use without consent.</p>
 
             <h2>11. Minimum age</h2>
-            <p>The App is intended for persons aged 13 and over. By using the App, you confirm that you are at least 13 years old or have the authorization of a parent or legal guardian.</p>
+            <p>The App is intended for persons aged 12 and over. By using the App, you confirm that you are at least 12 years old or have the authorization of a parent or legal guardian.</p>
 
             <h2>12. Privacy</h2>
             <p>Use of the App is subject to our <a href="./privacy">Privacy Policy</a>, which forms an integral part of these Terms.</p>
@@ -339,7 +221,7 @@
     </div>
 
     <div class="footer">
-        © 2026 CUB-ITH — Kiikon
+        © 2026 CUB-ITH — Bluffr AI
     </div>
 
     <script>
@@ -352,7 +234,6 @@
             });
             document.documentElement.lang = lang;
         }
-
         const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
         setLang(userLang);
     </script>
