@@ -39,9 +39,7 @@ async function verifyAndroid(productId, purchaseToken) {
       token: purchaseToken,
     });
     console.log('[Android] purchaseState:', data.purchaseState, '| acknowledgementState:', data.acknowledgementState);
-    // purchaseState: 0 = Acheté ✅, 1 = Annulé, 2 = En attente
     const isValid = data.purchaseState === 0;
-    // Consommer le consumable côté serveur — libère le produit pour rachat immédiat
     if (isValid) {
       try {
         await publisher.purchases.products.consume({
@@ -51,7 +49,6 @@ async function verifyAndroid(productId, purchaseToken) {
         });
         console.log('[Android] Purchase consumed ✅ — produit libéré pour rachat');
       } catch (consumeErr) {
-        // Si déjà consommé, Google retourne une erreur — non bloquant
         console.log('[Android] Consume info:', consumeErr.message);
       }
     }
@@ -62,26 +59,49 @@ async function verifyAndroid(productId, purchaseToken) {
   }
 }
 async function verifyIos(productId, receiptData) {
+  console.log('[iOS] verifyIos called — productId:', productId, '| receiptData length:', receiptData ? receiptData.length : 'NULL');
+  
   const secret = process.env.APPLE_SHARED_SECRET;
-  if (!secret) return { isValid: false, error: 'APPLE_SHARED_SECRET not set' };
+  if (!secret) {
+    console.error('[iOS] APPLE_SHARED_SECRET not set');
+    return { isValid: false, error: 'APPLE_SHARED_SECRET not set' };
+  }
+  if (!receiptData) {
+    console.error('[iOS] receiptData is null or empty');
+    return { isValid: false, error: 'receiptData missing' };
+  }
+
   const payload = JSON.stringify({
     'receipt-data': receiptData,
     'password': secret,
     'exclude-old-transactions': true,
   });
+
+  console.log('[iOS] Calling Apple prod URL...');
   let result = await callApple(APPLE_PROD_URL, payload);
+  console.log('[iOS] Apple prod response status:', result?.status);
+
   if (result && result.status === 21007) {
     console.log('[iOS] Sandbox receipt detected, retrying sandbox...');
     result = await callApple(APPLE_SAND_URL, payload);
+    console.log('[iOS] Apple sandbox response status:', result?.status);
   }
+
   if (!result || result.status !== 0) {
+    console.error('[iOS] Invalid receipt — appleStatus:', result?.status);
     return { isValid: false, appleStatus: result?.status };
   }
+
   const allTxn = [
     ...(result.receipt?.in_app || []),
     ...(result.latest_receipt_info || []),
   ];
+  console.log('[iOS] Total transactions found:', allTxn.length);
+  console.log('[iOS] Looking for productId:', productId);
+  
   const match = allTxn.find(t => t.product_id === productId);
+  console.log('[iOS] Match found:', !!match, '| transactionId:', match?.transaction_id);
+
   return {
     isValid: !!match,
     transactionId: match?.transaction_id,
