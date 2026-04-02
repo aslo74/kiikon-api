@@ -3,150 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiikon — Politique de confidentialité / Privacy Policy</title>
+    <title>Bluffr AI — Politique de confidentialité / Privacy Policy</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
-
         :root {
-            --bg: #0a0a0f;
-            --surface: #13131a;
-            --border: #1e1e2a;
-            --text: #e0e0e8;
-            --text-muted: #8888a0;
-            --accent: #c8a832;
-            --accent-dim: #c8a83220;
+            --bg: #0a0a0f; --surface: #13131a; --border: #1e1e2a;
+            --text: #e0e0e8; --text-muted: #8888a0;
+            --accent: #c8a832; --accent-dim: #c8a83220;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        .header {
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .logo {
-            font-family: 'Space Mono', monospace;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-
-        .header h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .lang-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.2rem;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--accent-dim);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .content {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem 4rem;
-        }
-
-        .date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            font-family: 'Space Mono', monospace;
-            font-size: 1rem;
-            color: var(--accent);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin: 2.5rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
+        .header { text-align: center; padding: 3rem 1.5rem 2rem; border-bottom: 1px solid var(--border); }
+        .logo { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; }
+        .header h1 { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; font-weight: 500; color: var(--text-muted); margin-top: 0.5rem; }
+        .lang-toggle { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; }
+        .lang-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 0.4rem 1.2rem; border-radius: 20px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: all 0.2s; }
+        .lang-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+        .content { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+        .date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+        h2 { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
         p { margin-bottom: 1rem; }
-
-        .highlight {
-            background: var(--accent-dim);
-            border-left: 3px solid var(--accent);
-            padding: 1rem 1.2rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-        }
-
+        .highlight { background: var(--accent-dim); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
         .highlight strong { color: var(--accent); }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 1rem;
-        }
-
-        ul li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        ul li::before {
-            content: '›';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 700;
-        }
-
+        ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
+        ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; }
+        ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
+        .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
         [lang="en"] { display: none; }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo">Kiikon</div>
+        <div class="logo">Bluffr AI</div>
         <h1 id="page-title-fr" lang="fr">Politique de confidentialité</h1>
         <h1 id="page-title-en" lang="en">Privacy Policy</h1>
         <div class="lang-toggle">
@@ -159,20 +49,20 @@
 
         <!-- ==================== FRANÇAIS ==================== -->
         <div lang="fr">
-            <p class="date">Dernière mise à jour : 25 mars 2026</p>
+            <p class="date">Dernière mise à jour : 2 avril 2026</p>
 
             <div class="highlight">
-                <strong>🎭 Kiikon est une application de divertissement.</strong> Les résultats d'analyse ne constituent en aucun cas un diagnostic scientifique fiable de détection de mensonges. Cette application ne doit pas être utilisée pour prendre des décisions réelles concernant la véracité des propos d'une personne.
+                <strong>🎭 Bluffr AI est une application de divertissement.</strong> Les résultats d'analyse ne constituent en aucun cas un diagnostic scientifique fiable de détection de mensonges. Cette application ne doit pas être utilisée pour prendre des décisions réelles concernant la véracité des propos d'une personne.
             </div>
 
             <h2>1. Éditeur</h2>
-            <p>Kiikon est éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français (SIREN : 992 934 448).</p>
+            <p>Bluffr AI est éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français (SIREN : 992 934 448).</p>
             <p>Contact : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
             <h2>2. Données collectées et traitées</h2>
 
             <p><strong>Données d'analyse faciale (caméra)</strong></p>
-            <p>Kiikon utilise la caméra frontale de votre appareil pour analyser les expressions faciales en temps réel via la technologie MediaPipe (52 coefficients d'expression, dits « blendshapes »). Ces coefficients représentent des valeurs numériques abstraites d'expressions faciales (ex. : degré d'ouverture de la bouche, tension des sourcils) et ne permettent pas d'identifier une personne. Ces données sont :</p>
+            <p>Bluffr AI utilise la caméra frontale de votre appareil pour analyser les expressions faciales en temps réel via la technologie MediaPipe (52 coefficients d'expression, dits « blendshapes »). Ces coefficients représentent des valeurs numériques abstraites d'expressions faciales (ex. : degré d'ouverture de la bouche, tension des sourcils) et ne permettent pas d'identifier une personne. Ces données sont :</p>
             <ul>
                 <li>Traitées localement sur votre appareil</li>
                 <li>Transmises de manière chiffrée (HTTPS) à <strong>xAI Corp. (Grok)</strong> pour l'analyse comportementale, puis automatiquement supprimées par xAI sous 30 jours</li>
@@ -191,7 +81,7 @@
             </ul>
 
             <p><strong>Publicité (AdMob)</strong></p>
-            <p>En mode gratuit, Kiikon utilise <strong>Google LLC (AdMob)</strong> pour afficher des publicités. AdMob peut collecter : adresse IP, identifiants publicitaires, données d'interaction, diagnostics. Ces collectes sont soumises à votre consentement préalable (voir section 4). Vous pouvez gérer vos préférences publicitaires dans les paramètres de votre appareil. Pour plus d'informations : <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a>.</p>
+            <p>En mode gratuit, Bluffr AI utilise <strong>Google LLC (AdMob)</strong> pour afficher des publicités. AdMob peut collecter : adresse IP, identifiants publicitaires, données d'interaction, diagnostics. Ces collectes sont soumises à votre consentement préalable (voir section 4). Vous pouvez gérer vos préférences publicitaires dans les paramètres de votre appareil. Pour plus d'informations : <a href="https://policies.google.com/privacy" target="_blank">politique de confidentialité de Google</a>.</p>
 
             <h2>3. Sous-traitants et transferts internationaux</h2>
             <p>Le traitement des données implique les sous-traitants suivants, tous basés aux États-Unis :</p>
@@ -208,7 +98,7 @@
             <p>Pour la publicité AdMob en EEE/UK/Suisse, un consentement séparé conforme au TCF v2 vous est demandé lors du premier lancement.</p>
 
             <h2>5. Décisions automatisées</h2>
-            <p>Kiikon utilise un traitement automatisé des données faciales et vocales pour générer un résultat d'analyse comportementale. Conformément à l'Article 13(2)(f) du RGPD, nous vous informons que ce traitement automatisé est réalisé à des fins de <strong>divertissement uniquement</strong> et ne produit pas d'effets juridiques ni de décisions significatives vous concernant. Les résultats n'ont aucune valeur scientifique ou diagnostique. Conformément à l'Article 50 du règlement européen sur l'IA (AI Act), nous vous informons que l'application utilise un système d'analyse d'expressions faciales basé sur l'intelligence artificielle.</p>
+            <p>Bluffr AI utilise un traitement automatisé des données faciales et vocales pour générer un résultat d'analyse comportementale. Conformément à l'Article 13(2)(f) du RGPD, nous vous informons que ce traitement automatisé est réalisé à des fins de <strong>divertissement uniquement</strong> et ne produit pas d'effets juridiques ni de décisions significatives vous concernant. Les résultats n'ont aucune valeur scientifique ou diagnostique. Conformément à l'Article 50 du règlement européen sur l'IA (AI Act), nous vous informons que l'application utilise un système d'analyse d'expressions faciales basé sur l'intelligence artificielle.</p>
 
             <h2>6. Durée de conservation</h2>
             <ul>
@@ -234,7 +124,7 @@
             <p>CUB-ITH met en œuvre des mesures techniques appropriées : chiffrement HTTPS de toutes les communications, absence de stockage de données personnelles, traitement éphémère, et recours à des sous-traitants certifiés (ISO 27001 pour OpenAI, SOC 2 pour Vercel).</p>
 
             <h2>9. Mineurs</h2>
-            <p>Kiikon n'est pas destinée aux enfants de moins de 13 ans. Si vous êtes parent et pensez que votre enfant a utilisé l'application, contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+            <p>Bluffr AI n'est pas destinée aux enfants de moins de 12 ans. Si vous êtes parent et pensez que votre enfant a utilisé l'application, contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
 
             <h2>10. Modifications</h2>
             <p>Nous pouvons mettre à jour cette politique. La date de dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons à consulter cette page régulièrement.</p>
@@ -242,20 +132,20 @@
 
         <!-- ==================== ENGLISH ==================== -->
         <div lang="en">
-            <p class="date">Last updated: March 25, 2026</p>
+            <p class="date">Last updated: April 2, 2026</p>
 
             <div class="highlight">
-                <strong>🎭 Kiikon is an entertainment application.</strong> Analysis results do not constitute a reliable scientific lie detection diagnosis. This application should not be used to make real decisions about the truthfulness of a person's statements.
+                <strong>🎭 Bluffr AI is an entertainment application.</strong> Analysis results do not constitute a reliable scientific lie detection diagnosis. This application should not be used to make real decisions about the truthfulness of a person's statements.
             </div>
 
             <h2>1. Publisher</h2>
-            <p>Kiikon is published by <strong>CUB-ITH</strong>, a French micro-enterprise (SIREN: 992 934 448).</p>
+            <p>Bluffr AI is published by <strong>CUB-ITH</strong>, a French micro-enterprise (SIREN: 992 934 448).</p>
             <p>Contact: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
 
             <h2>2. Data collected and processed</h2>
 
             <p><strong>Facial analysis data (camera)</strong></p>
-            <p>Kiikon uses your device's front camera to analyze facial expressions in real time using MediaPipe technology (52 expression coefficients, known as "blendshapes"). These coefficients represent abstract numerical values of facial expressions (e.g., degree of mouth opening, eyebrow tension) and cannot be used to identify a person. This data is:</p>
+            <p>Bluffr AI uses your device's front camera to analyze facial expressions in real time using MediaPipe technology (52 expression coefficients, known as "blendshapes"). These coefficients represent abstract numerical values of facial expressions (e.g., degree of mouth opening, eyebrow tension) and cannot be used to identify a person. This data is:</p>
             <ul>
                 <li>Processed locally on your device</li>
                 <li>Transmitted encrypted (HTTPS) to <strong>xAI Corp. (Grok)</strong> for behavioral analysis, then automatically deleted by xAI within 30 days</li>
@@ -274,7 +164,7 @@
             </ul>
 
             <p><strong>Advertising (AdMob)</strong></p>
-            <p>In free mode, Kiikon uses <strong>Google LLC (AdMob)</strong> to display advertisements. AdMob may collect: IP address, advertising identifiers, interaction data, diagnostics. These collections are subject to your prior consent (see section 4). You can manage your advertising preferences in your device settings. For more information: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+            <p>In free mode, Bluffr AI uses <strong>Google LLC (AdMob)</strong> to display advertisements. AdMob may collect: IP address, advertising identifiers, interaction data, diagnostics. These collections are subject to your prior consent (see section 4). You can manage your advertising preferences in your device settings. For more information: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
 
             <h2>3. Sub-processors and international transfers</h2>
             <p>Data processing involves the following sub-processors, all based in the United States:</p>
@@ -291,7 +181,7 @@
             <p>For AdMob advertising in EEA/UK/Switzerland, a separate TCF v2 compliant consent is requested at first launch.</p>
 
             <h2>5. Automated decisions</h2>
-            <p>Kiikon uses automated processing of facial and voice data to generate a behavioral analysis result. In accordance with Article 13(2)(f) of the GDPR, we inform you that this automated processing is carried out for <strong>entertainment purposes only</strong> and does not produce legal effects or significant decisions about you. Results have no scientific or diagnostic value. In accordance with Article 50 of the EU AI Act, we inform you that the application uses a facial expression analysis system based on artificial intelligence.</p>
+            <p>Bluffr AI uses automated processing of facial and voice data to generate a behavioral analysis result. In accordance with Article 13(2)(f) of the GDPR, we inform you that this automated processing is carried out for <strong>entertainment purposes only</strong> and does not produce legal effects or significant decisions about you. Results have no scientific or diagnostic value. In accordance with Article 50 of the EU AI Act, we inform you that the application uses a facial expression analysis system based on artificial intelligence.</p>
 
             <h2>6. Data retention</h2>
             <ul>
@@ -317,7 +207,7 @@
             <p>CUB-ITH implements appropriate technical measures: HTTPS encryption of all communications, no storage of personal data, ephemeral processing, and use of certified sub-processors (ISO 27001 for OpenAI, SOC 2 for Vercel).</p>
 
             <h2>9. Children</h2>
-            <p>Kiikon is not intended for children under 13 years of age. If you are a parent and believe your child has used the application, please contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
+            <p>Bluffr AI is not intended for children under 12 years of age. If you are a parent and believe your child has used the application, please contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>.</p>
 
             <h2>10. Changes</h2>
             <p>We may update this policy. The last update date is shown at the top of this page. We encourage you to review this page regularly.</p>
@@ -325,7 +215,7 @@
     </div>
 
     <div class="footer">
-        © 2026 CUB-ITH — Kiikon
+        © 2026 CUB-ITH — Bluffr AI
     </div>
 
     <script>
@@ -338,7 +228,6 @@
             });
             document.documentElement.lang = lang;
         }
-
         const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
         setLang(userLang);
     </script>
