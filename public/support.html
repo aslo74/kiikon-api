@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluffr AI — Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #ffffff; --bg-subtle: #f9fafb; --border: #e5e7eb;
+            --text: #1f2937; --text-muted: #6b7280;
+            --accent: #2563eb; --accent-light: #eff6ff;
+        }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .site-header { border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+        .logo span { color: var(--accent); }
+        .lang-wrapper { position: relative; }
+        .lang-trigger { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); cursor: pointer; font-size: 0.875rem; font-weight: 500; color: var(--text); font-family: inherit; transition: border-color 0.15s; }
+        .lang-trigger:hover { border-color: #9ca3af; }
+        .lang-trigger svg { width: 16px; height: 16px; color: var(--text-muted); }
+        .chevron { width: 14px; height: 14px; transition: transform 0.2s; }
+        .lang-wrapper.open .chevron { transform: rotate(180deg); }
+        .lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; min-width: 160px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); overflow: hidden; z-index: 200; }
+        .lang-wrapper.open .lang-dropdown { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-size: 0.875rem; color: var(--text); transition: background 0.1s; }
+        .lang-option:hover { background: var(--bg-subtle); }
+        .lang-option.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+        .lang-option .check { margin-left: auto; width: 14px; height: 14px; }
+        .page-hero { background: var(--bg-subtle); border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
+        .page-hero-inner { max-width: 1200px; margin: 0 auto; }
+        .page-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-light); border: 1px solid #bfdbfe; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; }
+        .page-hero h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+        .page-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.875rem; color: var(--text-muted); }
+        .page-meta strong { color: var(--text); }
+        .main-layout { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 260px; gap: 4rem; align-items: start; }
+        .content section { margin-bottom: 3rem; }
+        .content h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.625rem; border-bottom: 1px solid var(--border); letter-spacing: -0.01em; }
+        .content p { margin-bottom: 1rem; }
+        .content a { color: var(--accent); text-decoration: none; }
+        .content a:hover { text-decoration: underline; }
+        .content strong { font-weight: 600; }
+        .contact-card { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: 12px; padding: 1.5rem; margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem; }
+        .contact-card svg { width: 24px; height: 24px; color: var(--accent); flex-shrink: 0; }
+        .contact-card p { margin: 0; font-size: 0.9375rem; }
+        .contact-card a { color: var(--accent); font-weight: 600; text-decoration: none; }
+        .contact-card a:hover { text-decoration: underline; }
+        .faq-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 600; font-size: 1rem; margin-bottom: 0.5rem; color: var(--text); }
+        .faq-answer { color: var(--text); font-size: 0.9375rem; line-height: 1.7; }
+        .sidebar { position: sticky; top: 80px; }
+        .toc-card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+        .toc-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.875rem; }
+        .toc-list { list-style: none; }
+        .toc-list li { margin-bottom: 2px; }
+        .toc-list a { display: block; font-size: 0.8125rem; color: var(--text-muted); text-decoration: none; padding: 4px 8px; border-radius: 5px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+        .toc-list a:hover { color: var(--text); background: var(--border); }
+        .toc-list a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 500; }
+        .toc-divider { height: 1px; background: var(--border); margin: 0.875rem 0; }
+        .toc-contact { font-size: 0.8125rem; color: var(--text-muted); }
+        .toc-contact a { color: var(--accent); text-decoration: none; }
+        .site-footer { border-top: 1px solid var(--border); background: var(--bg-subtle); padding: 2rem; text-align: center; font-size: 0.8125rem; color: var(--text-muted); }
+        .site-footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 1024px) { .main-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+        @media (max-width: 640px) { .page-hero h1 { font-size: 1.75rem; } .page-meta { flex-direction: column; gap: 0.25rem; } }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="logo">Bluffr <span>AI</span></a>
+        <div class="lang-wrapper" id="langWrapper">
+            <button class="lang-trigger" onclick="toggleLangMenu()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span id="currentLangLabel">English</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" onclick="setLang('en')">
+                    <span>English</span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="lang-option" onclick="setLang('fr')"><span>Français</span></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <div class="page-badge">Support</div>
+        <h1 id="heroTitle">Help & Support</h1>
+        <div class="page-meta">
+            <span id="heroApp"><strong>App:</strong> Bluffr AI – Lie Detector</span>
+            <span id="heroPublisher"><strong>Publisher:</strong> CUB-ITH</span>
+        </div>
+    </div>
+</div>
+
+<div class="main-layout">
+<main class="content">
+
+    <!-- ENGLISH -->
+    <div id="content-en">
+
+        <div class="contact-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p>For any question or issue, contact us directly at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>. We typically respond within 48 hours.</p>
+        </div>
+
+        <section id="en-s1">
+            <h2>1. About the App</h2>
+            <div class="faq-item">
+                <div class="faq-question">How does Bluffr AI work?</div>
+                <div class="faq-answer">Bluffr AI is an entertainment app that uses your phone's camera and microphone to analyze facial expressions and vocal signals in real time. You choose a question, the app runs a short behavioral analysis session, and generates a result. It is designed for fun use with friends, couples, and social settings — it is not a scientific lie detection tool.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is my data stored or shared?</div>
+                <div class="faq-answer">No. Bluffr AI does not store any personal data. Facial analysis is processed locally on your device. Voice transcription is sent encrypted to our AI partner and deleted within 30 days. No video or photo is ever recorded. For full details, see our <a href="./privacy.html">Privacy Policy</a>.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I delete my data?</div>
+                <div class="faq-answer">Since Bluffr AI does not store any personal data on our servers, there is nothing to delete remotely. Your credit balance and preferences are stored locally on your device and are automatically deleted when you uninstall the app. To revoke camera and microphone access, go to your iPhone Settings → Bluffr AI → and toggle off the permissions.</div>
+            </div>
+        </section>
+
+        <section id="en-s2">
+            <h2>2. Credits & Purchases</h2>
+            <div class="faq-item">
+                <div class="faq-question">What are credits used for?</div>
+                <div class="faq-answer">Credits unlock the premium analysis mode, which provides a detailed AI-powered behavioral report. Each premium session uses 1 credit. Credits are available in three packs: 1 credit ($0.99), 5 credits ($2.99), and 15 credits ($4.99).</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do credits expire?</div>
+                <div class="faq-answer">No. Credits do not expire and remain available until you use them.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I request a refund?</div>
+                <div class="faq-answer">All purchases are processed by Apple App Store. To request a refund, please contact Apple directly via <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a>. CUB-ITH does not process refunds directly.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I made a purchase but my credits didn't appear.</div>
+                <div class="faq-answer">Open the app and wait a few seconds — credits are usually delivered automatically. If the issue persists, use the "Restore Purchases" button in the app settings, or contact us at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a> with your Apple purchase receipt.</div>
+            </div>
+        </section>
+
+        <section id="en-s3">
+            <h2>3. Technical Issues</h2>
+            <div class="faq-item">
+                <div class="faq-question">The camera or microphone is not working.</div>
+                <div class="faq-answer">Go to iPhone Settings → Privacy & Security → Camera (or Microphone) and make sure Bluffr AI has permission enabled. If the issue persists, try restarting the app.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">The analysis result seems incorrect.</div>
+                <div class="faq-answer">Results are generated by AI for entertainment purposes and may vary. For best results, ensure good lighting, a stable position, and that the person's face is clearly visible. If a result seems inappropriate, please report it using the flag button on the results screen.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I found a bug or the app crashed.</div>
+                <div class="faq-answer">Please send us a description of the issue at <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>. Include your iPhone model and iOS version if possible. We appreciate your help improving the app.</div>
+            </div>
+        </section>
+
+        <section id="en-s4">
+            <h2>4. Contact</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I reach support?</div>
+                <div class="faq-answer"><strong>CUB-ITH</strong><br>Email: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a><br>Response time: within 48 hours</div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FRANÇAIS -->
+    <div id="content-fr" style="display:none">
+
+        <div class="contact-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <p>Pour toute question ou problème, contactez-nous directement à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>. Nous répondons généralement sous 48 heures.</p>
+        </div>
+
+        <section id="fr-s1">
+            <h2>1. À propos de l'application</h2>
+            <div class="faq-item">
+                <div class="faq-question">Comment fonctionne Bluffr AI ?</div>
+                <div class="faq-answer">Bluffr AI est une application de divertissement qui utilise la caméra et le microphone de votre téléphone pour analyser les expressions faciales et les signaux vocaux en temps réel. Vous choisissez une question, l'application lance une courte session d'analyse comportementale et génère un résultat. Elle est conçue pour une utilisation ludique entre amis, en couple ou en soirée — ce n'est pas un outil scientifique de détection de mensonges.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Mes données sont-elles stockées ou partagées ?</div>
+                <div class="faq-answer">Non. Bluffr AI ne stocke aucune donnée personnelle. L'analyse faciale est traitée localement sur votre appareil. La transcription vocale est envoyée de manière chiffrée à notre partenaire IA et supprimée dans les 30 jours. Aucune vidéo ni photo n'est jamais enregistrée. Pour tous les détails, consultez notre <a href="./privacy.html">Politique de confidentialité</a>.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Comment supprimer mes données ?</div>
+                <div class="faq-answer">Bluffr AI ne stocke aucune donnée personnelle sur nos serveurs — il n'y a donc rien à supprimer à distance. Votre solde de crédits et vos préférences sont stockés localement sur votre appareil et supprimés automatiquement à la désinstallation de l'application. Pour révoquer l'accès à la caméra et au microphone, allez dans Réglages iPhone → Bluffr AI → désactivez les autorisations.</div>
+            </div>
+        </section>
+
+        <section id="fr-s2">
+            <h2>2. Crédits et achats</h2>
+            <div class="faq-item">
+                <div class="faq-question">À quoi servent les crédits ?</div>
+                <div class="faq-answer">Les crédits débloquent le mode analyse premium, qui fournit un rapport comportemental détaillé généré par IA. Chaque session premium utilise 1 crédit. Les crédits sont disponibles en trois packs : 1 crédit (0,99 $), 5 crédits (2,99 $) et 15 crédits (4,99 $).</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Les crédits expirent-ils ?</div>
+                <div class="faq-answer">Non. Les crédits n'ont pas de date d'expiration et restent disponibles jusqu'à leur utilisation.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Comment demander un remboursement ?</div>
+                <div class="faq-answer">Tous les achats sont traités par l'Apple App Store. Pour demander un remboursement, contactez directement Apple via <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a>. CUB-ITH ne traite pas les remboursements directement.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">J'ai effectué un achat mais mes crédits n'apparaissent pas.</div>
+                <div class="faq-answer">Ouvrez l'application et attendez quelques secondes — les crédits sont généralement livrés automatiquement. Si le problème persiste, utilisez le bouton "Restaurer les achats" dans les paramètres de l'application, ou contactez-nous à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a> avec votre reçu d'achat Apple.</div>
+            </div>
+        </section>
+
+        <section id="fr-s3">
+            <h2>3. Problèmes techniques</h2>
+            <div class="faq-item">
+                <div class="faq-question">La caméra ou le microphone ne fonctionne pas.</div>
+                <div class="faq-answer">Allez dans Réglages iPhone → Confidentialité et sécurité → Caméra (ou Microphone) et assurez-vous que Bluffr AI a bien les autorisations activées. Si le problème persiste, essayez de redémarrer l'application.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Le résultat de l'analyse semble incorrect.</div>
+                <div class="faq-answer">Les résultats sont générés par IA à des fins de divertissement et peuvent varier. Pour de meilleurs résultats, assurez-vous d'un bon éclairage, d'une position stable et que le visage de la personne est bien visible. Si un résultat vous semble inapproprié, signalez-le via le bouton dédié sur l'écran de résultats.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">J'ai trouvé un bug ou l'application a planté.</div>
+                <div class="faq-answer">Envoyez-nous une description du problème à <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>. Indiquez si possible votre modèle d'iPhone et votre version iOS. Merci de nous aider à améliorer l'application.</div>
+            </div>
+        </section>
+
+        <section id="fr-s4">
+            <h2>4. Contact</h2>
+            <div class="faq-item">
+                <div class="faq-question">Comment contacter le support ?</div>
+                <div class="faq-answer"><strong>CUB-ITH</strong><br>Email : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a><br>Délai de réponse : sous 48 heures</div>
+            </div>
+        </section>
+
+    </div>
+
+</main>
+
+<aside class="sidebar">
+    <div class="toc-card">
+        <div class="toc-title" id="tocTitle">On this page</div>
+        <ul class="toc-list" id="tocList"></ul>
+        <div class="toc-divider"></div>
+        <div class="toc-contact" id="tocContact">Questions? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></div>
+    </div>
+</aside>
+</div>
+
+<footer class="site-footer">
+    © 2026 CUB-ITH — Bluffr AI &nbsp;·&nbsp; <a href="./privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="./terms.html">Terms of Use</a> &nbsp;·&nbsp; <a href="mailto:contact@cub-ith.fr">Contact</a>
+</footer>
+
+<script>
+const cfg = {
+    en: {
+        heroTitle: 'Help & Support',
+        heroApp: '<strong>App:</strong> Bluffr AI – Lie Detector',
+        heroPublisher: '<strong>Publisher:</strong> CUB-ITH',
+        tocTitle: 'On this page',
+        tocContact: 'Questions? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>',
+        toc: [['#en-s1','1. About the App'],['#en-s2','2. Credits & Purchases'],['#en-s3','3. Technical Issues'],['#en-s4','4. Contact']]
+    },
+    fr: {
+        heroTitle: 'Aide & Support',
+        heroApp: '<strong>Application :</strong> Bluffr AI – Détecteur mensonge',
+        heroPublisher: '<strong>Éditeur :</strong> CUB-ITH',
+        tocTitle: 'Sur cette page',
+        tocContact: 'Questions ? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>',
+        toc: [['#fr-s1','1. À propos'],['#fr-s2','2. Crédits et achats'],['#fr-s3','3. Problèmes techniques'],['#fr-s4','4. Contact']]
+    }
+};
+let lang = 'en';
+let observer;
+
+function setLang(l) {
+    lang = l;
+    const c = cfg[l];
+    document.documentElement.lang = l;
+    document.getElementById('heroTitle').textContent = c.heroTitle;
+    document.getElementById('heroApp').innerHTML = c.heroApp;
+    document.getElementById('heroPublisher').innerHTML = c.heroPublisher;
+    document.getElementById('tocTitle').textContent = c.tocTitle;
+    document.getElementById('tocContact').innerHTML = c.tocContact;
+    document.getElementById('currentLangLabel').textContent = l === 'en' ? 'English' : 'Français';
+    document.getElementById('content-en').style.display = l === 'en' ? 'block' : 'none';
+    document.getElementById('content-fr').style.display = l === 'fr' ? 'block' : 'none';
+    const tocList = document.getElementById('tocList');
+    tocList.innerHTML = c.toc.map(([h,t]) => `<li><a href="${h}">${t}</a></li>`).join('');
+    document.querySelectorAll('.lang-option').forEach(o => {
+        const isActive = o.getAttribute('onclick').includes(`'${l}'`);
+        o.classList.toggle('active', isActive);
+        const ex = o.querySelector('.check'); if(ex) ex.remove();
+        if(isActive) o.insertAdjacentHTML('beforeend','<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>');
+    });
+    document.getElementById('langWrapper').classList.remove('open');
+    initSpy();
+}
+
+function toggleLangMenu() { document.getElementById('langWrapper').classList.toggle('open'); }
+document.addEventListener('click', e => { if(!document.getElementById('langWrapper').contains(e.target)) document.getElementById('langWrapper').classList.remove('open'); });
+
+function initSpy() {
+    if(observer) observer.disconnect();
+    const links = document.querySelectorAll('.toc-list a');
+    observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if(e.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const a = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+                if(a) a.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    document.querySelectorAll(`#content-${lang} section[id]`).forEach(s => observer.observe(s));
+}
+
+setLang('en');
+</script>
+</body>
+</html>
