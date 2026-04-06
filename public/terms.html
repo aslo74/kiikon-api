@@ -227,7 +227,7 @@
     <script>
         function setLang(lang) {
             document.querySelectorAll('[lang="fr"], [lang="en"]').forEach(el => {
-                el.style.display = el.getAttribute('lang') === lang ? '' : 'none';
+                el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
             });
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.textContent.includes(lang === 'fr' ? 'Français' : 'English'));
