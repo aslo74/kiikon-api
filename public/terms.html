@@ -1,241 +1,277 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bluffr AI — Conditions d'utilisation / Terms of Use</title>
+    <title>Bluffr AI — Terms of Use / Conditions d'utilisation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root {
-            --bg: #0a0a0f; --surface: #13131a; --border: #1e1e2a;
-            --text: #e0e0e8; --text-muted: #8888a0;
-            --accent: #c8a832; --accent-dim: #c8a83220;
+            --bg: #ffffff; --bg-subtle: #f9fafb; --border: #e5e7eb;
+            --text: #1f2937; --text-muted: #6b7280;
+            --accent: #2563eb; --accent-light: #eff6ff;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh; }
-        .header { text-align: center; padding: 3rem 1.5rem 2rem; border-bottom: 1px solid var(--border); }
-        .logo { font-family: 'Space Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--accent); letter-spacing: 4px; text-transform: uppercase; }
-        .header h1 { font-family: 'DM Sans', sans-serif; font-size: 1.3rem; font-weight: 500; color: var(--text-muted); margin-top: 0.5rem; }
-        .lang-toggle { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.2rem; }
-        .lang-btn { background: transparent; border: 1px solid var(--border); color: var(--text-muted); padding: 0.4rem 1.2rem; border-radius: 20px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: all 0.2s; }
-        .lang-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
-        .content { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
-        .date { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
-        h2 { font-family: 'Space Mono', monospace; font-size: 1rem; color: var(--accent); letter-spacing: 1px; text-transform: uppercase; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-        p { margin-bottom: 1rem; }
-        .highlight { background: var(--accent-dim); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
-        .highlight strong { color: var(--accent); }
-        .warning { background: #2a1a1a; border-left: 3px solid #e84040; padding: 1rem 1.2rem; border-radius: 0 8px 8px 0; margin: 1.5rem 0; }
-        .warning strong { color: #e84040; }
-        ul { list-style: none; padding-left: 0; margin-bottom: 1rem; }
-        ul li { position: relative; padding-left: 1.2rem; margin-bottom: 0.5rem; }
-        ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
-        [lang="en"] { display: none; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .site-header { border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.1rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+        .logo span { color: var(--accent); }
+        .lang-wrapper { position: relative; }
+        .lang-trigger { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--bg); cursor: pointer; font-size: 0.875rem; font-weight: 500; color: var(--text); font-family: inherit; transition: border-color 0.15s; }
+        .lang-trigger:hover { border-color: #9ca3af; }
+        .lang-trigger svg { width: 16px; height: 16px; color: var(--text-muted); }
+        .chevron { width: 14px; height: 14px; transition: transform 0.2s; }
+        .lang-wrapper.open .chevron { transform: rotate(180deg); }
+        .lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; min-width: 160px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); overflow: hidden; z-index: 200; }
+        .lang-wrapper.open .lang-dropdown { display: block; }
+        .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-size: 0.875rem; color: var(--text); transition: background 0.1s; }
+        .lang-option:hover { background: var(--bg-subtle); }
+        .lang-option.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+        .lang-option .check { margin-left: auto; width: 14px; height: 14px; }
+        .page-hero { background: var(--bg-subtle); border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
+        .page-hero-inner { max-width: 1200px; margin: 0 auto; }
+        .page-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-light); border: 1px solid #bfdbfe; padding: 3px 10px; border-radius: 20px; margin-bottom: 1rem; }
+        .page-hero h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+        .page-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: 0.875rem; color: var(--text-muted); }
+        .page-meta strong { color: var(--text); }
+        .main-layout { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 260px; gap: 4rem; align-items: start; }
+        .content section { margin-bottom: 3rem; }
+        .content h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; padding-bottom: 0.625rem; border-bottom: 1px solid var(--border); letter-spacing: -0.01em; }
+        .content h3 { font-size: 1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+        .content p { margin-bottom: 1rem; }
+        .content ul { margin: 0.75rem 0 1rem; padding-left: 0; list-style: none; }
+        .content ul li { position: relative; padding-left: 1.25rem; margin-bottom: 0.5rem; }
+        .content ul li::before { content: '–'; position: absolute; left: 0; color: var(--text-muted); }
+        .content a { color: var(--accent); text-decoration: none; }
+        .content a:hover { text-decoration: underline; }
+        .content strong { font-weight: 600; }
+        .notice { background: #fff7ed; border: 1px solid #fed7aa; border-left: 3px solid #f97316; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 0 0 2rem; font-size: 0.9375rem; }
+        .notice strong { color: #9a3412; }
+        .highlight { background: var(--accent-light); border: 1px solid #bfdbfe; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1.25rem 0; font-size: 0.9375rem; }
+        .sidebar { position: sticky; top: 80px; }
+        .toc-card { background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+        .toc-title { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.875rem; }
+        .toc-list { list-style: none; }
+        .toc-list li { margin-bottom: 2px; }
+        .toc-list a { display: block; font-size: 0.8125rem; color: var(--text-muted); text-decoration: none; padding: 4px 8px; border-radius: 5px; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+        .toc-list a:hover { color: var(--text); background: var(--border); }
+        .toc-list a.active { color: var(--accent); border-left-color: var(--accent); background: var(--accent-light); font-weight: 500; }
+        .toc-divider { height: 1px; background: var(--border); margin: 0.875rem 0; }
+        .toc-contact { font-size: 0.8125rem; color: var(--text-muted); }
+        .toc-contact a { color: var(--accent); text-decoration: none; }
+        .site-footer { border-top: 1px solid var(--border); background: var(--bg-subtle); padding: 2rem; text-align: center; font-size: 0.8125rem; color: var(--text-muted); }
+        .site-footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 1024px) { .main-layout { grid-template-columns: 1fr; } .sidebar { display: none; } }
+        @media (max-width: 640px) { .page-hero h1 { font-size: 1.75rem; } .page-meta { flex-direction: column; gap: 0.25rem; } }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">Bluffr AI</div>
-        <h1 lang="fr">Conditions générales d'utilisation</h1>
-        <h1 lang="en">Terms of Use</h1>
-        <div class="lang-toggle">
-            <button class="lang-btn active" onclick="setLang('fr')">🇫🇷 Français</button>
-            <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="logo">Bluffr <span>AI</span></a>
+        <div class="lang-wrapper" id="langWrapper">
+            <button class="lang-trigger" onclick="toggleLangMenu()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span id="currentLangLabel">English</span>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="lang-dropdown">
+                <div class="lang-option active" onclick="setLang('en')">
+                    <span>English</span>
+                    <svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="lang-option" onclick="setLang('fr')"><span>Français</span></div>
+            </div>
         </div>
     </div>
+</header>
 
-    <div class="content">
-
-        <!-- ==================== FRANÇAIS ==================== -->
-        <div lang="fr">
-            <p class="date">Dernière mise à jour : 2 avril 2026</p>
-
-            <div class="warning">
-                <strong>⚠️ AVERTISSEMENT IMPORTANT</strong><br>
-                Bluffr AI est une application de <strong>divertissement uniquement</strong>. Elle ne constitue pas un outil scientifique de détection de mensonges. Les résultats sont générés à des fins ludiques et ne doivent en aucun cas être utilisés pour porter un jugement sur la sincérité d'une personne, dans un cadre professionnel, juridique, médical ou personnel.
-            </div>
-
-            <h2>1. Objet</h2>
-            <p>Les présentes conditions générales d'utilisation (« CGU ») régissent l'utilisation de l'application mobile Bluffr AI (l'« Application »), éditée par CUB-ITH, micro-entreprise de droit français (SIREN : 992 934 448).</p>
-            <p>En utilisant l'Application, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.</p>
-
-            <h2>2. Description du service</h2>
-            <p>Bluffr AI est une application de divertissement qui propose une expérience ludique d'analyse d'expressions faciales et comportementales. L'Application utilise la caméra de votre appareil pour détecter des expressions faciales, votre microphone pour transcrire vos réponses vocales, et génère un résultat fictif d'analyse comportementale via des modèles d'intelligence artificielle tiers.</p>
-            <p>L'Application propose deux modes :</p>
-            <ul>
-                <li><strong>Mode gratuit :</strong> analyse avec publicités (Google AdMob)</li>
-                <li><strong>Mode premium :</strong> analyse détaillée via intelligence artificielle (xAI/Grok), accessible par crédits achetés dans l'application</li>
-            </ul>
-
-            <h2>3. Intelligence artificielle tierce</h2>
-            <p>L'Application utilise les services d'intelligence artificielle suivants pour générer les résultats d'analyse :</p>
-            <ul>
-                <li><strong>xAI Corp. (Grok)</strong> — analyse des expressions faciales et comportementales</li>
-                <li><strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong> — transcription vocale</li>
-            </ul>
-            <p>Ces services reçoivent des données limitées (coefficients d'expression numériques et transcriptions textuelles) exclusivement pour la génération du résultat. Ces données ne sont pas utilisées pour entraîner leurs modèles d'IA. En utilisant l'Application, vous consentez explicitement à cet envoi de données, après information via l'écran de consentement dédié au premier lancement.</p>
-
-            <div class="highlight">
-                <strong>🎭 Les résultats fournis par Bluffr AI sont purement fictifs et ludiques.</strong> L'Application ne prétend pas détecter les mensonges de manière fiable. Aucune technologie actuelle ne permet de détecter les mensonges de manière certaine par la seule analyse des expressions faciales. Les résultats ne doivent jamais être utilisés pour accuser, juger ou prendre des décisions concernant une personne.
-            </div>
-
-            <h2>4. Accès à la caméra et au microphone</h2>
-            <p>L'Application requiert l'accès à la caméra frontale et au microphone de votre appareil pour fonctionner. Ces accès sont utilisés <strong>exclusivement</strong> pour l'analyse des expressions faciales et la transcription vocale en temps réel. Aucune photo, vidéo ou enregistrement audio n'est capturé, enregistré ou stocké. Vous pouvez révoquer ces autorisations à tout moment dans les paramètres de votre appareil.</p>
-
-            <h2>5. Achats intégrés</h2>
-            <p>L'Application propose des achats intégrés (in-app purchases) permettant d'acquérir des crédits pour accéder au mode premium :</p>
-            <ul>
-                <li>Les achats sont gérés par Google Play Store ou Apple App Store</li>
-                <li>Les crédits achetés sont non remboursables, sauf disposition légale contraire</li>
-                <li>Les crédits n'ont pas de date d'expiration</li>
-                <li>Les prix affichés incluent les taxes applicables</li>
-            </ul>
-            <p>Pour toute demande de remboursement, veuillez contacter directement Google Play ou l'App Store conformément à leurs politiques respectives.</p>
-
-            <h2>6. Publicité</h2>
-            <p>Le mode gratuit de l'Application affiche des publicités fournies par Google AdMob, sous réserve de votre consentement préalable. Ces publicités sont soumises aux <a href="https://policies.google.com/technologies/ads" target="_blank">règles publicitaires de Google</a>.</p>
-
-            <h2>7. Propriété intellectuelle</h2>
-            <p>L'ensemble des éléments de l'Application (design, code, textes, images, sons, marque Bluffr AI) sont la propriété exclusive de CUB-ITH et sont protégés par le droit de la propriété intellectuelle. Toute reproduction, modification ou exploitation non autorisée est interdite.</p>
-
-            <h2>8. Responsabilité</h2>
-            <ul>
-                <li>CUB-ITH ne saurait être tenu responsable de toute utilisation des résultats de l'Application en dehors de son cadre de divertissement</li>
-                <li>CUB-ITH ne saurait être tenu responsable du contenu généré par les modèles d'IA tiers (xAI/Grok)</li>
-                <li>CUB-ITH ne garantit pas la disponibilité ininterrompue de l'Application ni l'absence d'erreurs</li>
-                <li>L'utilisation de l'Application se fait sous votre entière responsabilité</li>
-                <li>CUB-ITH décline toute responsabilité en cas de dommages directs ou indirects liés à l'utilisation de l'Application</li>
-            </ul>
-
-            <h2>9. Signalement de contenu IA</h2>
-            <p>Si un résultat généré par l'intelligence artificielle vous semble offensant, inexact ou inapproprié, vous pouvez le signaler directement depuis l'écran de résultats de l'Application via le bouton prévu à cet effet. CUB-ITH s'engage à traiter ces signalements dans un délai raisonnable.</p>
-
-            <h2>10. Consentement des tiers</h2>
-            <p>Si vous utilisez l'Application pour analyser les expressions faciales d'une autre personne, vous devez <strong>obligatoirement obtenir son consentement préalable et éclairé</strong>. Vous êtes seul responsable du respect de cette obligation. CUB-ITH décline toute responsabilité en cas d'utilisation sans consentement.</p>
-
-            <h2>11. Âge minimum</h2>
-            <p>L'Application est destinée aux personnes de 12 ans et plus. En utilisant l'Application, vous confirmez avoir au moins 12 ans ou disposer de l'autorisation d'un parent ou tuteur légal.</p>
-
-            <h2>12. Confidentialité</h2>
-            <p>L'utilisation de l'Application est soumise à notre <a href="./privacy">Politique de confidentialité</a> qui fait partie intégrante des présentes CGU.</p>
-
-            <h2>13. Modification des CGU</h2>
-            <p>CUB-ITH se réserve le droit de modifier les présentes CGU à tout moment. Les modifications entrent en vigueur dès leur publication. L'utilisation continue de l'Application après modification vaut acceptation des nouvelles CGU.</p>
-
-            <h2>14. Droit applicable</h2>
-            <p>Les présentes CGU sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de la juridiction du siège social de CUB-ITH.</p>
-
-            <h2>15. Contact</h2>
-            <p>Pour toute question relative aux présentes CGU :</p>
-            <p><strong>CUB-ITH</strong><br>
-            Email : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
-        </div>
-
-        <!-- ==================== ENGLISH ==================== -->
-        <div lang="en">
-            <p class="date">Last updated: April 2, 2026</p>
-
-            <div class="warning">
-                <strong>⚠️ IMPORTANT DISCLAIMER</strong><br>
-                Bluffr AI is an <strong>entertainment-only</strong> application. It is not a scientific lie detection tool. Results are generated for fun and should never be used to judge a person's sincerity in any professional, legal, medical, or personal context.
-            </div>
-
-            <h2>1. Purpose</h2>
-            <p>These Terms of Use ("Terms") govern the use of the Bluffr AI mobile application (the "App"), published by CUB-ITH, a French micro-enterprise (SIREN: 992 934 448).</p>
-            <p>By using the App, you unconditionally accept these Terms. If you do not accept these Terms, please do not use the App.</p>
-
-            <h2>2. Service description</h2>
-            <p>Bluffr AI is an entertainment application that offers a fun facial and behavioral expression analysis experience. The App uses your device's camera to detect facial expressions, your microphone to transcribe voice responses, and generates a fictional behavioral analysis result via third-party artificial intelligence models.</p>
-            <p>The App offers two modes:</p>
-            <ul>
-                <li><strong>Free mode:</strong> analysis with advertisements (Google AdMob)</li>
-                <li><strong>Premium mode:</strong> detailed AI-powered analysis (xAI/Grok), accessible through credits purchased in the app</li>
-            </ul>
-
-            <h2>3. Third-party artificial intelligence</h2>
-            <p>The App uses the following artificial intelligence services to generate analysis results:</p>
-            <ul>
-                <li><strong>xAI Corp. (Grok)</strong> — facial and behavioral expression analysis</li>
-                <li><strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong> — voice transcription</li>
-            </ul>
-            <p>These services receive limited data (numerical expression coefficients and text transcriptions) exclusively for result generation. This data is not used to train their AI models. By using the App, you explicitly consent to this data transmission, after being informed via the dedicated consent screen at first launch.</p>
-
-            <div class="highlight">
-                <strong>🎭 Results provided by Bluffr AI are purely fictional and for entertainment.</strong> The App does not claim to reliably detect lies. No current technology can detect lies with certainty through facial expression analysis alone. Results should never be used to accuse, judge, or make decisions about a person.
-            </div>
-
-            <h2>4. Camera and microphone access</h2>
-            <p>The App requires access to your device's front camera and microphone to function. These accesses are used <strong>exclusively</strong> for real-time facial expression analysis and voice transcription. No photos, videos or audio recordings are captured, recorded or stored. You can revoke these permissions at any time in your device settings.</p>
-
-            <h2>5. In-App Purchases</h2>
-            <p>The App offers in-app purchases to acquire credits for premium mode access:</p>
-            <ul>
-                <li>Purchases are managed by Google Play Store or Apple App Store</li>
-                <li>Purchased credits are non-refundable, except as required by law</li>
-                <li>Credits do not expire</li>
-                <li>Displayed prices include applicable taxes</li>
-            </ul>
-            <p>For refund requests, please contact Google Play or the App Store directly in accordance with their respective policies.</p>
-
-            <h2>6. Advertising</h2>
-            <p>The App's free mode displays advertisements provided by Google AdMob, subject to your prior consent. These advertisements are subject to <a href="https://policies.google.com/technologies/ads" target="_blank">Google's advertising policies</a>.</p>
-
-            <h2>7. Intellectual property</h2>
-            <p>All elements of the App (design, code, text, images, sounds, Bluffr AI brand) are the exclusive property of CUB-ITH and are protected by intellectual property law. Any unauthorized reproduction, modification, or exploitation is prohibited.</p>
-
-            <h2>8. Liability</h2>
-            <ul>
-                <li>CUB-ITH shall not be held liable for any use of the App's results outside its entertainment purpose</li>
-                <li>CUB-ITH shall not be held liable for content generated by third-party AI models (xAI/Grok)</li>
-                <li>CUB-ITH does not guarantee uninterrupted availability of the App or the absence of errors</li>
-                <li>Use of the App is at your sole risk</li>
-                <li>CUB-ITH disclaims all liability for direct or indirect damages related to the use of the App</li>
-            </ul>
-
-            <h2>9. AI content reporting</h2>
-            <p>If an AI-generated result seems offensive, inaccurate or inappropriate, you can report it directly from the App's results screen using the dedicated button. CUB-ITH commits to processing these reports within a reasonable timeframe.</p>
-
-            <h2>10. Third-party consent</h2>
-            <p>If you use the App to analyze another person's facial expressions, you <strong>must obtain their prior informed consent</strong>. You are solely responsible for complying with this obligation. CUB-ITH disclaims all liability in case of use without consent.</p>
-
-            <h2>11. Minimum age</h2>
-            <p>The App is intended for persons aged 12 and over. By using the App, you confirm that you are at least 12 years old or have the authorization of a parent or legal guardian.</p>
-
-            <h2>12. Privacy</h2>
-            <p>Use of the App is subject to our <a href="./privacy">Privacy Policy</a>, which forms an integral part of these Terms.</p>
-
-            <h2>13. Modifications</h2>
-            <p>CUB-ITH reserves the right to modify these Terms at any time. Changes take effect upon publication. Continued use of the App after modifications constitutes acceptance of the new Terms.</p>
-
-            <h2>14. Governing law</h2>
-            <p>These Terms are governed by French law. Any dispute shall be submitted to the competent courts of the jurisdiction of CUB-ITH's registered office.</p>
-
-            <h2>15. Contact</h2>
-            <p>For any questions regarding these Terms:</p>
-            <p><strong>CUB-ITH</strong><br>
-            Email: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p>
+<div class="page-hero">
+    <div class="page-hero-inner">
+        <div class="page-badge">Legal</div>
+        <h1 id="heroTitle">Terms of Use</h1>
+        <div class="page-meta">
+            <span id="heroDate"><strong>Last updated:</strong> April 2, 2026</span>
+            <span id="heroEntity"><strong>Publisher:</strong> CUB-ITH (SIREN: 992 934 448)</span>
         </div>
     </div>
+</div>
 
-    <div class="footer">
-        © 2026 CUB-ITH — Bluffr AI
+<div class="main-layout">
+<main class="content">
+
+    <div id="content-en">
+        <div class="notice"><strong>⚠️ Important disclaimer.</strong> Bluffr AI is an <strong>entertainment-only</strong> application. It is not a scientific lie detection tool. Results are generated for fun and should never be used to judge a person's sincerity in any professional, legal, medical, or personal context.</div>
+
+        <section id="en-s1"><h2>1. Purpose</h2><p>These Terms of Use ("Terms") govern the use of the Bluffr AI mobile application (the "App"), published by <strong>CUB-ITH</strong>, a French micro-enterprise (SIREN: 992 934 448). By using the App, you unconditionally accept these Terms. If you do not accept them, please do not use the App.</p></section>
+
+        <section id="en-s2"><h2>2. Service Description</h2><p>Bluffr AI is an entertainment application offering a fun facial and behavioral expression analysis experience. The App uses your device's camera to detect facial expressions, your microphone to transcribe voice responses, and generates a fictional behavioral analysis result via third-party AI models.</p>
+        <p>The App offers two modes:</p>
+        <ul><li><strong>Free mode:</strong> analysis with advertisements (Google AdMob)</li><li><strong>Premium mode:</strong> detailed AI-powered analysis (xAI/Grok), accessible through in-app credit purchases</li></ul></section>
+
+        <section id="en-s3"><h2>3. Third-Party Artificial Intelligence</h2><p>The App uses the following AI services to generate analysis results:</p>
+        <ul><li><strong>xAI Corp. (Grok)</strong> — facial and behavioral expression analysis</li><li><strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong> — voice transcription</li></ul>
+        <p>These services receive limited data (numerical expression coefficients and text transcriptions) exclusively for result generation. This data is not used to train their AI models. By using the App, you explicitly consent to this data transmission after being informed via the dedicated consent screen at first launch.</p>
+        <div class="highlight"><strong>🎭 Results provided by Bluffr AI are purely fictional and for entertainment.</strong> The App does not claim to reliably detect lies. Results should never be used to accuse, judge, or make decisions about a person.</div></section>
+
+        <section id="en-s4"><h2>4. Camera and Microphone Access</h2><p>The App requires access to your device's front camera and microphone to function. These accesses are used <strong>exclusively</strong> for real-time facial expression analysis and voice transcription. No photos, videos, or audio recordings are captured, recorded, or stored. You can revoke these permissions at any time in your device settings.</p></section>
+
+        <section id="en-s5"><h2>5. In-App Purchases</h2>
+        <ul><li>Purchases are managed by Google Play Store or Apple App Store</li><li>Purchased credits are non-refundable, except as required by law</li><li>Credits do not expire</li><li>Displayed prices include applicable taxes</li></ul>
+        <p>For refund requests, please contact Google Play or the App Store directly in accordance with their respective policies.</p></section>
+
+        <section id="en-s6"><h2>6. Advertising</h2><p>The App's free mode displays advertisements provided by Google AdMob, subject to your prior consent. These advertisements are subject to <a href="https://policies.google.com/technologies/ads" target="_blank">Google's advertising policies</a>.</p></section>
+
+        <section id="en-s7"><h2>7. Intellectual Property</h2><p>All elements of the App (design, code, text, images, sounds, Bluffr AI brand) are the exclusive property of CUB-ITH and are protected by intellectual property law. Any unauthorized reproduction, modification, or exploitation is prohibited.</p></section>
+
+        <section id="en-s8"><h2>8. Liability</h2>
+        <ul><li>CUB-ITH shall not be held liable for any use of App results outside its entertainment purpose</li><li>CUB-ITH shall not be liable for content generated by third-party AI models (xAI/Grok)</li><li>CUB-ITH does not guarantee uninterrupted availability of the App</li><li>Use of the App is at your sole risk</li></ul></section>
+
+        <section id="en-s9"><h2>9. AI Content Reporting</h2><p>If an AI-generated result seems offensive, inaccurate, or inappropriate, you can report it directly from the App's results screen. CUB-ITH commits to processing these reports within a reasonable timeframe.</p></section>
+
+        <section id="en-s10"><h2>10. Third-Party Consent</h2><p>If you use the App to analyze another person's facial expressions, you <strong>must obtain their prior informed consent</strong>. You are solely responsible for complying with this obligation. CUB-ITH disclaims all liability in case of use without consent.</p></section>
+
+        <section id="en-s11"><h2>11. Minimum Age</h2><p>The App is intended for persons aged 12 and over. By using the App, you confirm that you are at least 12 years old or have the authorization of a parent or legal guardian.</p></section>
+
+        <section id="en-s12"><h2>12. Privacy</h2><p>Use of the App is subject to our <a href="./privacy.html">Privacy Policy</a>, which forms an integral part of these Terms.</p></section>
+
+        <section id="en-s13"><h2>13. Modifications</h2><p>CUB-ITH reserves the right to modify these Terms at any time. Changes take effect upon publication. Continued use of the App after modifications constitutes acceptance of the new Terms.</p></section>
+
+        <section id="en-s14"><h2>14. Governing Law</h2><p>These Terms are governed by French law. Any dispute shall be submitted to the competent courts of the jurisdiction of CUB-ITH's registered office.</p></section>
+
+        <section id="en-s15"><h2>15. Contact</h2><p><strong>CUB-ITH</strong><br>Email: <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p></section>
     </div>
 
-    <script>
-        function setLang(lang) {
-            document.querySelectorAll('[lang="fr"], [lang="en"]').forEach(el => {
-                el.style.display = el.getAttribute('lang') === lang ? 'block' : 'none';
-            });
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.textContent.includes(lang === 'fr' ? 'Français' : 'English'));
-            });
-            document.documentElement.lang = lang;
-        }
-        const userLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
-        setLang(userLang);
-    </script>
+    <div id="content-fr" style="display:none">
+        <div class="notice"><strong>⚠️ Avertissement important.</strong> Bluffr AI est une application de <strong>divertissement uniquement</strong>. Elle ne constitue pas un outil scientifique de détection de mensonges. Les résultats sont générés à des fins ludiques et ne doivent jamais être utilisés pour porter un jugement sur la sincérité d'une personne.</div>
+
+        <section id="fr-s1"><h2>1. Objet</h2><p>Les présentes conditions générales d'utilisation (« CGU ») régissent l'utilisation de l'application mobile Bluffr AI (l'« Application »), éditée par <strong>CUB-ITH</strong>, micro-entreprise de droit français (SIREN : 992 934 448). En utilisant l'Application, vous acceptez sans réserve les présentes CGU. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser l'Application.</p></section>
+
+        <section id="fr-s2"><h2>2. Description du service</h2><p>Bluffr AI est une application de divertissement qui propose une expérience ludique d'analyse d'expressions faciales et comportementales. L'Application utilise la caméra de votre appareil pour détecter des expressions faciales, votre microphone pour transcrire vos réponses vocales, et génère un résultat fictif d'analyse comportementale via des modèles d'IA tiers.</p>
+        <p>L'Application propose deux modes :</p>
+        <ul><li><strong>Mode gratuit :</strong> analyse avec publicités (Google AdMob)</li><li><strong>Mode premium :</strong> analyse détaillée via IA (xAI/Grok), accessible par crédits achetés dans l'application</li></ul></section>
+
+        <section id="fr-s3"><h2>3. Intelligence artificielle tierce</h2><p>L'Application utilise les services d'IA suivants :</p>
+        <ul><li><strong>xAI Corp. (Grok)</strong> — analyse des expressions faciales et comportementales</li><li><strong>OpenAI / OpenAI Ireland Ltd (Whisper)</strong> — transcription vocale</li></ul>
+        <p>Ces services reçoivent des données limitées exclusivement pour la génération du résultat. Ces données ne sont pas utilisées pour entraîner leurs modèles d'IA. En utilisant l'Application, vous consentez explicitement à cet envoi de données, après information via l'écran de consentement dédié au premier lancement.</p>
+        <div class="highlight"><strong>🎭 Les résultats fournis par Bluffr AI sont purement fictifs et ludiques.</strong> L'Application ne prétend pas détecter les mensonges de manière fiable. Les résultats ne doivent jamais être utilisés pour accuser, juger ou prendre des décisions concernant une personne.</div></section>
+
+        <section id="fr-s4"><h2>4. Accès à la caméra et au microphone</h2><p>L'Application requiert l'accès à la caméra frontale et au microphone de votre appareil. Ces accès sont utilisés <strong>exclusivement</strong> pour l'analyse des expressions faciales et la transcription vocale en temps réel. Aucune photo, vidéo ou enregistrement audio n'est capturé ou stocké. Vous pouvez révoquer ces autorisations à tout moment dans les paramètres de votre appareil.</p></section>
+
+        <section id="fr-s5"><h2>5. Achats intégrés</h2>
+        <ul><li>Les achats sont gérés par Google Play Store ou Apple App Store</li><li>Les crédits achetés sont non remboursables, sauf disposition légale contraire</li><li>Les crédits n'ont pas de date d'expiration</li><li>Les prix affichés incluent les taxes applicables</li></ul>
+        <p>Pour toute demande de remboursement, veuillez contacter directement Google Play ou l'App Store.</p></section>
+
+        <section id="fr-s6"><h2>6. Publicité</h2><p>Le mode gratuit de l'Application affiche des publicités fournies par Google AdMob, sous réserve de votre consentement préalable. Ces publicités sont soumises aux <a href="https://policies.google.com/technologies/ads" target="_blank">règles publicitaires de Google</a>.</p></section>
+
+        <section id="fr-s7"><h2>7. Propriété intellectuelle</h2><p>L'ensemble des éléments de l'Application (design, code, textes, images, sons, marque Bluffr AI) sont la propriété exclusive de CUB-ITH et sont protégés par le droit de la propriété intellectuelle. Toute reproduction ou exploitation non autorisée est interdite.</p></section>
+
+        <section id="fr-s8"><h2>8. Responsabilité</h2>
+        <ul><li>CUB-ITH ne saurait être tenu responsable de toute utilisation des résultats en dehors du cadre de divertissement</li><li>CUB-ITH ne saurait être tenu responsable du contenu généré par les modèles d'IA tiers (xAI/Grok)</li><li>CUB-ITH ne garantit pas la disponibilité ininterrompue de l'Application</li><li>L'utilisation de l'Application se fait sous votre entière responsabilité</li></ul></section>
+
+        <section id="fr-s9"><h2>9. Signalement de contenu IA</h2><p>Si un résultat généré par l'IA vous semble offensant, inexact ou inapproprié, vous pouvez le signaler depuis l'écran de résultats de l'Application. CUB-ITH s'engage à traiter ces signalements dans un délai raisonnable.</p></section>
+
+        <section id="fr-s10"><h2>10. Consentement des tiers</h2><p>Si vous utilisez l'Application pour analyser les expressions faciales d'une autre personne, vous devez <strong>obligatoirement obtenir son consentement préalable et éclairé</strong>. Vous êtes seul responsable du respect de cette obligation. CUB-ITH décline toute responsabilité en cas d'utilisation sans consentement.</p></section>
+
+        <section id="fr-s11"><h2>11. Âge minimum</h2><p>L'Application est destinée aux personnes de 12 ans et plus. En utilisant l'Application, vous confirmez avoir au moins 12 ans ou disposer de l'autorisation d'un parent ou tuteur légal.</p></section>
+
+        <section id="fr-s12"><h2>12. Confidentialité</h2><p>L'utilisation de l'Application est soumise à notre <a href="./privacy.html">Politique de confidentialité</a> qui fait partie intégrante des présentes CGU.</p></section>
+
+        <section id="fr-s13"><h2>13. Modification des CGU</h2><p>CUB-ITH se réserve le droit de modifier les présentes CGU à tout moment. Les modifications entrent en vigueur dès leur publication. L'utilisation continue de l'Application après modification vaut acceptation des nouvelles CGU.</p></section>
+
+        <section id="fr-s14"><h2>14. Droit applicable</h2><p>Les présentes CGU sont soumises au droit français. Tout litige sera soumis aux tribunaux compétents de la juridiction du siège social de CUB-ITH.</p></section>
+
+        <section id="fr-s15"><h2>15. Contact</h2><p><strong>CUB-ITH</strong><br>Email : <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></p></section>
+    </div>
+
+</main>
+
+<aside class="sidebar">
+    <div class="toc-card">
+        <div class="toc-title" id="tocTitle">On this page</div>
+        <ul class="toc-list" id="tocList"></ul>
+        <div class="toc-divider"></div>
+        <div class="toc-contact" id="tocContact">Questions? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a></div>
+    </div>
+</aside>
+</div>
+
+<footer class="site-footer">
+    © 2026 CUB-ITH — Bluffr AI &nbsp;·&nbsp; <a href="./privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="mailto:contact@cub-ith.fr">Contact</a>
+</footer>
+
+<script>
+const cfg = {
+    en: {
+        heroTitle:'Terms of Use', heroDate:'<strong>Last updated:</strong> April 2, 2026',
+        heroEntity:'<strong>Publisher:</strong> CUB-ITH (SIREN: 992 934 448)',
+        tocTitle:'On this page', tocContact:'Questions? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>',
+        toc:[['#en-s1','1. Purpose'],['#en-s2','2. Service Description'],['#en-s3','3. Third-Party AI'],
+             ['#en-s4','4. Camera & Microphone'],['#en-s5','5. In-App Purchases'],['#en-s6','6. Advertising'],
+             ['#en-s7','7. Intellectual Property'],['#en-s8','8. Liability'],['#en-s9','9. AI Reporting'],
+             ['#en-s10','10. Third-Party Consent'],['#en-s11','11. Minimum Age'],['#en-s12','12. Privacy'],
+             ['#en-s13','13. Modifications'],['#en-s14','14. Governing Law'],['#en-s15','15. Contact']]
+    },
+    fr: {
+        heroTitle:'Conditions générales d\'utilisation', heroDate:'<strong>Dernière mise à jour :</strong> 2 avril 2026',
+        heroEntity:'<strong>Éditeur :</strong> CUB-ITH (SIREN : 992 934 448)',
+        tocTitle:'Sur cette page', tocContact:'Questions ? <a href="mailto:contact@cub-ith.fr">contact@cub-ith.fr</a>',
+        toc:[['#fr-s1','1. Objet'],['#fr-s2','2. Description du service'],['#fr-s3','3. IA tierce'],
+             ['#fr-s4','4. Caméra et microphone'],['#fr-s5','5. Achats intégrés'],['#fr-s6','6. Publicité'],
+             ['#fr-s7','7. Propriété intellectuelle'],['#fr-s8','8. Responsabilité'],['#fr-s9','9. Signalement IA'],
+             ['#fr-s10','10. Consentement tiers'],['#fr-s11','11. Âge minimum'],['#fr-s12','12. Confidentialité'],
+             ['#fr-s13','13. Modifications'],['#fr-s14','14. Droit applicable'],['#fr-s15','15. Contact']]
+    }
+};
+let lang = 'en';
+let observer;
+
+function setLang(l) {
+    lang = l;
+    const c = cfg[l];
+    document.documentElement.lang = l;
+    document.getElementById('heroTitle').textContent = c.heroTitle;
+    document.getElementById('heroDate').innerHTML = c.heroDate;
+    document.getElementById('heroEntity').innerHTML = c.heroEntity;
+    document.getElementById('tocTitle').textContent = c.tocTitle;
+    document.getElementById('tocContact').innerHTML = c.tocContact;
+    document.getElementById('currentLangLabel').textContent = l === 'en' ? 'English' : 'Français';
+    document.getElementById('content-en').style.display = l === 'en' ? 'block' : 'none';
+    document.getElementById('content-fr').style.display = l === 'fr' ? 'block' : 'none';
+    const tocList = document.getElementById('tocList');
+    tocList.innerHTML = c.toc.map(([h,t]) => `<li><a href="${h}">${t}</a></li>`).join('');
+    document.querySelectorAll('.lang-option').forEach(o => {
+        const isActive = o.getAttribute('onclick').includes(`'${l}'`);
+        o.classList.toggle('active', isActive);
+        const ex = o.querySelector('.check'); if(ex) ex.remove();
+        if(isActive) o.insertAdjacentHTML('beforeend','<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>');
+    });
+    document.getElementById('langWrapper').classList.remove('open');
+    initSpy();
+}
+
+function toggleLangMenu() { document.getElementById('langWrapper').classList.toggle('open'); }
+document.addEventListener('click', e => { if(!document.getElementById('langWrapper').contains(e.target)) document.getElementById('langWrapper').classList.remove('open'); });
+
+function initSpy() {
+    if(observer) observer.disconnect();
+    const links = document.querySelectorAll('.toc-list a');
+    observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if(e.isIntersecting) {
+                links.forEach(l => l.classList.remove('active'));
+                const a = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+                if(a) a.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    document.querySelectorAll(`#content-${lang} section[id]`).forEach(s => observer.observe(s));
+}
+
+setLang('en');
+</script>
 </body>
 </html>
