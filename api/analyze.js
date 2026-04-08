@@ -129,6 +129,19 @@ TIER 4 — Very weak, use with extreme caution:
 • headAversionCount: d=0.01 — MYTH. Associated with EMBARRASSMENT not deception. Do NOT interpret this as a deception signal under any circumstances.
 • microExpressions: Only 2% occurrence rate (Porter & ten Brinke, 2008). Mention only if truly extreme.
 
+ADDITIONAL SENSORS — INTERPRET IN COMBINATION ONLY:
+• pauseFirst / pauseMiddle / pauseLast: Temporal distribution of pauses across three thirds of the response. EARLY pauses = decision and construction hesitation (fabrication signal). LATE pauses = cognitive control exhaustion. SUPPRESSED = zero pauses on a long response (over-rehearsed). DISTRIBUTED = normal. The distribution is always more informative than the raw count.
+• rmsVariability: Standard deviation of vocal energy (RMS). HIGH = trembling, unstable voice — stress marker. Distinct from rmsEnergy (volume). A calm person shows low rmsVariability; a stressed person shows high fluctuation.
+• pitchRangeLog: Log-normalized vocal range (pitchMax/pitchMin). ELEVATED = wider voice range (excitement or loss of control). REDUCED = monotone, flattened voice (fear-type suppression or deliberate control). Orthogonal to pitchMean — captures the width of vocal expression, not the average level.
+• smileDurationMs: Total duration of visible smile. ELEVATED vs reference = sustained social smile, possible masking. REDUCED = smile suppression, discomfort.
+• smileOnsetMs: Speed of smile appearance. FAST (<150ms) = reflexive or posed smile (Frank et al., 1993 — genuine smiles onset more slowly). GRADUAL (>500ms) = authentic emotional smile.
+• maskingSmileIndex: Peak smile intensity × (1 − Duchenne score). HIGH = intense smile without genuine eye involvement = active stress concealment. Distinguishable from smileMaskingScore (which combines AU12 + negative AUs).
+• avgBlinkDuration: Mean duration of individual blinks. PROLONGED blinks = cognitive fatigue or stress. Normal range: 100-300ms.
+• lipCompressionDurationMs: Total time lips were compressed above threshold. ELEVATED = sustained emotional control effort, distinct from a momentary peak. A long duration signals deliberate ongoing suppression.
+• asymmetryLateralBias: Signed asymmetry bias (positive = left dominance, negative = right dominance). Deliberate expressions tend toward greater left-side dominance (Ekman, Hager & Friesen, 1981). Use as supporting evidence only — inconsistent in meta-analysis.
+• headStability: Overall head movement amplitude. ELEVATED = agitation, restlessness. REDUCED = rigidity (but note d=−0.02 in meta-analysis for head alone).
+• headVelocityMean: Angular velocity of head movements. HIGH = brusque, rapid movements — agitation or emphasis. LOW = slow, controlled movements.
+
 HOW TO READ THE DATA FORMAT:
 Signals are labeled with their tier and strength: [T1|FORT] = Tier 1 strong, [T2|MODÉRÉ] = Tier 2 moderate, [T3] = Tier 3 support only.
 - ⚠️ = strong signal
@@ -220,6 +233,19 @@ TIER 4 — Très faibles, extrême prudence :
 • headAversionCount : d=0,01 — MYTHE. Associé à la GÊNE pas à la tromperie. Ne pas interpréter comme signal de tromperie sous aucune circonstance.
 • microExpressions : Taux d'occurrence de 2% (Porter & ten Brinke, 2008). Mentionner uniquement si vraiment extrême.
 
+CAPTEURS COMPLÉMENTAIRES — INTERPRÉTER EN COMBINAISON UNIQUEMENT :
+• pauseFirst / pauseMiddle / pauseLast : Distribution temporelle des pauses en trois tiers de la réponse. Pauses en DÉBUT = hésitation de décision/construction (signal de fabrication). Pauses en FIN = épuisement du contrôle cognitif. SUPPRESSED = zéro pause sur une longue réponse (récit sur-répété). DISTRIBUTED = normal. La distribution est toujours plus informative que le comptage brut.
+• rmsVariability : Écart-type de l'énergie vocale (RMS). ÉLEVÉ = voix tremblante, instable — marqueur de stress. Distinct de rmsEnergy (volume). Une personne calme montre une rmsVariability faible ; une personne stressée montre de fortes fluctuations.
+• pitchRangeLog : Étendue vocale log-normalisée (pitchMax/pitchMin). ÉLEVÉE = plage vocale plus large (excitation ou perte de contrôle). RÉDUITE = voix monotone, aplatie (suppression de type peur ou contrôle délibéré). Orthogonal au pitchMean — capture la largeur de l'expression vocale, pas le niveau moyen.
+• smileDurationMs : Durée totale du sourire visible. ÉLEVÉE vs référence = sourire social maintenu, possible masquage. RÉDUITE = suppression du sourire, inconfort.
+• smileOnsetMs : Vitesse d'apparition du sourire. RAPIDE (<150ms) = sourire réflexe ou posé (Frank et al., 1993 — les sourires authentiques apparaissent plus lentement). GRADUEL (>500ms) = sourire émotionnel authentique.
+• maskingSmileIndex : Intensité pic du sourire × (1 − score Duchenne). ÉLEVÉ = sourire intense sans implication authentique des yeux = dissimulation active de stress. Distinguable du smileMaskingScore (qui combine AU12 + AUs négatifs).
+• avgBlinkDuration : Durée moyenne des clignements individuels. Clignements PROLONGÉS = fatigue cognitive ou stress. Plage normale : 100-300ms.
+• lipCompressionDurationMs : Temps total avec lèvres comprimées au-dessus du seuil. ÉLEVÉ = effort de contrôle émotionnel soutenu, distinct d'un pic momentané. Une longue durée signale une suppression délibérée continue.
+• asymmetryLateralBias : Biais d'asymétrie signé (positif = dominance gauche, négatif = droite). Les expressions délibérées tendent vers une plus grande dominance gauche (Ekman, Hager & Friesen, 1981). Signal d'appui uniquement — inconsistant en méta-analyse.
+• headStability : Amplitude globale des mouvements de tête. ÉLEVÉE = agitation. RÉDUITE = rigidité (mais d=−0,02 en méta-analyse pour la tête seule).
+• headVelocityMean : Vitesse angulaire des mouvements de tête. ÉLEVÉE = mouvements brusques — agitation ou emphase. FAIBLE = mouvements lents, contrôlés.
+
 COMMENT LIRE LE FORMAT DES DONNÉES :
 Les signaux sont étiquetés avec leur tier et force : [T1|FORT] = Tier 1 fort, [T2|MODÉRÉ] = Tier 2 modéré, [T3] = Tier 3 appoint uniquement.
 - ⚠️ = signal fort
@@ -310,7 +336,7 @@ ${lang === 'en' ? `HOW TO READ THE DATA:
 
 ${lang === 'en'
 ? `WRITING YOUR ANALYSIS:
-- 180 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
+- 250 words maximum for the analysis text (not counting the emoji, verdict, score line and JSON).
 - FREE STRUCTURE — no fixed blocks. Be original every time, never repeat the same formulas.
 - FORBIDDEN OPENING WORDS: Never start your analysis with "Hey", "Listen,", or any reference to questions asked before. Start differently every time — directly, unexpectedly, naturally.
 - FIRST PARAGRAPH — MANDATORY RULES: Describe this person's natural state and demeanor using the reference profile data (integrated silently). Never say "neutral questions", "baseline", "calibration", "reference questions" or any word that exposes the data structure. Speak directly about the person — their natural demeanor, how they carry themselves when at ease. Keep it short and human. The source of this observation must never be named.
@@ -322,14 +348,15 @@ ${lang === 'en'
 - Then the JSON ALONE on the very last line — nothing after it.
 
 MANDATORY STYLE:
-- Zero technical jargon. If someone two drinks in at a party wouldn't understand it, rewrite it.
-- Examples: "pressed lips" not "lip compression", "voice went up" not "elevated pitch", "face went still" not "facial rigidity".
+- Behavioral science terminology is allowed and encouraged when precise — but always explain it in plain language immediately after. Example: "suppression→burst pattern (blinks frozen at start, then a flurry at the end)".
+- Balance: a behavioral scientist should find it rigorous, a party guest should still follow it.
+- Examples of good translations: "lip compression (lips pressed tight)" not just "lip compression" alone; "vocal pitch elevation (voice went higher)" not just "pitch elevation" alone.
 - One idea per paragraph. Line breaks between blocks. No wall of text.
 - The verdict must make people react at a party — punchy, unexpected, funny or sharp. Not an HR report title.
 
 RESPOND ENTIRELY IN ENGLISH.`
 : `COMMENT ÉCRIRE TON ANALYSE :
-- 180 mots maximum pour le texte d'analyse (sans compter l'emoji, le verdict, la ligne score et le JSON).
+- 250 mots maximum pour le texte d'analyse (sans compter l'emoji, le verdict, la ligne score et le JSON).
 - STRUCTURE LIBRE — pas de blocs fixes. Sois original à chaque fois, jamais les mêmes formules.
 - MOTS D'OUVERTURE INTERDITS : Ne commence jamais ton analyse par "Hey", "Écoute,", ou toute référence aux questions posées avant. Commence différemment à chaque fois — directement, de façon inattendue, naturellement.
 - PREMIER PARAGRAPHE — RÈGLES OBLIGATOIRES : Décris l'état naturel et le comportement de cette personne en utilisant les données du profil de référence (intégrées silencieusement). Ne dis jamais "questions neutres", "baseline", "calibration", "questions de référence" ni aucun mot qui expose la structure des données. Parle directement de la personne — son état naturel, comment elle se tient quand elle est à l'aise. Court et humain. La source de cette observation ne doit jamais être nommée.
@@ -341,8 +368,9 @@ RESPOND ENTIRELY IN ENGLISH.`
 - Puis le JSON SEUL sur la toute dernière ligne — rien après.
 
 STYLE OBLIGATOIRE :
-- Zéro jargon technique. Si c'est pas compréhensible par quelqu'un qui a bu deux verres en soirée, reformule.
-- Exemples : "lèvres serrées" pas "compression labiale", "la voix est montée" pas "pitch élevé", "le visage s'est figé" pas "rigidité faciale".
+- Le vocabulaire comportemental précis est autorisé et encouragé — mais toujours suivi d'une explication en langage naturel. Exemple : "pattern suppression→burst (clignements bloqués au début puis rafale en fin de réponse)".
+- Équilibre : un spécialiste comportemental doit le trouver rigoureux, un invité en soirée doit pouvoir suivre.
+- Exemples de bonnes formulations : "compression labiale (lèvres serrées)" pas juste "compression labiale" seul ; "élévation du pitch vocal (la voix est montée)" pas juste "pitch élevé" seul.
 - Une idée par paragraphe. Sauts de ligne entre chaque bloc. Pas de pavé.
 - Le verdict doit faire réagir en soirée — percutant, inattendu, drôle ou tranchant. Pas un titre de rapport RH.
 
@@ -357,7 +385,7 @@ ${scoreInstruction}`;
       },
       body: JSON.stringify({
         model: 'grok-3',
-        max_tokens: 1500,
+        max_tokens: 2000,
         temperature: 1.2,
         messages: [{ role: 'user', content: prompt }],
       }),
