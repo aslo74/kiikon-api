@@ -51,10 +51,9 @@ export default async function handler(req, res) {
 
     const scoreInstruction = lang === 'en'
       ? `\n\nFINAL INSTRUCTION — MANDATORY:
-START your response with these three lines (before any analysis text):
+START your response with these two lines (before any analysis text):
 Line 1: One single emoji that you choose freely to represent your reading of this person (be creative, be precise)
 Line 2: A short verdict in CAPS — 2 to 5 words maximum, punchy, original, that you invent freely based on the data
-Line 3: SINCERITY SCORE : [score]/100
 
 Then write your analysis.
 
@@ -77,10 +76,9 @@ UNCERTAINTY ZONE — MANDATORY: A score between 45 and 55 is a deliberate "impos
 
 Be honest. Strong signals = low score. Calm profile = high score.`
       : `\n\nINSTRUCTION FINALE — OBLIGATOIRE :
-COMMENCE ta réponse par ces trois lignes (avant tout texte d'analyse) :
+COMMENCE ta réponse par ces deux lignes (avant tout texte d'analyse) :
 Ligne 1 : Un seul emoji que tu choisis librement pour représenter ta lecture de cette personne (sois créatif, sois précis)
 Ligne 2 : Un verdict court en MAJUSCULES — 2 à 5 mots maximum, percutant, original, que tu inventes librement d'après les données
-Ligne 3 : SCORE DE SINCÉRITÉ : [ton score]/100
 
 Puis écris ton analyse.
 
