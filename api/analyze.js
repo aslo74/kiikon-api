@@ -36,6 +36,12 @@ export default async function handler(req, res) {
 
   try {
     const { capteurData, semanticSummary, targetQuestion, language, targetTranscription } = req.body;
+
+    // ── DEBUG LOG — retirer avant lancement ──
+    console.log('KIIKON_DEBUG_QUESTION:', targetQuestion);
+    console.log('KIIKON_DEBUG_RAW:', JSON.stringify(capteurData));
+    console.log('KIIKON_DEBUG_SEMANTIC:', JSON.stringify(semanticSummary));
+
     if (!capteurData || !targetQuestion) return res.status(400).json({ error: 'Missing required fields' });
     if (!Array.isArray(capteurData) || capteurData.length === 0) return res.status(400).json({ error: 'capteurData must be a non-empty array' });
 
