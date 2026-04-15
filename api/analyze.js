@@ -25,14 +25,14 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  // const appCheckToken = req.headers['x-firebase-appcheck'];
-  // if (!appCheckToken) {
-  //   return res.status(401).json({ error: 'Unauthorized' });
-  // }
-  // const isValid = await verifyAppCheckToken(appCheckToken);
-  // if (!isValid) {
-  //   return res.status(401).json({ error: 'Unauthorized' });
-  // }
+  const appCheckToken = req.headers['x-firebase-appcheck'];
+  if (!appCheckToken) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const isValid = await verifyAppCheckToken(appCheckToken);
+  if (!isValid) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
 
   try {
     const { capteurData, semanticSummary, targetQuestion, language, targetTranscription } = req.body;
